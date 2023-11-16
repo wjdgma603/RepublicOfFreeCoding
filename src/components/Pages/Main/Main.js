@@ -1,6 +1,6 @@
 const Main = () => {
     return ( 
-        <section className="MainPages">
+        <section className="MainSection">
             MainPages
         </section>
      );
