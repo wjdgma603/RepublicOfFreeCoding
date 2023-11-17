@@ -10,13 +10,24 @@ import EbookList from './components/Pages/Ebook/EbookList';
 import CommuList from './components/Pages/Community/CommuList';
 import CodeTestList from './components/Pages/CodeTest/CodeTestList';
 import Footer from './components/Footer/Footer';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [isHeaderLoaded, setIsHeaderLoaded] = useState(false);
+  function HeaderLoaded() {
+    useEffect(() => {
+      setIsHeaderLoaded(true);
+      return () => {
+        setIsHeaderLoaded(false);
+      };
+    }, []);
+    return isHeaderLoaded;
+  }
   return (
     <div className="App">
-      <Header/>
+      <Header isHeaderLoaded={isHeaderLoaded}/>
       <Routes>
-        <Route path='/*' element={<Main/>}/>
+        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded}/>}/>
         <Route path='/login/*' element={<Login/>}/>
         <Route path='/introduce/*' element={<Introduce/>}/>
         <Route path='/ebook/*' element={<EbookList/>}/>

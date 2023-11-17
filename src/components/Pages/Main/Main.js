@@ -4,18 +4,18 @@ import Back from "./SubComponent/Back"
 import Model from "./SubComponent/model"
 import { useEffect, useState} from "react"
 
-const Main = () => {
+const Main = ({HeaderLoaded}) => {
+    HeaderLoaded()
     const [LodingPage, setLodingPage] = useState(true);
     useEffect(()=>{
       setTimeout(()=>{
         setLodingPage(false)
-      },100)
+      },3000)
     })
     return (
-      <div className="App">
+      <div className="Main">
         {LodingPage ? (
           <div id='loading'>
-            <Back/>
             <p id='loadingText'>Welcome To Republic Of Free Coding</p>
           </div>
         ) : (
