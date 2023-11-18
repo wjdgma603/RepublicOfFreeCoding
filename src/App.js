@@ -23,6 +23,10 @@ function App() {
     }, []);
     return isHeaderLoaded;
   }
+  // Header용 컴포넌트 마운트 관리함수
+
+
+  
   return (
     <div className="App">
       <Header isHeaderLoaded={isHeaderLoaded}/>
