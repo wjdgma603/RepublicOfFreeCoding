@@ -4,8 +4,8 @@ import CommuData from "./SubComponents/CommuData";
 
 
 const CommuQna = () => {
-   
-  const { postIndex } = CommuData().qnaPost;
+  const { qnaPosts } = CommuData();
+
     return (
             <div className="CommuSection">
       <div>
@@ -28,7 +28,7 @@ const CommuQna = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-          {postIndex.map((post) => (
+          {qnaPosts.postIndex.map((post) => (
             <Link to={`/community/qna/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>

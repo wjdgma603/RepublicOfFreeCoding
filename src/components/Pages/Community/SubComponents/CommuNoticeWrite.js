@@ -1,28 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './CommuNoticeWrite.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useCommuData from "./CommuData";
+import "./CommuNoticeWrite.css";
 
-const CommuNoticeWrite = ({ onPostSubmit }) => {
+const CommuNoticeWrite = () => {
+  const { addNoticePost } = useCommuData();
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const handlePostSubmit = () => {
     if (!title || !content) {
-      alert('제목과 내용을 입력해주세요.');
+      alert("제목과 내용을 입력해주세요.");
       return;
     }
 
     const newPost = {
-      id: 4,
+      id: Date.now(),
       title,
       content,
       date: new Date().toLocaleDateString(),
     };
 
-    onPostSubmit(newPost);
-
-    setTitle('');
-    setContent('');
+    addNoticePost(newPost, () => {
+      setTitle('');
+      setContent('');
+    });
   };
 
   return (
@@ -33,9 +36,15 @@ const CommuNoticeWrite = ({ onPostSubmit }) => {
           <div>초기화</div>
         </div>
         <ul className="CommuNav">
-          <li><Link to='/community'>공지사항</Link></li>
-          <li><Link to='/community/qna'>문의사항</Link></li>
-          <li><Link to='/community/faq'>FAQ</Link></li>
+          <li>
+            <Link to="/community">공지사항</Link>
+          </li>
+          <li>
+            <Link to="/community/qna">문의사항</Link>
+          </li>
+          <li>
+            <Link to="/community/faq">FAQ</Link>
+          </li>
         </ul>
       </div>
 
@@ -56,11 +65,12 @@ const CommuNoticeWrite = ({ onPostSubmit }) => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <button className="CommuWriteButton" onClick={handlePostSubmit}>글쓰기</button>
+        <button className="CommuWriteButton" onClick={handlePostSubmit}>
+          글쓰기
+        </button>
       </div>
     </div>
   );
 };
 
 export default CommuNoticeWrite;
-

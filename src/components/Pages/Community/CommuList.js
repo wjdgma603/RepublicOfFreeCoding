@@ -1,9 +1,24 @@
+// CommuList.js
+
+
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import CommuData from "./SubComponents/CommuData";
+import useCommuData from "./SubComponents/CommuData";
 import "./CommuList.css";
 
 const CommuList = () => {
-  const { postIndex } = CommuData().noticePost;
+  const { noticePosts, addNoticePost } = useCommuData();
+
+  useEffect(() => {
+    console.log("noticePosts updated:", noticePosts);
+  }, [noticePosts]);
+
+  if (!noticePosts || !noticePosts.postIndex) {
+    return null;
+  }
+
+  const postIndex = noticePosts.postIndex;
+
   return (
     <section className="CommuSection">
       <div>
@@ -26,15 +41,15 @@ const CommuList = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-          {postIndex.map((post) => (
-            <Link to={`/community/notice/${post.id}`} key={post.id}>
-              <tr>
+          <tbody>
+            {postIndex.map((post) => (
+              <tr key={post.id}>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
                 <td>{post.date}</td>
               </tr>
-            </Link>
-          ))}
+            ))}
+          </tbody>
         </table>
 
         <div className="CommuBottomWrap">
