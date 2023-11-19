@@ -1,31 +1,9 @@
 import { Link } from "react-router-dom";
+import CommuData from "./SubComponents/CommuData";
 import "./CommuList.css";
 
-export const noticePost = {
-  postIndex: [
-    {
-      id: 3,
-      title: '세번째 공지사항',
-      content: '세번째 질문에 대한 문의사항',
-      date:'23.11.09'
-    },
-    {
-      id: 2,
-      title: '두번째 공지사항',
-      content: '두번째 질문에 대한 문의사항',
-      date:'23.11.09'
-    },
-    {
-      id: 1,
-      title: '첫번째 공지사항',
-      content: '첫번째 질문에 대한 문의사항',
-      date:'23.11.09'
-    },
-  ],
-};
-
 const CommuList = () => {
-  
+  const { postIndex } = CommuData().noticePost;
   return (
     <section className="CommuSection">
       <div>
@@ -48,16 +26,16 @@ const CommuList = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-        {noticePost.postIndex.map((post) => (
-                 <Link to={`/community/notice/${post.id}`} key={post.id}>
-                 <tr>
-                   <td>{post.id}</td>
-                   <td>{post.title}</td>
-                   <td>{post.date}</td>
-                 </tr>
-               </Link>
-              ))}
-            </table>
+          {postIndex.map((post) => (
+            <Link to={`/community/notice/${post.id}`} key={post.id}>
+              <tr>
+                <td>{post.id}</td>
+                <td>{post.title}</td>
+                <td>{post.date}</td>
+              </tr>
+            </Link>
+          ))}
+        </table>
 
         <div className="CommuBottomWrap">
           <div></div>

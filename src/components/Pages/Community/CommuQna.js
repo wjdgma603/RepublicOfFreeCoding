@@ -1,43 +1,11 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import CommuQnaWrite from './SubComponents/CommuQnaWrite';
-
-export const boardPost = {
-    postIndex: [
-      {
-        id: 3,
-        title: '세번째 질문',
-        content: '세번째 질문에 대한 문의사항',
-        date:'23.11.09'
-        // date: new Date(23, 11, 9).toLocaleDateString(),
-      },
-      {
-        id: 2,
-        title: '두번째 질문',
-        content: '두번째 질문에 대한 문의사항',
-        date:'23.11.09'
-        // date: new Date(23, 11, 9).toLocaleDateString(),
-      },
-      {
-        id: 1,
-        title: '첫번째 질문',
-        content: '첫번째 질문에 대한 문의사항',
-        date:'23.11.09'
-        // date: new Date(23, 11, 9).toLocaleDateString(),
-      },
-    ],
-  };
+import CommuData from "./SubComponents/CommuData";
 
 
 const CommuQna = () => {
-    const [posts, setPosts] = useState(boardPost.postIndex);
-
-  // CommuWrite 컴포넌트에서 호출할 함수
-  const handlePostSubmit = (newPost) => {
-    // 새로운 게시글을 기존 게시글에 추가합니다.
-    setPosts([...posts, newPost]);
-  };
-
+   
+  const { postIndex } = CommuData().qnaPost;
     return (
             <div className="CommuSection">
       <div>
@@ -60,17 +28,16 @@ const CommuQna = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-        {/* {boardPost.postIndex.map((post) => ( */}
-        {posts.map((post) => (
-                 <Link to={`/community/qna/${post.id}`} key={post.id}>
-                 <tr>
-                   <td>{post.id}</td>
-                   <td>{post.title}</td>
-                   <td>{post.date}</td>
-                 </tr>
-               </Link>
-              ))}
-            </table>
+          {postIndex.map((post) => (
+            <Link to={`/community/qna/${post.id}`} key={post.id}>
+              <tr>
+                <td>{post.id}</td>
+                <td>{post.title}</td>
+                <td>{post.date}</td>
+              </tr>
+            </Link>
+          ))}
+        </table>
             <div className="CommuBottomWrap">
           <div></div>
           <div className="CommuPageButtonWrap">

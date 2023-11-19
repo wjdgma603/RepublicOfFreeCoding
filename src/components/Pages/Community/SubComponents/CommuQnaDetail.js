@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./CommuQnaDetail.css";
-import { boardPost } from '../CommuQna';
+import { qnaPost } from '../SubComponents/CommuData';
 
 
 const CommuQnaDetail = () => {
   const { id } = useParams();
 
-  const selectedPost = boardPost.postIndex.find((post) => post.id === parseInt(id));
+  const selectedPost = qnaPost.postIndex.find((post) => post.id === parseInt(id));
   return (
     <div className="CommuSection">
       <div>
