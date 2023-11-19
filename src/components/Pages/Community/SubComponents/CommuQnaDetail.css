@@ -1,0 +1,38 @@
+.CommuQnaTitle{
+    width:980px;
+    background-color: #f5f5f5;
+    padding:18px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+.CommuQnaText{
+    padding:20px 0 80px 20px;
+}
+.CommuQnaButtonWrap{
+    display: flex;
+    justify-content: space-between;
+}
+.CommuQnaButtonWrap>div>button{
+    margin-right: 15px;
+}
+.CommuQnaButtonWrap>div>button:first-child{
+    border:1px solid blue;
+    color:blue;
+    padding:10px 20px;
+    background-color: white;
+    cursor: pointer;
+}
+.CommuQnaButtonWrap>div>button:last-child{
+    border:1px solid red;
+    color:red;
+    padding:10px 20px;
+    background-color: white;
+    cursor: pointer;
+}
+.CommuQnaButtonWrap>button{
+    border:1px solid #00D67A;
+    color:white;
+    padding:10px 20px;
+    background-color: #00D67A;
+    cursor: pointer;
+}
