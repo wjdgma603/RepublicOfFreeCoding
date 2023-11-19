@@ -19,9 +19,9 @@ const Loading = () => {
             <p className="MarginText">Enter new time:</p>
             <p>The Republic Of Coding DOS</p>
             <p>Version 0.80 (C)Copyright ROFC Corp 1981, 1982, 1983</p>
-            <p>A&gt;dir</p>
+            <p className="MarginTextTwo">A&gt;dir</p>
             <p>&nbsp;&nbsp;Volume in drive A has no label</p>
-            <p >&nbsp;&nbsp;Directory of A:\</p>
+            <p className="MarginTextThree">&nbsp;&nbsp;Directory of A:\</p>
             <p className='loadingText'>THREE.JS&nbsp;COM&nbsp;&nbsp;&nbsp;17764&nbsp;&nbsp;&nbsp;11-19-23&nbsp;&nbsp;12:00p</p>
             <p className='loadingText'>REACT&nbsp;&nbsp;&nbsp;&nbsp;COM&nbsp;&nbsp;&nbsp;&nbsp;6016&nbsp;&nbsp;&nbsp;11-19-23&nbsp;&nbsp;12:00p</p>
             <p className='loadingText'>JS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COM&nbsp;&nbsp;&nbsp;&nbsp;6400&nbsp;&nbsp;&nbsp;11-19-23&nbsp;&nbsp;12:00p</p>

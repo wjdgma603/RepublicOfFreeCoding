@@ -17,8 +17,11 @@
     height: 100vh;
     padding: 100px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 div#loading>p{
+    display: inline-block;
     height: 40px;
     font-size: 36px;
     word-break: break-all;
@@ -26,22 +29,44 @@ div#loading>p{
     color: #00D67A;
     overflow: hidden;
 }
+div#loading>p.MarginText{
+    margin-bottom: 80px;
+}
+div#loading>p.MarginTextTwo{
+    margin: 40px 0;
+}
+div#loading>p.MarginTextThree{
+    margin-bottom: 40px;
+}
 div#loading>p.loadingText{
     width: 0%;
-    font-family: 'CascadiaCode', sans-serif;
     animation-name: loadingSlide;
-    animation-duration: 3s;
+    animation-duration: .5s;
     animation-timing-function: steps(31);
     animation-fill-mode: forwards;
+    animation-iteration-count: 1;
 }
-div#loading>p.loadingText:nth-of-type(2){
+div#loading>p.loadingText:nth-last-of-type(5){
     animation-delay: .5s;
+}
+div#loading>p.loadingText:nth-last-of-type(4){
+    animation-delay: 1s;
+}
+div#loading>p.loadingText:nth-last-of-type(3){
+    animation-delay: 1.5s;
+}
+div#loading>p.loadingText:nth-last-of-type(2){
+    animation-delay: 2s;
+}
+div#loading>p.loadingText:nth-last-of-type(1){
+    animation-delay: 2.5s;
 }
 @keyframes loadingSlide {
     0% {
         width: 0%;
       }
-      100% {
-        width: 100%;
-      }
+    100% {
+    width: 100%;
+    }
 }
+/* Loading */
