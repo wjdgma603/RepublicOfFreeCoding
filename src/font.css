@@ -1,4 +1,4 @@
-*{font-family: 'Noto Sans KR',sans-serif;}
+*{font-family: 'Noto Sans KR', sans-serif;}
 /* Noto Sans KR 폰트 별 굵기, 리소스 요청 */
 @font-face {
     font-family: Noto Sans KR;
@@ -66,4 +66,11 @@
     src : url(../public/font/Roboto/Roboto-Black.woff2) format('woff2');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
     font-weight: 900;
+}
+
+
+/* CascadiaCode Typograph 용도로 사용 */
+@font-face {
+    font-family: CascadiaCode;
+    src : url(../public/font/CascadiaCode/CascadiaCode.woff2) format('woff2');
 }
