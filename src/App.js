@@ -12,7 +12,6 @@ import CodeTestList from './components/Pages/CodeTest/CodeTestList';
 import Footer from './components/Footer/Footer';
 import CommuQnaWrite from './components/Pages/Community/SubComponents/CommuQnaWrite';
 import CommuQna from './components/Pages/Community/CommuQna';
-
 import CommuQnaDetail from './components/Pages/Community/SubComponents/CommuQnaDetail';
 import CommuNoticeDetail from './components/Pages/Community/SubComponents/CommuNoticeDetail';
 import CommuFaq from './components/Pages/Community/CommuFaq';

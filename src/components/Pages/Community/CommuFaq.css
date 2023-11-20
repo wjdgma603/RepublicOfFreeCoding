@@ -1,0 +1,38 @@
+.CommuFaqQuestion{
+    width:100%;
+    background-color: #f5f5f5;
+    line-height: 61px;
+    display: flex;
+    justify-content: space-between;
+    padding:10px 20px;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+.CommuFaqQuestionLeft{
+    display: flex;
+}
+.CommuFaqQuestionLeft>h1{
+    padding:0 30px 0 0;
+}
+.CommuFaqArrow{
+    width:20px;
+    height:20px;
+    margin-top: 15px;
+    border-top: 2px solid black;
+    border-right:2px solid black;
+    transform: rotate(135deg);
+}
+.CommuFaqQuestionAnswer{
+    display: flex;
+    padding:15px 20px;
+    transition: 1s;
+}
+.CommuFaqQuestionAnswer.active {
+    transition: 1s;
+  }
+.CommuFaqQuestionAnswer>h1{
+    padding-right: 30px;
+}
+.CommuFaqQuestionAnswer>p{
+    padding-top: 10px;
+}

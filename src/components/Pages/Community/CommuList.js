@@ -1,6 +1,3 @@
-// CommuList.js
-
-
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useCommuData from "./SubComponents/CommuData";
@@ -41,15 +38,15 @@ const CommuList = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-          <tbody>
-            {postIndex.map((post) => (
+            {noticePosts.postIndex.map((post) => (
+   
               <tr key={post.id}>
-                <td>{post.id}</td>
-                <td>{post.title}</td>
+               <td><Link to={`/community/notice/${post.id}`}>{post.id}</Link></td>
+               <td><Link to={`/community/notice/${post.id}`}>{post.title}</Link></td>
                 <td>{post.date}</td>
               </tr>
+
             ))}
-          </tbody>
         </table>
 
         <div className="CommuBottomWrap">
