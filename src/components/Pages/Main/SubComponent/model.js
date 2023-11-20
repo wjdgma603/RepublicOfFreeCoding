@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import TWEEN from '@tweenjs/tween.js'
 import { useRef,useEffect } from 'react';
 import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
@@ -55,10 +56,10 @@ const Palace = () => {
     const PointLight5 = new THREE.PointLight( "white", 100 );
     PointLight5.position.set(45,2,-78);
 
-        //light 화면쪽
-        const PointLight10 = new THREE.PointLight( "white", 30000 );
-        PointLight10.position.set(0,5,70)
-        scene.add(PointLight, PointLight1, PointLight2,PointLight3,PointLight4,PointLight5, PointLight10 );
+    //light 화면쪽
+    const PointLight10 = new THREE.PointLight( "white", 30000 );
+    PointLight10.position.set(0,5,70)
+    scene.add(PointLight, PointLight1, PointLight2,PointLight3,PointLight4,PointLight5, PointLight10 );
 
 
         
@@ -83,6 +84,8 @@ const Palace = () => {
 
     const imgPush = new TextureLoader()
 
+
+    
     //아래 왼쪽 책
     const section1 = new THREE.BoxGeometry(25,30,1)
     const loginBookPush = imgPush.load(loginBook)
@@ -139,23 +142,101 @@ const Palace = () => {
 
     scene.add(mesh1,mesh2,mesh3,mesh4,mesh5,mesh6);
 
-    //애니메이션
-    const clock = new THREE.Clock();
-    const animate = ()=>{
-        const delta = clock.getDelta();
-        fControls.update(delta);
-        renderer.render(scene, camera);
-        renderer.setAnimationLoop(animate);
-    }
-    animate()
 
-    window.addEventListener('resize', ()=>{
+
+    const clickableMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5, mesh6];
+
+      // Raycaster
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+
+ 
+
+    const onClick = (e) => {
+        e.preventDefault();
+        
+        // Calculate mouse position in normalized device coordinates
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        // Update the picking ray with the camera and mouse position
+        raycaster.setFromCamera(mouse, camera);
+  
+        // Calculate objects intersecting the picking ray
+        const intersects = raycaster.intersectObjects(clickableMeshes);
+  
+        if (intersects.length > 0) {
+            // Handle click on the intersected object(s) here
+            const clickedMesh = intersects[0].object;
+    
+            if (clickedMesh === mesh1) {
+                console.log('Clicked on mesh1');
+                // Perform actions specific to mesh1
+                // For example, navigate to a different page
+                window.location = 'http://localhost:3000/login';
+            } else if (clickedMesh === mesh2) {
+                console.log('Clicked on mesh2');
+
+                const targetPosition = { x:0, y:0, z: 130 };
+                const currentPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
+                new TWEEN.Tween(currentPosition).
+                to(targetPosition, 1500).
+                easing(TWEEN.Easing.Quadratic.InOut).
+                onUpdate(() => {
+                    camera.position.set(currentPosition.x, currentPosition.y, currentPosition.z);
+                }).
+
+                start();
+                
+            } else if (clickedMesh === mesh3) {
+                console.log('Clicked on mesh3');
+                window.location = 'http://localhost:3000/community';
+            } else if (clickedMesh === mesh4) {
+                console.log('Clicked on mesh4');
+                window.location = 'http://localhost:3000/introduce';
+            } else if (clickedMesh === mesh5) {
+                console.log('Clicked on mesh5');
+                window.location = 'http://localhost:3000/test';
+            } else if (clickedMesh === mesh6) {
+                console.log('Clicked on mesh6');
+                window.location = 'http://localhost:3000/ebook'
+            }
+
+        }
+      };
+      renderer.domElement.addEventListener('click', onClick);
+    //   renderer.domElement.addEventListener('mousemove', onMeshHover);
+    //   renderer.domElement.addEventListener('mouseleave', onMeshLeave);
+
+        window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(mainCur.clientWidth, mainCur.clientHeight);
-        renderer.render(scene,camera);
-    });
- },[])
+        renderer.render(scene, camera);
+
+      });
+
+
+      
+      //애니메이션
+      const clock = new THREE.Clock();  
+      const animate = ()=>{
+          const delta = clock.getDelta();
+          fControls.update(delta);
+          TWEEN.update();
+          renderer.render(scene, camera);
+          renderer.setAnimationLoop(animate);
+      }
+      animate()
+  
+      return () => {
+        // Remove the click event listener when the component is unmounted
+        renderer.domElement.removeEventListener('click', onClick);
+        // renderer.domElement.removeEventListener('mousemove', onMeshHover);
+        // renderer.domElement.removeEventListener('mouseleave', onMeshLeave);
+      };
+    }, []);
+  
     return ( 
         <section id='model' ref={main}></section>
      );
