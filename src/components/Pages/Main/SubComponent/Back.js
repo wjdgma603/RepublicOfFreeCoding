@@ -23,16 +23,7 @@ function Back() {
             antialias: true,
             alpha: true
         });
-        const light = new THREE.DirectionalLight("white", 1);
-        light.position.set(0, 1, 0); // 기본: 빛은 위에서 비춤
-        light.castShadow = true; // 기본: 비활성화
-        scene.add(light);
 
-        // 빛에 대한 그림자 속성 설정
-        light.shadow.mapSize.width = 512; // 기본
-        light.shadow.mapSize.height = 512; // 기본
-        light.shadow.camera.near = 0.5; // 기본
-        light.shadow.camera.far = 500; // 기본
 
         renderer.setSize(sizes.width, sizes.height);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -56,10 +47,9 @@ function Back() {
 
 
 
-
         // 입자
-        const particlesGeometry = new THREE.BoxGeometry(0.001, 0.5, 0.001); // 수정된 부분: 세로로 긴 상자
-        const particlesMaterial = new THREE.MeshBasicMaterial({ color: `#00cc00` });
+        const particlesGeometry = new THREE.BoxGeometry(0.003,0.003,0.003);  // 입자의 크기임
+        const particlesMaterial = new THREE.MeshBasicMaterial({ color: `#white` }); //입자 색
         const particlesMeshes = [];
 
         for (let i = 0; i < 1000; i++) {
