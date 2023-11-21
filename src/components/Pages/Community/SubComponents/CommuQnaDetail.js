@@ -40,6 +40,7 @@ const CommuQnaDetail = () => {
                 <button>답변수정</button>
                 <button>답변삭제</button>
             </div>
+            <button className="CommuQnaButton"><Link to='/community/qna'>목록보기</Link></button>
             <button>글수정</button>
         </div>
 

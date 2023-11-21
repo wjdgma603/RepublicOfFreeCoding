@@ -38,15 +38,15 @@ const CommuList = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-            {noticePosts.postIndex.map((post) => (
-   
+          {noticePosts.postIndex.map((post) => (
+            <Link to={`/community/notice/${post.id}`}>
               <tr key={post.id}>
-               <td><Link to={`/community/notice/${post.id}`}>{post.id}</Link></td>
-               <td><Link to={`/community/notice/${post.id}`}>{post.title}</Link></td>
+                <td>{post.id}</td>
+                <td>{post.title}</td>
                 <td>{post.date}</td>
               </tr>
-
-            ))}
+            </Link>
+          ))}
         </table>
 
         <div className="CommuBottomWrap">

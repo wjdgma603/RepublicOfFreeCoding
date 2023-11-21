@@ -35,3 +35,10 @@
     background-color: #00D67A;
     cursor: pointer;
 }
+.CommuQnaButtonWrap>.CommuQnaButton{
+    background-color: #444444;
+    border: none;
+}
+.CommuQnaButtonWrap>.CommuQnaButton>a{
+    color:white;
+}

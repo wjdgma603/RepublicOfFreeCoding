@@ -21,15 +21,18 @@
     border-top: 2px solid black;
     border-right:2px solid black;
     transform: rotate(135deg);
+    transition: transform 0.5s;
 }
+.CommuFaqArrow.arrowRotate {
+    transform: rotate(315deg);
+  }
 .CommuFaqQuestionAnswer{
     display: flex;
     padding:15px 20px;
     transition: 1s;
+    transition: transform 0.5s;
 }
-.CommuFaqQuestionAnswer.active {
-    transition: 1s;
-  }
+
 .CommuFaqQuestionAnswer>h1{
     padding-right: 30px;
 }
