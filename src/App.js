@@ -13,6 +13,7 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
+
   const [isHeaderLoaded, setIsHeaderLoaded] = useState(false);
   function HeaderLoaded() {
     useEffect(() => {
@@ -22,6 +23,17 @@ function App() {
       };
     }, []);
     return isHeaderLoaded;
+  }
+
+  const [headerDisable, setHeaderDisable] = useState(false);
+  function HeaderDisable() {
+    useEffect(() => {
+      setHeaderDisable(true);
+      return () => {
+        setHeaderDisable(false);
+      };
+    }, []);
+    return headerDisable;
   }
   // Header용 컴포넌트 마운트 관리함수
 
@@ -37,11 +49,12 @@ function App() {
   }
   // Footer용 컴포넌트 마운트 관리함수
 
+  
   return (
     <div className="App">
-      <Header isHeaderLoaded={isHeaderLoaded}/>
+      <Header isHeaderLoaded={isHeaderLoaded} headerDisable={headerDisable}/>
       <Routes>
-        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded}/>}/>
+        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
         <Route path='/login/*' element={<Login/>}/>
         <Route path='/introduce/*' element={<Introduce/>}/>
         <Route path='/ebook/*' element={<EbookList/>}/>

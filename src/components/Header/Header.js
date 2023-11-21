@@ -2,25 +2,20 @@ import { Link } from "react-router-dom";
 import './Header.css'
 import { useEffect } from "react";
 
-const Header = ({isHeaderLoaded}) => {
+const Header = ({isHeaderLoaded, headerDisable}) => {
     useEffect(()=>{
         const Header = document.querySelector('.HeaderComponent')
         const HeaderLogo = document.querySelector('#HeaderLogo')
         const Navigation = document.querySelectorAll('.HeaderNavigation>ul>li>a')
         const PersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div>a')
         if(isHeaderLoaded){
-            Header.style.display = 'none'
-            setTimeout(()=>{
-                Header.style.display = 'block'
-                Header.style.background = 'transparent'
-                Header.style.boxShadow = 'none'
-                Header.style.borderBottom = '1px solid #00D67A'
-                HeaderLogo.style.fill = '#00D67A'
-                PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#00D67A"})
-                Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
-            }, 3000)
+            Header.style.background = 'transparent'
+            Header.style.boxShadow = 'none'
+            Header.style.borderBottom = '1px solid #00D67A'
+            HeaderLogo.style.fill = '#00D67A'
+            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#00D67A"})
+            Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
         }else{
-            Header.style.display = 'block'
             Header.style.background = '#FFF'
             Header.style.boxShadow = '0px 11px 10px 0px rgba(0, 0, 0, 0.16)'
             Header.style.borderBottom = 'none'
@@ -28,7 +23,12 @@ const Header = ({isHeaderLoaded}) => {
             PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#222"})
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#222"})
         }
-    },[isHeaderLoaded])
+        if(headerDisable){
+            Header.style.display = 'none'
+        }else{
+            Header.style.display = 'block'
+        }
+    },[isHeaderLoaded, headerDisable])
     return ( 
         <header className="HeaderComponent">
             <section className="HeaderWrap">
