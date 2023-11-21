@@ -1,5 +1,6 @@
 #backsection{
-    background-color: #090909;
+    /* background-color: rgb(125, 155, 189); */
+    background-color: rgb(36, 49, 36);
     height: 100vh;
     position: fixed;
     overflow: hidden;

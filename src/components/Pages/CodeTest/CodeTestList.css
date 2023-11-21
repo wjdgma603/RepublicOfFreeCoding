@@ -1,0 +1,39 @@
+.CodeTestSection>article{
+    padding-top: 240px;
+}
+.CodeTestArticle{
+    display: flex;
+    width: 1280px;
+    margin: 0 auto;
+}
+.CodeTestArticleDiv1{
+    width: 200px;
+    margin-right: 100px;
+}
+.CodeTestArticleDiv1>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.CodeTestArticleDiv1>div:first-child>span:last-child{
+font-size: 11px;
+}
+.CodeTestTitleBtn{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 6px;
+    padding: 24px 22px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.CodeTestArticleDiv1>div:nth-child(5){
+    margin-bottom: 50px;
+}
+.CodeTestArticleDiv1Span{
+    font-size: 20px;
+}
