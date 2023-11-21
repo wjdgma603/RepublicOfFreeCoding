@@ -25,20 +25,30 @@ function App() {
   }
   // Header용 컴포넌트 마운트 관리함수
 
+  const [isFooterLoaded, setIsFooterLoaded] = useState(false);
+  function FooterLoaded() {
+    useEffect(() => {
+      setIsFooterLoaded(true);
+      return () => {
+        setIsFooterLoaded(false);
+      };
+    }, []);
+    return isFooterLoaded;
+  }
+  // Footer용 컴포넌트 마운트 관리함수
 
-  
   return (
     <div className="App">
       <Header isHeaderLoaded={isHeaderLoaded}/>
       <Routes>
-        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded}/>}/>
+        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded}/>}/>
         <Route path='/login/*' element={<Login/>}/>
         <Route path='/introduce/*' element={<Introduce/>}/>
         <Route path='/ebook/*' element={<EbookList/>}/>
         <Route path='/test' element={<CodeTestList/>}/>
         <Route path='/community/*' element={<CommuList/>}/>
       </Routes>
-      <Footer/>
+      <Footer isFooterLoaded={isFooterLoaded}/>
     </div>
   );
 }
