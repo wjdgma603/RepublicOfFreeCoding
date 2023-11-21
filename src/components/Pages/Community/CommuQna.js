@@ -44,6 +44,7 @@ const CommuQna = () => {
             </Link>
           ))}
         </table>
+        
         <div className="CommuBottomWrap">
           <div></div>
           <div className="CommuPageButtonWrap">

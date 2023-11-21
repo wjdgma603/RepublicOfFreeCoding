@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import useCommuData from "./CommuData";
+import { addNoticePost } from "./CommuData";
 import "./CommuNoticeWrite.css";
 
 const CommuNoticeWrite = () => {
-  const { addNoticePost } = useCommuData();
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -22,10 +21,12 @@ const CommuNoticeWrite = () => {
       date: new Date().toLocaleDateString(),
     };
 
-    addNoticePost(newPost, () => {
-      setTitle('');
-      setContent('');
-    });
+
+    addNoticePost(newPost);
+    setTitle('');
+    setContent('');
+    alert('글이 성공적으로 작성되었습니다.');
+
   };
 
   return (

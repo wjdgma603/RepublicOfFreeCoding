@@ -23,6 +23,13 @@ export const noticePost = {
   ],
 };
 
+
+export const updateNoticePost = (id, updatedContent, updatedAnswer) => {
+  noticePost.postIndex = noticePost.postIndex.map((post) =>
+    post.id === id ? { ...post, content: updatedContent, answer: updatedAnswer } : post
+  );
+};
+
 export const qnaPost = {
   postIndex: [
     {
@@ -58,6 +65,8 @@ export const updateQnaPost = (id, updatedContent, updatedAnswer) => {
   );
 };
 
+
+
 export const faqPost = {
   postIndex: [
     {
@@ -78,8 +87,13 @@ export const faqPost = {
   ],
 };
 
-const addNoticePost = (newPost, callback) => {
-  // Add logic to update noticePosts
+const addNoticePost = (newPost) => {
+  noticePost.postIndex.unshift({
+    id: noticePost.postIndex.length + 1, // Unique ID starting from 4
+    title: newPost.title,
+    content: newPost.content,
+    date: new Date().toLocaleDateString(),
+  });
 };
 
 const addQnaPost = (newPost) => {
@@ -95,18 +109,11 @@ const CommuData = () => {
   const [noticePosts, setNoticePosts] = useState(noticePost);
   const [qnaPosts, setQnaPosts] = useState(qnaPost);
 
-  const addNoticePost = (newPost, callback) => {
-    setNoticePosts((prevNoticePosts) => {
-      console.log("prevNoticePosts:", prevNoticePosts);
-
-      return {
-        postIndex: [...prevNoticePosts.postIndex, newPost],
-      };
+  const addNoticePost = (newPost) => {
+    setQnaPosts((prevPosts) => {
+      const updatedPosts = [newPost, ...prevPosts.postIndex];
+      return { postIndex: updatedPosts };
     });
-
-    if (callback) {
-      callback();
-    }
   };
 
   const addQnaPost = (newPost) => {

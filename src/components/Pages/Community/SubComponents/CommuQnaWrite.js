@@ -19,11 +19,11 @@ const CommuQnaWrite = () => {
       content,
       date: new Date().toLocaleDateString(),
     };
-
     addQnaPost(newPost);
-
     setTitle('');
     setContent('');
+    alert('글이 성공적으로 작성되었습니다.');
+
   };
 
   return (
