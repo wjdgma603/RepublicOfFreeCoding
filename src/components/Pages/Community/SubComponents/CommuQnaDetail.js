@@ -1,13 +1,58 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "./CommuQnaDetail.css";
 import { qnaPost } from '../SubComponents/CommuData';
 
-
 const CommuQnaDetail = () => {
   const { id } = useParams();
+  const [qnaPosts, setQnaPosts] = useState(qnaPost);
+  const selectedPost = qnaPosts.postIndex.find((post) => post.id === parseInt(id));
+  const navigate = useNavigate();
 
-  const selectedPost = qnaPost.postIndex.find((post) => post.id === parseInt(id));
+  const useForceUpdate = () => {
+    const [, forceUpdate] = useState();
+    return forceUpdate;
+  };
+
+  const forceUpdate = useForceUpdate();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState(selectedPost.content);
+  const [editedAnswer, setEditedAnswer] = useState(selectedPost.answer);
+
+  const toggleEdit = () => {
+    setIsEditing((prev) => !prev);
+  };
+
+  const handleEditComplete = () => {
+    const updatedQnaPosts = {
+      postIndex: qnaPosts.postIndex.map((post) =>
+        post.id === selectedPost.id
+          ? { ...post, content: isEditing ? editedContent : post.content, answer: isEditing ? post.answer : editedAnswer }
+          : post
+      ),
+    };
+
+    setQnaPosts(updatedQnaPosts);
+    setIsEditing(false);
+    forceUpdate();
+  };
+
+  const handleAnswerDelete = () => {
+    const updatedQnaPosts = {
+      postIndex: qnaPosts.postIndex.map((post) =>
+        post.id === selectedPost.id ? { ...post, answer: "" } : post
+      ),
+    };
+
+    setQnaPosts(updatedQnaPosts);
+    setIsEditing(false);
+  };
+
+  useEffect(() => {
+    console.log("Rendered - editedContent:", editedContent);
+    console.log("Rendered - editedAnswer:", editedAnswer);
+  }, [editedContent, editedAnswer, qnaPosts]);
+
   return (
     <div className="CommuSection">
       <div>
@@ -27,25 +72,52 @@ const CommuQnaDetail = () => {
           </li>
         </ul>
       </div>
-
       <div className="CommuRight">
-      <h1>문의사항</h1>
-      <div className="CommuQnaTitle">{selectedPost.title}</div>
-      <div className="CommuQnaText">{selectedPost.content}</div>
-      <div className="CommuQnaTitle">문의 답변</div>
-      <div className="CommuQnaText">{selectedPost.answer}</div>
-      
-        <div className="CommuQnaButtonWrap">
-            <div>
-                <button>답변수정</button>
-                <button>답변삭제</button>
-            </div>
-            <button className="CommuQnaButton"><Link to='/community/qna'>목록보기</Link></button>
-            <button>글수정</button>
+        <h1>문의사항</h1>
+        <div className="CommuQnaTitleWrap">
+          <div className="CommuQnaTitle">
+            <div>{selectedPost.title}</div>
+            <div>{selectedPost.date}</div>
+          </div>
+        </div>
+        <div className="CommuQnaText">
+          {isEditing ? (
+            <textarea
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+            />
+          ) : (
+            selectedPost.content
+          )}
+        </div>
+        <div className="CommuQnaTitle">
+          <div>문의답변</div>
+          <div>{selectedPost.answerDate}</div>
+        </div>
+        <div className="CommuQnaText">
+          {isEditing ? (
+            <textarea
+              value={editedAnswer}
+              onChange={(e) => setEditedAnswer(e.target.value)}
+            />
+          ) : (
+            selectedPost.answer
+          )}
         </div>
 
+        <div className="CommuQnaButtonWrap">
+          <div>
+            <button onClick={toggleEdit}>
+              {isEditing ? "수정완료" : "답변수정"}
+            </button>
+            <button onClick={handleAnswerDelete}>답변삭제</button>
+          </div>
+          <button className="CommuQnaButton" onClick={handleEditComplete}>
+            목록보기
+          </button>
+          <button>글수정</button>
+        </div>
       </div>
-      
     </div>
   );
 };

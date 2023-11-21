@@ -30,6 +30,7 @@ export const qnaPost = {
       content: '세번째 qna입니다 질문이있습니다',
       answer: '세번째 질문에대한 답변입니다.',
       date: '23.11.09',
+      answerDate:'23.11.10',
     },
     {
       id: 2,
@@ -37,6 +38,7 @@ export const qnaPost = {
       content: '두번째 qna입니다 질문이있습니다',
       answer: '두번째 질문에대한 답변입니다.',
       date: '23.11.09',
+      answerDate:'23.11.10',
     },
     {
       id: 1,
@@ -44,6 +46,7 @@ export const qnaPost = {
       content: '첫번째 qna입니다 질문이있습니다',
       answer: '첫번째 질문에대한 답변입니다.',
       date: '23.11.09',
+      answerDate:'23.11.10',
     },
   ],
 };
