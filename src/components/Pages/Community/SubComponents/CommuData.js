@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React, { useState } from 'react';
 
 export const noticePost = {
   postIndex: [
@@ -22,6 +22,7 @@ export const noticePost = {
     },
   ],
 };
+
 export const qnaPost = {
   postIndex: [
     {
@@ -30,7 +31,7 @@ export const qnaPost = {
       content: '세번째 qna입니다 질문이있습니다',
       answer: '세번째 질문에대한 답변입니다.',
       date: '23.11.09',
-      answerDate:'23.11.10',
+      answerDate: '23.11.10',
     },
     {
       id: 2,
@@ -38,7 +39,7 @@ export const qnaPost = {
       content: '두번째 qna입니다 질문이있습니다',
       answer: '두번째 질문에대한 답변입니다.',
       date: '23.11.09',
-      answerDate:'23.11.10',
+      answerDate: '23.11.10',
     },
     {
       id: 1,
@@ -46,20 +47,16 @@ export const qnaPost = {
       content: '첫번째 qna입니다 질문이있습니다',
       answer: '첫번째 질문에대한 답변입니다.',
       date: '23.11.09',
-      answerDate:'23.11.10',
+      answerDate: '23.11.10',
     },
   ],
 };
 
 export const updateQnaPost = (id, updatedContent, updatedAnswer) => {
-  // id에 해당하는 포스트를 찾아 내용을 업데이트
   qnaPost.postIndex = qnaPost.postIndex.map((post) =>
     post.id === id ? { ...post, content: updatedContent, answer: updatedAnswer } : post
   );
 };
-
-
-
 
 export const faqPost = {
   postIndex: [
@@ -85,9 +82,13 @@ const addNoticePost = (newPost, callback) => {
   // Add logic to update noticePosts
 };
 
-// Add qnaPost function definition
 const addQnaPost = (newPost) => {
-  // Add logic to update qnaPosts
+  qnaPost.postIndex.unshift({
+    id: qnaPost.postIndex.length + 1, // Unique ID starting from 4
+    title: newPost.title,
+    content: newPost.content,
+    date: new Date().toLocaleDateString(),
+  });
 };
 
 const CommuData = () => {
@@ -123,5 +124,4 @@ const CommuData = () => {
   };
 };
 
-// Export the functions separately
 export { CommuData as default, addNoticePost, addQnaPost };

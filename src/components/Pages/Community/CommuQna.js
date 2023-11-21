@@ -1,15 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CommuData from './SubComponents/CommuData';
-import CommuQnaWrite from './SubComponents/CommuQnaWrite'; // 적절한 경로로 수정하세요
+
 
 const CommuQna = () => {
-  const { qnaPosts, addQnaPost } = CommuData(); // addQnaPost 추가
-
-  const handlePostSubmit = (newPost) => {
-    // CommuQna에서 새로운 Q&A 게시물을 추가
-    addQnaPost(newPost);
-  };
+  const { qnaPosts } = CommuData();
 
   return (
     <div className="CommuSection">
@@ -39,7 +34,6 @@ const CommuQna = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-        {/* <CommuQnaWrite onPostSubmit={handlePostSubmit} /> */}
           {qnaPosts.postIndex.map((post) => (
             <Link to={`/community/qna/${post.id}`} key={post.id}>
               <tr>
