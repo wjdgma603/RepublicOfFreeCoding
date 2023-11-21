@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CommuQnaWrite.css';
+import { addQnaPost, qnaPost } from './CommuData';
 
 const CommuQnaWrite = ({ onPostSubmit }) => {
   const [title, setTitle] = useState('');
@@ -13,7 +14,7 @@ const CommuQnaWrite = ({ onPostSubmit }) => {
     }
 
     const newPost = {
-      id: 4,
+      id: qnaPost.postIndex.length + 4,
       title,
       content,
       date: new Date().toLocaleDateString(),
@@ -23,8 +24,9 @@ const CommuQnaWrite = ({ onPostSubmit }) => {
 
     setTitle('');
     setContent('');
-  };
 
+    addQnaPost(newPost);
+  };
   return (
     <div className="CommuSection">
       <div>

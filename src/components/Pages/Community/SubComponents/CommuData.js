@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, } from 'react';
+
 export const noticePost = {
   postIndex: [
     {
@@ -21,7 +22,6 @@ export const noticePost = {
     },
   ],
 };
-
 export const qnaPost = {
   postIndex: [
     {
@@ -51,6 +51,16 @@ export const qnaPost = {
   ],
 };
 
+export const updateQnaPost = (id, updatedContent, updatedAnswer) => {
+  // id에 해당하는 포스트를 찾아 내용을 업데이트
+  qnaPost.postIndex = qnaPost.postIndex.map((post) =>
+    post.id === id ? { ...post, content: updatedContent, answer: updatedAnswer } : post
+  );
+};
+
+
+
+
 export const faqPost = {
   postIndex: [
     {
@@ -71,38 +81,47 @@ export const faqPost = {
   ],
 };
 
-const CommuData = () => { 
-    const [noticePosts, setNoticePosts] = useState(noticePost);
-    const [qnaPosts, setQnaPosts] = useState(qnaPost);
-  
-    const addNoticePost = (newPost, callback) => {
-      setNoticePosts((prevNoticePosts) => {
-        console.log("prevNoticePosts:", prevNoticePosts);
-    
-        return {
-          postIndex: [...prevNoticePosts.postIndex, newPost],
-        };
-      });
-    
-      if (callback) {
-        callback();
-      }
-    };
-    
-  
-    const addQnaPost = (newPost) => {
-      setQnaPosts((prevPosts) => {
-        const updatedPosts = [newPost, ...prevPosts.postIndex];
-        return { postIndex: updatedPosts };
-      });
-    };
-  
-    return {
-      noticePosts,
-      qnaPosts,
-      addNoticePost,
-      addQnaPost,
-    };
+const addNoticePost = (newPost, callback) => {
+  // Add logic to update noticePosts
+};
+
+// Add qnaPost function definition
+const addQnaPost = (newPost) => {
+  // Add logic to update qnaPosts
+};
+
+const CommuData = () => {
+  const [noticePosts, setNoticePosts] = useState(noticePost);
+  const [qnaPosts, setQnaPosts] = useState(qnaPost);
+
+  const addNoticePost = (newPost, callback) => {
+    setNoticePosts((prevNoticePosts) => {
+      console.log("prevNoticePosts:", prevNoticePosts);
+
+      return {
+        postIndex: [...prevNoticePosts.postIndex, newPost],
+      };
+    });
+
+    if (callback) {
+      callback();
+    }
   };
-  
-  export default CommuData;
+
+  const addQnaPost = (newPost) => {
+    setQnaPosts((prevPosts) => {
+      const updatedPosts = [newPost, ...prevPosts.postIndex];
+      return { postIndex: updatedPosts };
+    });
+  };
+
+  return {
+    noticePosts,
+    qnaPosts,
+    addNoticePost,
+    addQnaPost,
+  };
+};
+
+// Export the functions separately
+export { CommuData as default, addNoticePost, addQnaPost };
