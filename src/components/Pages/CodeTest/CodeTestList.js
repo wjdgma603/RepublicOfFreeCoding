@@ -1,6 +1,6 @@
 const CodeTestList = () => {
     return ( 
-        <section className="CodeTestList">
+        <section className="CodeTestSection">
             CodeTestList Pages
         </section>
      );

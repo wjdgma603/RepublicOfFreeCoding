@@ -1,6 +1,6 @@
 const EbookList = () => {
     return ( 
-        <section className="EbookList">
+        <section className="EbookSection">
             EbookList Pages
         </section>
      );
