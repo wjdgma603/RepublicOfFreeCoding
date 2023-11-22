@@ -17,24 +17,24 @@ const EbookList = () => {
                 {EbookItem.map((Ebook)=>
                     <div className='EbookItem' key={Ebook.id}>
                         <div className='ImgWrap'>
-                            <img src={require(`./images/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
+                            <Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>
+                                <img src={require(`./images/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
+                            </Link>
                         </div>
-                        <div className='TopSection'>
-                            <div className='EbookTitle'>{Ebook.OurCountry && "[국내도서] "}{Ebook.BookName}</div>
-                            <div className='EbookSubTitle'>{Ebook.SubTitle}</div>
-                        </div>
-                        <div className='BottomSection'>
-                            <div className='LeftSection'>
-                                <div>
-                                    {Ebook.Author}<span className='AuthorExplain'>저자(글)</span>
-                                </div>
-                                <div>
-                                    {Ebook.Publisher}<span className='PublicationDate'>{Ebook.PublicationDate}</span>
-                                </div>
+                        <div className='ItemExplain'>
+                            <div className='TopSection'>
+                                <div className='EbookTitle'><Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>{Ebook.OurCountry && "[국내도서] "}{Ebook.BookName}</Link></div>
+                                <div className='EbookSubTitle'>{Ebook.SubTitle}</div>
                             </div>
-                            <div className='RightSection'>
-                                <Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}><div className='goEbookDetail'>내용 자세히 보기</div></Link>
-                                <Link to=''><div className='goEbookViewer'>E-Book 읽기</div></Link>
+                            <div className='BottomSection'>
+                                <div className='LeftSection'>
+                                    <div>{Ebook.Author}<span>저자(글)</span></div>
+                                    <div>{Ebook.Publisher}<span>{Ebook.PublicationDate}</span></div>
+                                </div>
+                                <div className='RightSection'>
+                                    <Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>내용 자세히 보기</Link>
+                                    <Link to=''>E-Book 읽기</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
