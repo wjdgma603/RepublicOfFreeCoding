@@ -2,33 +2,40 @@ import { Link } from "react-router-dom";
 import './Header.css'
 import { useEffect } from "react";
 
-const Header = ({isHeaderLoaded, headerDisable}) => {
+const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => {
     useEffect(()=>{
         const Header = document.querySelector('.HeaderComponent')
         const HeaderLogo = document.querySelector('#HeaderLogo')
         const Navigation = document.querySelectorAll('.HeaderNavigation>ul>li>a')
         const PersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div>a')
+        const HeaderPersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div')
         if(isHeaderLoaded){
             Header.style.background = 'transparent'
             Header.style.boxShadow = 'none'
             Header.style.borderBottom = '1px solid #00D67A'
             HeaderLogo.style.fill = '#00D67A'
-            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#00D67A"})
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
+            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#00D67A"})
         }else{
             Header.style.background = '#FFF'
             Header.style.boxShadow = '0px 11px 10px 0px rgba(0, 0, 0, 0.16)'
             Header.style.borderBottom = 'none'
             HeaderLogo.style.fill = '#2f2f2f'
-            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#222"})
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#222"})
+            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#222"})
         }
         if(headerDisable){
             Header.style.display = 'none'
         }else{
             Header.style.display = 'block'
         }
-    },[isHeaderLoaded, headerDisable])
+        if(isLogin && isHeaderLoaded){
+            HeaderPersonalMenu.forEach((LoginDiv)=>{LoginDiv.style.color = "#00D67A"})
+        }else if(isLogin ^ isHeaderLoaded){
+            HeaderPersonalMenu.forEach((LoginDiv)=>{LoginDiv.style.color = "#222"})
+        }
+        // 로그인 관련            
+    },[isHeaderLoaded, headerDisable, isLogin])
     return ( 
         <header className="HeaderComponent">
             <section className="HeaderWrap">
@@ -74,12 +81,18 @@ const Header = ({isHeaderLoaded, headerDisable}) => {
                         <li><Link to="/community">커뮤니티</Link></li>
                     </ul>
                 </nav>
+                {isLogin ?
                 <article className="HeaderPersonalMenu">
-                    {/* <div className="ProfileNickname">닉네임</div>
-                    <div className="ProfileImage">프로필사진</div> */}
+                    <div className="Nickname">{user.Nickname || '이름없음'} 님</div>
+                    <div className="Logoutbox" onClick={()=>KakaoLogout()}>로그아웃</div>
+                </article>
+                :
+                <article className="HeaderPersonalMenu">
                     <div className="ToLogIn"><Link to='/login'>로그인</Link></div>
                     <div className="ToSignIn"><Link to=''>회원가입</Link></div>
                 </article>
+                }
+
             </section>
         </header>
      );
