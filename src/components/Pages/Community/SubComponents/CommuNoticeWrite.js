@@ -21,7 +21,6 @@ const CommuNoticeWrite = () => {
       date: new Date().toLocaleDateString(),
     };
 
-
     addNoticePost(newPost);
     setTitle('');
     setContent('');
@@ -66,9 +65,11 @@ const CommuNoticeWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <button className="CommuWriteButton" onClick={handlePostSubmit}>
-          글쓰기
-        </button>
+        <Link to='/community'>
+          <button className="CommuWriteButton" onClick={handlePostSubmit}>
+            글쓰기
+          </button>
+        </Link>
       </div>
     </div>
   );
