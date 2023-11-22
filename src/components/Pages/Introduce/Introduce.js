@@ -1,6 +1,6 @@
 const Introduce = () => {
     return ( 
-        <section className="Introduce">
+        <section className="IntroSection">
             IntroducePages
         </section>
      );
