@@ -112,12 +112,13 @@ function App() {
     <div className="App">
       <Header isHeaderLoaded={isHeaderLoaded} headerDisable={headerDisable} KakaoLogout={KakaoLogout} isLogin={isLogin} user={user}/>
       <Routes>
-        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
-        <Route path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable} KakaoLogin={KakaoLogin}/>}/>
-        <Route path='/introduce/*' element={<Introduce/>}/>
-        <Route path='/ebook/*' element={<EbookList/>}/>
-        <Route path='/test' element={<CodeTestList/>}/>
-        <Route path='/community/*' element={<CommuList/>}/>
+        <Route exact path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
+        <Route exact path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable} KakaoLogin={KakaoLogin}/>}/>
+        <Route exact path='/introduce/*' element={<Introduce/>}/>
+        <Route exact path='/ebook/*' element={<EbookList/>}/>
+        <Route exact path='/ebook/:id' element={<EbookList/>}/>
+        <Route exact path='/test/*' element={<CodeTestList/>}/>
+        <Route exact path='/community/*' element={<CommuList/>}/>
       </Routes>
       <Footer isFooterLoaded={isFooterLoaded}/>
     </div>
