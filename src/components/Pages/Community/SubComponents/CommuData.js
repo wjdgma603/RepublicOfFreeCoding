@@ -87,27 +87,6 @@ const addQnaPost = (newPost) => {
   });
 };
 
-/************************************* */
-
-// export const faqPost = {
-//   postIndex: [
-//     {
-//       id: 3,
-//       title: '세번째 FAQ',
-//       content: '세번째 qna입니다 질문이있습니다',
-//     },
-//     {
-//       id: 2,
-//       title: '두번째 FAQ',
-//       content: '두번째 qna입니다 질문이있습니다',
-//     },
-//     {
-//       id: 1,
-//       title: '첫번째 FAQ',
-//       content: '첫번째 qna입니다 질문이있습니다',
-//     },
-//   ],
-// };
 
 const CommuData = () => {
   const [noticePosts, setNoticePosts] = useState(noticePost);
