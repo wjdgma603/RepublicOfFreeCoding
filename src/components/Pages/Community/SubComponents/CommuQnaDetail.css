@@ -46,3 +46,35 @@
 .CommuQnaButtonWrap>a>.CommuQnaButton{
     color:white;
 }
+.CommuDetailQuestionButtonWrap{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 50px;
+}
+.CommuQuestionDetailButton{
+    padding:10px 20px;
+    display: flex;
+    text-align: center;
+    background-color: #00D67A;
+    color:white;
+    border: none;
+    cursor: pointer;;
+}
+.CommudetailQuestionTitle{
+    width:800px;
+    padding-left:10px;
+    height:30px;
+
+}
+.CommudetailQuestionText{
+    width:800px;
+    height:250px;
+    padding-left:10px;
+    padding-top: 5px;
+}
+.CommudetailAnswerText{
+    width:800px;
+    height:250px;
+    padding-left:10px;
+    padding-top: 5px;
+}

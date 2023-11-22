@@ -68,10 +68,12 @@ const CommuQnaDetail = () => {
 
       <div className="CommuRight">
         <div className="CommuQnaTitleWrap">
+
+          {/* 질문글 부분 */}
           <div className="CommuQnaTitle">
             <div>
               {isEditingQuestion ? (
-                <textarea
+                <textarea className="CommudetailQuestionTitle"
                   value={editedQuestion}
                   onChange={(e) => setEditedQuestion(e.target.value)}
                 />
@@ -84,18 +86,23 @@ const CommuQnaDetail = () => {
         </div>
         <div className="CommuQnaText">
           {isEditingQuestion ? (
-            <textarea
+            <textarea className="CommudetailQuestionText"
               value={editedContent}
               onChange={(e) => setEditedContent(e.target.value)}
             />
           ) : (
             qnaPosts.postIndex[selectedPostIndex].content
           )}
-          <button onClick={isEditingQuestion ? handleEditComplete : toggleEditQuestion}>
+
+        </div>
+        <div className="CommuDetailQuestionButtonWrap">
+        <button className="CommuQuestionDetailButton" onClick={isEditingQuestion ? handleEditComplete : toggleEditQuestion}>
             {isEditingQuestion ? "질문수정완료" : "질문수정"}
           </button>
-        </div>
+          </div>
 
+
+          {/* 답변글 부분 */}
         <div className="CommuQnaTitle">
           <div>문의답변</div>
           <div>{qnaPosts.postIndex[selectedPostIndex].answerDate}</div>
@@ -103,7 +110,7 @@ const CommuQnaDetail = () => {
         <div className="CommuQnaText">
           {isEditingAnswer ? (
             <>
-              <textarea
+              <textarea className="CommudetailAnswerText"
                 value={editedAnswer}
                 onChange={(e) => setEditedAnswer(e.target.value)}
               />

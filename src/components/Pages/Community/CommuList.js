@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CommuData from "./SubComponents/CommuData";
 import "./CommuList.css";
 
 const CommuList = () => {
   const { noticePosts } = CommuData();
+  const location = useLocation();
+  const updatedTitle = location.state ? location.state.updatedTitle : null;
 
  
   return (
@@ -31,16 +33,24 @@ const CommuList = () => {
 
 
         <table className="CommuBoard">
-          {noticePosts.postIndex.map((post) => (
-            <Link to={`/community/notice/${post.id}`} key={post.id}>
-              <tr>
-                <td>{post.id}</td>
-                <td>{post.title}</td>
-                <td>{post.date}</td>
-              </tr>
+        {noticePosts.postIndex.map((post) => {
+          const updatedTitleFromLocalStorage = localStorage.getItem(`editedTitle_${post.id}`);
+          
+          return (
+            <Link to={`/community/notice/${post.id}`}>
+            <tr key={post.id}>
+              <td>{post.id}</td>
+              <td>
+              
+                  {post.title === updatedTitle ? updatedTitle : (updatedTitleFromLocalStorage || post.title)}
+                
+              </td>
+              <td>{post.date}</td>
+            </tr>
             </Link>
-          ))}
-        </table>
+          );
+        })}
+      </table>
 
         <div className="CommuBottomWrap">
           <div></div>

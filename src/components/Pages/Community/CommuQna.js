@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CommuData from './SubComponents/CommuData';
 
-
 const CommuQna = () => {
   const { qnaPosts } = CommuData();
 
@@ -38,7 +37,10 @@ const CommuQna = () => {
             <Link to={`/community/qna/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
-                <td>{post.title}</td>
+                <td>
+                  {/* 수정된 제목이 있는 경우 해당 제목을 표시, 없으면 기존 제목 표시 */}
+                  {localStorage.getItem(`editedQuestion_${post.id}`) || post.title}
+                </td>
                 <td>{post.date}</td>
               </tr>
             </Link>
@@ -64,3 +66,4 @@ const CommuQna = () => {
 };
 
 export default CommuQna;
+
