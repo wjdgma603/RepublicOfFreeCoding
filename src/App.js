@@ -24,7 +24,6 @@ function App() {
     }, []);
     return isHeaderLoaded;
   }
-
   const [headerDisable, setHeaderDisable] = useState(false);
   function HeaderDisable() {
     useEffect(() => {
@@ -36,7 +35,6 @@ function App() {
     return headerDisable;
   }
   // Header용 컴포넌트 마운트 관리함수
-
   const [isFooterLoaded, setIsFooterLoaded] = useState(false);
   function FooterLoaded() {
     useEffect(() => {
@@ -55,7 +53,7 @@ function App() {
       <Header isHeaderLoaded={isHeaderLoaded} headerDisable={headerDisable}/>
       <Routes>
         <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
-        <Route path='/login/*' element={<Login/>}/>
+        <Route path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
         <Route path='/introduce/*' element={<Introduce/>}/>
         <Route path='/ebook/*' element={<EbookList/>}/>
         <Route path='/test' element={<CodeTestList/>}/>
