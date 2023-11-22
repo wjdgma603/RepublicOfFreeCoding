@@ -7,7 +7,7 @@
     margin: 0 auto;
 }
 .CodeTestArticleDiv1{
-    width: 200px;
+    width: 15.7%;
     margin-right: 100px;
 }
 .CodeTestArticleDiv1>div:first-child{
@@ -16,7 +16,12 @@
     margin-bottom: 20px;
     align-items: center;
 }
-
+.CodeTestArticleDiv1>div:nth-child(6){
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
 .CodeTestArticleDiv1>div:first-child>span:last-child{
 font-size: 11px;
 }
@@ -36,4 +41,40 @@ font-size: 11px;
 }
 .CodeTestArticleDiv1Span{
     font-size: 20px;
+}
+.CodeTestArticleDiv2{
+    width: 84.3%;
+}
+.CodeTestArticleDiv2>h1{
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+.CodeTestArticleDiv2Table{
+    background-color: antiquewhite;
+}
+.CodeTestArticleDiv2Table>tr:first-child{
+    text-align: center;
+}
+.CodeTestTitle{
+    background-color: #F5F5F5;
+}
+.CodeTestTitle>td:first-child{
+    width: 14%;
+    padding: 20px 0;
+}
+.CodeTestTitle>td:nth-child(2){
+    width: 30%;
+}
+.CodeTestTitle>td:nth-child(3){
+    width: 6%;
+}
+.CodeTestText>td:nth-child(2)>p{
+    padding: 20px 0;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestPlay>p{
+    padding: 20px 0; 
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
 }
