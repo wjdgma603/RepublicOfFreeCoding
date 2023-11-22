@@ -13,19 +13,19 @@ const CommuQnaDetail = () => {
   const [isEditingAnswer, setIsEditingAnswer] = useState(false);
 
   const [editedContent, setEditedContent] = useState(
-    () => localStorage.getItem(`editedContent_${id}`) || qnaPosts.postIndex[selectedPostIndex].content
+    () => sessionStorage.getItem(`editedContent_${id}`) || qnaPosts.postIndex[selectedPostIndex].content
   );
   const [editedAnswer, setEditedAnswer] = useState(
-    () => localStorage.getItem(`editedAnswer_${id}`) || qnaPosts.postIndex[selectedPostIndex].answer
+    () => sessionStorage.getItem(`editedAnswer_${id}`) || qnaPosts.postIndex[selectedPostIndex].answer
   );
   const [editedQuestion, setEditedQuestion] = useState(
-    () => localStorage.getItem(`editedQuestion_${id}`) || qnaPosts.postIndex[selectedPostIndex].title
+    () => sessionStorage.getItem(`editedQuestion_${id}`) || qnaPosts.postIndex[selectedPostIndex].title
   );
 
   useEffect(() => {
-    localStorage.setItem(`editedContent_${id}`, editedContent);
-    localStorage.setItem(`editedAnswer_${id}`, editedAnswer);
-    localStorage.setItem(`editedQuestion_${id}`, editedQuestion);
+    sessionStorage.setItem(`editedContent_${id}`, editedContent);
+    sessionStorage.setItem(`editedAnswer_${id}`, editedAnswer);
+    sessionStorage.setItem(`editedQuestion_${id}`, editedQuestion);
   }, [id, editedContent, editedAnswer, editedQuestion]);
 
   const toggleEditQuestion = () => {
@@ -60,10 +60,11 @@ const CommuQnaDetail = () => {
     if (confirmation) {
       const updatedQnaPosts = qnaPosts.postIndex.filter((post) => post.id !== parseInt(id));
       setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
-      setIsEditing(false);
+      setIsEditingQuestion(false);
       window.location.href = '/community/qna';
     }
   };
+
   return (
     <div className="CommuSection">
       <div>

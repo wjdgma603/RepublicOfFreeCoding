@@ -33,24 +33,20 @@ const CommuList = () => {
 
 
         <table className="CommuBoard">
-        {noticePosts.postIndex.map((post) => {
-          const updatedTitleFromLocalStorage = localStorage.getItem(`editedTitle_${post.id}`);
-          
-          return (
-            <Link to={`/community/notice/${post.id}`}>
-            <tr key={post.id}>
-              <td>{post.id}</td>
-              <td>
-              
-                  {post.title === updatedTitle ? updatedTitle : (updatedTitleFromLocalStorage || post.title)}
-                
-              </td>
-              <td>{post.date}</td>
-            </tr>
-            </Link>
-          );
-        })}
-      </table>
+            {noticePosts.postIndex.map((post) => (
+              <Link to={`/community/notice/${post.id}`} key={post.id}>
+                <tr>
+                  <td>{post.id}</td>
+                  <td>
+                    {post.title === updatedTitle
+                      ? updatedTitle
+                      : sessionStorage.getItem(`editedTitle_${post.id}`) || post.title}
+                  </td>
+                  <td>{post.date}</td>
+                </tr>
+              </Link>
+            ))}
+          </table>
 
         <div className="CommuBottomWrap">
           <div></div>

@@ -10,11 +10,11 @@ const CommuNoticeDetail = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(() => {
-    const storedContent = localStorage.getItem(`editedContent_${id}`);
+    const storedContent = sessionStorage.getItem(`editedContent_${id}`);
     return storedContent !== null ? storedContent : selectedPost.content;
   });
   const [editedTitle, setEditedTitle] = useState(() => {
-    const storedTitle = localStorage.getItem(`editedTitle_${id}`);
+    const storedTitle = sessionStorage.getItem(`editedTitle_${id}`);
     return storedTitle !== null ? storedTitle : selectedPost.title;
   });
 
@@ -34,8 +34,8 @@ const CommuNoticeDetail = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem(`editedContent_${id}`, editedContent);
-    localStorage.setItem(`editedTitle_${id}`, editedTitle);
+    sessionStorage.setItem(`editedContent_${id}`, editedContent);
+    sessionStorage.setItem(`editedTitle_${id}`, editedTitle);
   }, [id, editedContent, editedTitle]);
 
   const deletePost = () => {

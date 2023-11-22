@@ -39,7 +39,7 @@ const CommuQna = () => {
                 <td>{post.id}</td>
                 <td>
                   {/* 수정된 제목이 있는 경우 해당 제목을 표시, 없으면 기존 제목 표시 */}
-                  {localStorage.getItem(`editedQuestion_${post.id}`) || post.title}
+                  {sessionStorage.getItem(`editedQuestion_${post.id}`) || post.title}
                 </td>
                 <td>{post.date}</td>
               </tr>
@@ -66,4 +66,3 @@ const CommuQna = () => {
 };
 
 export default CommuQna;
-
