@@ -105,6 +105,7 @@ function App() {
       }
       initKakao();
       // Kakao.Auth.getAccessToken() ? setIsLogin(true) : setIsLogin(false)
+      // 카카오 엑세스 토큰이 만료되지않아서 상태에 저장된 이름이 만료되었는데도 계속 로그인되어보이는 오류 발생으로 주석처리
     },[])
     console.log(isLogin)
   return (
