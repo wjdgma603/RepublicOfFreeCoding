@@ -1,6 +1,6 @@
 const CommuList = () => {
     return ( 
-        <section className="CommuList">
+        <section className="CommuSection">
             CommuList Page
         </section>
      );

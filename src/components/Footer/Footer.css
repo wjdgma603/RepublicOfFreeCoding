@@ -1,0 +1,33 @@
+
+footer{
+    background-color: #F2F2F2;
+}
+footer>section.FooterComponent{
+    width: 1280px;
+    margin: 0 auto;
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+}
+/* Footer 상단 태그 */
+footer>section.FooterComponent>article.FooterTextWrap>ul.FooterNotice{
+    display: flex;
+    column-gap: 80px;
+    margin-bottom: 60px;
+}
+footer>section.FooterComponent>article.FooterTextWrap>ul.FooterNotice>li{
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+}
+/* Footer 중간 태그 */
+footer>section.FooterComponent>article.FooterTextWrap>div.FooterAddress{
+    margin-bottom: 20px;
+}
+footer>section.FooterComponent>article.FooterTextWrap>div.FooterCopyright>span.UpperCase{
+    text-transform: uppercase;
+}
+footer>section.FooterComponent>article.FooterLogoWrap>svg#FooterLogo{
+    width: 134px;
+}
