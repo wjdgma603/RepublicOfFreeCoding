@@ -11,7 +11,7 @@ const Main = ({HeaderLoaded}) => {
     useEffect(()=>{
       setTimeout(()=>{
         setLodingPage(false)
-      },300)
+      },3000)
     })
     return (
       <div className="Main">
