@@ -179,14 +179,9 @@ const Palace = () => {
 
                 const targetPosition = { x:0, y:0, z: 130 };
                 const currentPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
-                new TWEEN.Tween(currentPosition).
-                to(targetPosition, 1500).
-                easing(TWEEN.Easing.Quadratic.InOut).
-                onUpdate(() => {
+                new TWEEN.Tween(currentPosition).to(targetPosition, 1500).easing(TWEEN.Easing.Quadratic.InOut).onUpdate(() => {
                     camera.position.set(currentPosition.x, currentPosition.y, currentPosition.z);
-                }).
-
-                start();
+                }).start();
                 
             } else if (clickedMesh === mesh3) {
                 console.log('Clicked on mesh3');

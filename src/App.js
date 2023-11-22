@@ -7,6 +7,7 @@ import Main from './components/Pages/Main/Main';
 import Login from './components/Pages/Login/Login';
 import Introduce from './components/Pages/Introduce/Introduce';
 import EbookList from './components/Pages/Ebook/EbookList';
+import EbookDetail from './components/Pages/Ebook/SubComponents/EbookDetail';
 import CommuList from './components/Pages/Community/CommuList';
 import CodeTestList from './components/Pages/CodeTest/CodeTestList';
 import Footer from './components/Footer/Footer';
@@ -116,7 +117,7 @@ function App() {
         <Route exact path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable} KakaoLogin={KakaoLogin}/>}/>
         <Route exact path='/introduce/*' element={<Introduce/>}/>
         <Route exact path='/ebook/*' element={<EbookList/>}/>
-        <Route exact path='/ebook/:id' element={<EbookList/>}/>
+        <Route exact path='/ebook/:id' element={<EbookDetail/>}/>
         <Route exact path='/test/*' element={<CodeTestList/>}/>
         <Route exact path='/community/*' element={<CommuList/>}/>
       </Routes>

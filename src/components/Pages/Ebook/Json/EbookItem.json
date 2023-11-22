@@ -1,0 +1,29 @@
+[
+    {
+    "id" : 1,
+    "OurCountry" : true,
+    "BookName" : "Do it! 모던 자바스크립트 프로그래밍의 정석",
+    "SubTitle" : "한권으로 끝내는 웹 개발 교과서",
+    "Author" : "고경희",
+    "Publisher" : "이지스 퍼블리싱",
+    "PublicationDate" : "2022년 12월 05일"
+    },
+    {
+    "id" : 2,
+    "OurCountry" : true,
+    "BookName" : "Do it! 모던 자바스크립트 프로그래밍의 정석",
+    "SubTitle" : "한권으로 끝내는 웹 개발 교과서",
+    "Author" : "고경희",
+    "Publisher" : "이지스 퍼블리싱",
+    "PublicationDate" : "2022년 12월 05일"
+    },
+    {
+    "id" : 3,
+    "OurCountry" : true,
+    "BookName" : "Do it! 모던 자바스크립트 프로그래밍의 정석",
+    "SubTitle" : "한권으로 끝내는 웹 개발 교과서",
+    "Author" : "고경희",
+    "Publisher" : "이지스 퍼블리싱",
+    "PublicationDate" : "2022년 12월 05일"
+    }
+]
