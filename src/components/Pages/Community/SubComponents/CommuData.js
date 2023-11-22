@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 export const noticePost = {
+  
   postIndex: [
     {
       id: 3,

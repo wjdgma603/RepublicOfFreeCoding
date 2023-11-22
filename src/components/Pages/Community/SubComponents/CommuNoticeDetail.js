@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { noticePost } from './CommuData';
+import { noticePost, updateNoticePost } from './CommuData';
 import './CommuNoticeDetail.css';
 
 const CommuNoticeDetail = () => {
   const { id } = useParams();
+  const [noticePosts, setNoticePosts] = useState(noticePost);
   const selectedPost = noticePost.postIndex.find((post) => post.id === parseInt(id));
 
   const [isEditing, setIsEditing] = useState(false);
@@ -22,6 +23,7 @@ const CommuNoticeDetail = () => {
   };
 
   const handleSaveClick = () => {
+    updateNoticePost(parseInt(id), editedTitle, editedContent);
     setIsEditing(false);
   };
 
@@ -35,6 +37,16 @@ const CommuNoticeDetail = () => {
     localStorage.setItem(`editedContent_${id}`, editedContent);
     localStorage.setItem(`editedTitle_${id}`, editedTitle);
   }, [id, editedContent, editedTitle]);
+
+  const deletePost = () => {
+    const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
+    if (confirmation) {
+      const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
+      setNoticePosts({ ...noticePosts, postIndex: updatedNoticePosts });
+      setIsEditing(false);
+      window.location.href = '/community'; // 페이지 이동
+    }
+  };
 
   return (
     <div className="CommuSection">
@@ -61,7 +73,8 @@ const CommuNoticeDetail = () => {
 
         {isEditing ? (
           <div>
-            <input className="CommuQnaEditTitle"
+            <input
+              className="CommuQnaEditTitle"
               type="text"
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
@@ -71,8 +84,7 @@ const CommuNoticeDetail = () => {
           <div className="CommuQnaTitle">
             <div>{editedTitle}</div>
             <div></div>
-            </div>
-          
+          </div>
         )}
 
         {isEditing ? (
@@ -86,19 +98,26 @@ const CommuNoticeDetail = () => {
         )}
 
         {isEditing ? (
-
           <div>
-
             <div className="CommuQnaEditDetailButtonWrap">
-              <button className="CommuQnaEditDetailButton" onClick={handleSaveClick}>저장</button>
-              <button className="CommuQnaEditDetailButton" onClick={handleCancelClick}>취소</button>
+              <button className="CommuQnaEditDetailButton" onClick={handleSaveClick}>
+                저장
+              </button>
+              <button className="CommuQnaEditDetailButton" onClick={handleCancelClick}>
+                취소
+              </button>
             </div>
           </div>
         ) : (
           <div className="CommuNoticeDetailButtonWrap">
             <div></div>
-            <Link to="/community"><button className="CommuNoticePageButton">목록보기</button></Link>
-            <button className="CommuNoticeEditButton" onClick={handleEditClick}>글수정</button>
+            <Link to="/community">
+              <button className="CommuNoticePageButton">목록보기</button>
+            </Link>
+            <button className="CommuNoticeEditButton" onClick={handleEditClick}>
+              글수정
+            </button>
+            <button onClick={deletePost}>게시글 삭제</button>
           </div>
         )}
       </div>

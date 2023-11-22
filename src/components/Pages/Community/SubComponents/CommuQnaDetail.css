@@ -18,16 +18,17 @@
 }
 .CommuQnaButtonWrap>div>button:first-child{
     border:1px solid blue;
-    color:blue;
+    color:white;
+    background-color: blue;
     padding:10px 20px;
-    background-color: white;
     cursor: pointer;
 }
 .CommuQnaButtonWrap>div>button:last-child{
     border:1px solid red;
-    color:red;
+    background-color: red;
+    color:white;
     padding:10px 20px;
-    background-color: white;
+
     cursor: pointer;
 }
 .CommuQnaButtonWrap>button{
