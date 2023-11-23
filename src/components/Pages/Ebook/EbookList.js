@@ -7,8 +7,6 @@ import './Ebook.css'
 
 const EbookList = () => {
     const [ TabMenu, setTabMenu ] = useState("전체")
-
-    console.log(TabMenu)
     return ( 
         <section className="EbookSection">
             <DepthMenu setTabMenu={setTabMenu} Data={EbookTab} FilterName={'필터'}/>
@@ -17,13 +15,13 @@ const EbookList = () => {
                 {EbookItem.map((Ebook)=>
                     <div className='EbookItem' key={Ebook.id}>
                         <div className='ImgWrap'>
-                            <Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>
+                            <Link to={`/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>
                                 <img src={require(`./images/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
                             </Link>
                         </div>
                         <div className='ItemExplain'>
                             <div className='TopSection'>
-                                <div className='EbookTitle'><Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>{Ebook.OurCountry && "[국내도서] "}{Ebook.BookName}</Link></div>
+                                <div className='EbookTitle'><Link to={`/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>{Ebook.OurCountry && "[국내도서] "}{Ebook.BookName}</Link></div>
                                 <div className='EbookSubTitle'>{Ebook.SubTitle}</div>
                             </div>
                             <div className='BottomSection'>
@@ -32,7 +30,7 @@ const EbookList = () => {
                                     <div>{Ebook.Publisher}<span>{Ebook.PublicationDate}</span></div>
                                 </div>
                                 <div className='RightSection'>
-                                    <Link to={`'/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>내용 자세히 보기</Link>
+                                    <Link to={`/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>내용 자세히 보기</Link>
                                     <Link to=''>E-Book 읽기</Link>
                                 </div>
                             </div>

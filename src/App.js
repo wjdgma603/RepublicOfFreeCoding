@@ -12,6 +12,7 @@ import CommuList from './components/Pages/Community/CommuList';
 import CodeTestList from './components/Pages/CodeTest/CodeTestList';
 import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react'; 
+import NotFound from './components/Common/NotFound';
 
 function App() {
 
@@ -108,7 +109,6 @@ function App() {
       // Kakao.Auth.getAccessToken() ? setIsLogin(true) : setIsLogin(false)
       // 카카오 엑세스 토큰이 만료되지않아서 상태에 저장된 이름이 만료되었는데도 계속 로그인되어보이는 오류 발생으로 주석처리
     },[])
-    console.log(isLogin)
   return (
     <div className="App">
       <Header isHeaderLoaded={isHeaderLoaded} headerDisable={headerDisable} KakaoLogout={KakaoLogout} isLogin={isLogin} user={user}/>
@@ -117,9 +117,10 @@ function App() {
         <Route exact path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable} KakaoLogin={KakaoLogin}/>}/>
         <Route exact path='/introduce/*' element={<Introduce/>}/>
         <Route exact path='/ebook/*' element={<EbookList/>}/>
-        <Route exact path='/ebook/:id' element={<EbookDetail/>}/>
+        <Route exact path='/ebook/:Ebookid' element={<EbookDetail/>}/>
         <Route exact path='/test/*' element={<CodeTestList/>}/>
         <Route exact path='/community/*' element={<CommuList/>}/>
+        <Route exact path='*' element={<NotFound HeaderDisable={HeaderDisable} FooterLoaded={FooterLoaded}/>}/>
       </Routes>
       <Footer isFooterLoaded={isFooterLoaded}/>
     </div>
