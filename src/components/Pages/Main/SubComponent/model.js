@@ -1,9 +1,12 @@
 import * as THREE from 'three';
 import { useRef,useEffect } from 'react';
 import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import model from '../images/3d/new3.glb'
 import { TextureLoader} from "three";
+import leftArrow from "../images/2d/leftArrow.png"
+import rightArrow from "../images/2d/rightArrow.png"
 
 //link
 import aboutLink from "../images/2d/Link.png" // 홈페이지 소개 링크
@@ -48,16 +51,11 @@ const Palace = () => {
     camera.position.y = 40; 
     camera.lookAt(200,-200,-10);
     scene.add(camera)
-
-
-    // const gridHelper = new THREE.GridHelper(700);
-    // scene.add(gridHelper);
-    // const axesHelper = new THREE.AxesHelper(300);
-    // scene.add(axesHelper);
  
-
-    const LightColorPow = 19;
-    const LightColor = "#755409";
+    const LightColorPow = 8;
+    // const LightColor = "#755409";
+    // const LightColor = "#774825";
+    const LightColor = "#9F621B";
 
     //light 
     const PointLight = new THREE.DirectionalLight( LightColor,  LightColorPow);
@@ -106,20 +104,18 @@ const Palace = () => {
     //light ebook 책쪽
     const PointLight13 = new THREE.PointLight( "white",  2000);
     PointLight13.position.set(173,60,-170)
+    // 입구 조명
+    const PointLight14 = new THREE.PointLight( "green",  2000);
+    PointLight14.position.set(240,50,210)
     
+    const helper = new THREE.PointLightHelper(PointLight14,10)
 
-
-
-    const helper = new THREE.PointLightHelper(PointLight13, 10)
-
-    
     scene.add(PointLight,PointLight1,PointLight2,PointLight3,
         PointLight6,PointLight7,PointLight8,
-        PointLight9,PointLight10,PointLight11,PointLight12,PointLight13
-        ,helper);
+        PointLight9,PointLight10,PointLight11,PointLight12,PointLight13,PointLight14, helper
+        );
 
 
-        
     //GLTF 건물 불러옴
     const gltfLoader = new GLTFLoader();
     gltfLoader.load(model, (gltf)=>{
@@ -131,14 +127,21 @@ const Palace = () => {
     })
 
     // //컨트롤러
+
     const fControls = new FirstPersonControls( camera, renderer.domElement );
     fControls.movementSpeed = 50;
     fControls.activeLook =true;
-    fControls.lookSpeed = 0.1;
+    fControls.lookSpeed = 0.02;
     fControls.lookVertical=true;
     fControls.constrainVertical=true;
     fControls.verticalMax=1.5;
     fControls.verticalMin= 1;
+    const orbitControls = new OrbitControls(camera,renderer.domElement)
+    orbitControls.enabled = false
+    if(isMobileDevice()){
+        fControls.enabled = false;
+        orbitControls.enabled = true;
+    }
 
     const imgPush = new TextureLoader()
     //로그인 링크
@@ -156,8 +159,7 @@ const Palace = () => {
         color : 'red',
     }) 
     const mesh2 = new THREE.Mesh(section2, section22)
-    mesh2.position.set(200,-10,0)
-    mesh2.rotation.x = -0.5
+    mesh2.position.set(0,0,0)
     // 커뮤니티 링크
     const section3 = new THREE.BoxGeometry(1,30,30)
     const communityLinkPush = imgPush.load(communityLink)
@@ -172,7 +174,6 @@ const Palace = () => {
     const aboutLinkPush = imgPush.load(aboutLink)
     const section44 = new THREE.MeshStandardMaterial({
         map : aboutLinkPush,
-        // alphaHash : true,
     }) 
     const mesh4 = new THREE.Mesh(section4, section44)
     mesh4.position.set(286,80, 130)
@@ -259,70 +260,70 @@ const Palace = () => {
 
     //섹션 이동 버튼들임
     // Ebook북 왼쪽 버튼
-    const ebookLeft = new THREE.BoxGeometry(10,10,10)
-    // const EbookPush = imgPush.load(Ebook)
+    const ebookLeft = new THREE.BoxGeometry(10,10,1)
+    const ebookLeftPush = imgPush.load(leftArrow)
     const ebookLeft1 = new THREE.MeshStandardMaterial({
-        // map : EbookPush
+        map : ebookLeftPush
     }) 
     const mesh14 = new THREE.Mesh(ebookLeft, ebookLeft1)
     mesh14.position.set(-100,0,-220)
 
     // Ebook북 오른쪽 버튼
-    const ebookRight = new THREE.BoxGeometry(10,10,10)
-    // const EbookPush = imgPush.load(Ebook)
+    const ebookRight = new THREE.BoxGeometry(10,10,1)
+    const ebookRightPush = imgPush.load(rightArrow)
     const ebookRight1 = new THREE.MeshStandardMaterial({
-        // map : EbookPush
+        map : ebookRightPush
     }) 
     const mesh15 = new THREE.Mesh(ebookRight, ebookRight1)
     mesh15.position.set(240,60,-210)
 
     // Introduce 왼쪽 버튼
-    const introduceLeft = new THREE.BoxGeometry(10,10,10)
-    // const EbookPush = imgPush.load(Ebook)
+    const introduceLeft = new THREE.BoxGeometry(1,10,10)
+    const introduceLeftPush = imgPush.load(leftArrow)
     const introduceLeft1 = new THREE.MeshStandardMaterial({
-        // map : EbookPush
+        map : introduceLeftPush
     }) 
     const mesh16 = new THREE.Mesh(introduceLeft, introduceLeft1)
     mesh16.position.set(282,0,-150)
     // Introduce 오른족 버튼
-    const introduceRight = new THREE.BoxGeometry(10,10,10)
-    // const EbookPush = imgPush.load(Ebook)
+    const introduceRight = new THREE.BoxGeometry(1,10,10)
+    const introduceRightPush = imgPush.load(rightArrow)
     const introduceRight1 = new THREE.MeshStandardMaterial({
-        // map : EbookPush
+        map : introduceRightPush
     }) 
     const mesh17 = new THREE.Mesh(introduceRight, introduceRight1)
     mesh17.position.set(282,0,140)
 
    // codeTest 왼쪽 버튼
-   const codeTestLeft = new THREE.BoxGeometry(10,10,10)
-   // const EbookPush = imgPush.load(Ebook)
+   const codeTestLeft = new THREE.BoxGeometry(10,10,1)
+   const codeTestLeftPush = imgPush.load(leftArrow)
    const codeTestLeft1 = new THREE.MeshStandardMaterial({
-       // map : EbookPush
+       map : codeTestLeftPush
    }) 
    const mesh18 = new THREE.Mesh(codeTestLeft, codeTestLeft1)
    mesh18.position.set(80,0,210)
    // codeTest 오른쪽 버튼
-   const codeTestRight = new THREE.BoxGeometry(10,10,10)
-   // const EbookPush = imgPush.load(Ebook)
+   const codeTestRight = new THREE.BoxGeometry(10,10,1)
+   const codeTestRightPush = imgPush.load(rightArrow)
    const codeTestRight1 = new THREE.MeshStandardMaterial({
-       // map : EbookPush
+       map : codeTestRightPush
    }) 
    const mesh19 = new THREE.Mesh(codeTestRight, codeTestRight1)
    mesh19.position.set(-50,28,210)
 
    // community 왼쪽 버튼
-   const communityLeft = new THREE.BoxGeometry(10,10,10)
-   // const EbookPush = imgPush.load(Ebook)
+   const communityLeft = new THREE.BoxGeometry(1,10,10)
+   const communityLeftPush = imgPush.load(leftArrow)
    const communityLeft1 = new THREE.MeshStandardMaterial({
-       // map : EbookPush
+       map : communityLeftPush
    }) 
    const mesh20 = new THREE.Mesh(communityLeft, communityLeft1)
    mesh20.position.set(-240,30,213)
-   // codeTest 오른쪽 버튼
-   const communityRight = new THREE.BoxGeometry(10,10,10)
-   // const EbookPush = imgPush.load(Ebook)
+   // community 오른쪽 버튼
+   const communityRight = new THREE.BoxGeometry(1,10,10)
+   const communityRightPush = imgPush.load(rightArrow)
    const communityRight1 = new THREE.MeshStandardMaterial({
-       // map : EbookPush
+       map : communityRightPush
    }) 
    const mesh21 = new THREE.Mesh(communityRight, communityRight1)
    mesh21.position.set(-250,7,10)
@@ -333,12 +334,8 @@ const Palace = () => {
         mesh12,mesh13,mesh14,mesh15,mesh16,mesh17,mesh18,mesh19,mesh20,mesh21,
         );
 
-
-
-
-    const clickableMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5, mesh6,mesh14,mesh15,mesh16,mesh17,mesh18,mesh19,mesh20,mesh21];
+    const clickableMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5, mesh6,mesh11,mesh12,mesh13,mesh14,mesh15,mesh16,mesh17,mesh18,mesh19,mesh20,mesh21];
   
-
       // Raycaster
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2(); 
@@ -365,41 +362,39 @@ const Palace = () => {
             const targetOrientation = clickedMesh.quaternion.clone().normalize();
         
             if (clickedMesh === mesh1) {
-                console.log('Clicked on mesh1');
-                // Perform actions specific to mesh1
-                // For example, navigate to a different page
                 window.location = 'http://localhost:3000/login';
             } else if (clickedMesh === mesh2) {
                
             } else if (clickedMesh === mesh3) {
-                console.log('Clicked on mesh3');
                 window.location = 'http://localhost:3000/community';
             } else if (clickedMesh === mesh4) {
-                console.log('Clicked on mesh4');
                 window.location = 'http://localhost:3000/introduce';
             } else if (clickedMesh === mesh5) {
-                console.log('Clicked on mesh5');
                 window.location = 'http://localhost:3000/test';
             } else if (clickedMesh === mesh6) {
-                console.log('Clicked on mesh6');
                 window.location = 'http://localhost:3000/ebook'
-            
-            } else if (clickedMesh === mesh16) {
+            } else if (clickedMesh === mesh11) {
+                window.location = 'http://localhost:3000/ebook'
+            } else if (clickedMesh === mesh12) {
+                window.location = 'http://localhost:3000/ebook'
+            } else if (clickedMesh === mesh13) {
+                window.location = 'http://localhost:3000/ebook'
+            }else if (clickedMesh === mesh16) {
                 console.log('Clicked on mesh16');
                 fControls.enabled = false;
                 fControls.enableDamping = true;    
                 gsap.to(camera.position, {
-                    duration: 1.5,
-                    x: -10,
+                    duration: 1,
+                    x: 60,
                     y: 40,
-                    z: -30,
+                    z: 0,
                     onUpdate: function () {
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     },
                     onComplete: function () {
                         fControls.enabled = true;
                         fControls.enableDamping = false;    
-                        fControls.lookAt(80,40,-280)
+                        fControls.lookAt(80,40,-300)
                       
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     }
@@ -409,17 +404,17 @@ const Palace = () => {
                 fControls.enabled = false;
                 fControls.enableDamping = true;    
                 gsap.to(camera.position, {
-                    duration: 1.5,
+                    duration: 1,
                     x: 30,
                     y: 40,
-                    z: 80,
+                    z: 50,
                     onUpdate: function () {
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     },
                     onComplete: function () {
                         fControls.enabled = true;
                         fControls.enableDamping = false;    
-                        fControls.lookAt(0,0,240)
+                        fControls.lookAt(30,0,500)
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     }
                 });
@@ -428,17 +423,17 @@ const Palace = () => {
                 fControls.enabled = false;
                 fControls.enableDamping = true;    
                 gsap.to(camera.position, {
-                    duration: 1.5,
-                    x: -90,
+                    duration: 1,
+                    x: -60,
                     y: 40,
-                    z: 190,
+                    z: 130,
                     onUpdate: function () {
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     },
                     onComplete: function () {
                         fControls.enabled = true;
                         fControls.enableDamping = false;    
-                        fControls.lookAt(-460,0,-50)
+                        fControls.lookAt(-300,0,50)
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     }
                 });
@@ -447,8 +442,8 @@ const Palace = () => {
                 fControls.enabled = false;
                 fControls.enableDamping = true;    
                 gsap.to(camera.position, {
-                    duration: 1.5,
-                    x: 120,
+                    duration: 1,
+                    x: 110,
                     y: 40,
                     z: 10,
                     onUpdate: function () {
@@ -458,7 +453,7 @@ const Palace = () => {
                         fControls.enabled = true;
                         fControls.enableDamping = false;    
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                        fControls.lookAt(360,40,-170)
+                        fControls.lookAt(360,-200,0)
           
                     }
                 });
@@ -467,17 +462,17 @@ const Palace = () => {
                 fControls.enabled = false;
                 fControls.enableDamping = true;    
                 gsap.to(camera.position, {
-                    duration: 1.5,
-                    x: 10,
+                    duration: 1,
+                    x: 30,
                     y: 40,
-                    z: 80,
+                    z: 50,
                     onUpdate: function () {
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     },
                     onComplete: function () {
                         fControls.enabled = true;
                         fControls.enableDamping = false;    
-                        fControls.lookAt(20,40,400)
+                        fControls.lookAt(30,0,500)
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     }
                 });
@@ -486,17 +481,17 @@ const Palace = () => {
                 fControls.enabled = false;
                 fControls.enableDamping = true;    
                 gsap.to(camera.position, {
-                    duration: 1.5,
-                    x: 0,
+                    duration: 1,
+                    x: 60,
                     y: 40,
-                    z: -20,
+                    z: 0,
                     onUpdate: function () {
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     },
                     onComplete: function () {
                         fControls.enabled = true;
                         fControls.enableDamping = false;    
-                        fControls.lookAt(100,40,-280)
+                        fControls.lookAt(80,40,-300)
                         camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                     }
                 });
@@ -505,17 +500,17 @@ const Palace = () => {
             fControls.enabled = false;
             fControls.enableDamping = true;    
             gsap.to(camera.position, {
-                duration: 1.5,
-                x: 10,
+                duration: 1,
+                x: 110,
                 y: 40,
-                z: 80,
+                z: 10,
                 onUpdate: function () {
                     camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                 },
                 onComplete: function () {
                     fControls.enabled = true;
                     fControls.enableDamping = false;    
-                    fControls.lookAt(-100,40,360)
+                    fControls.lookAt(360,-200,0)
                     camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                 }
             });
@@ -524,17 +519,17 @@ const Palace = () => {
             fControls.enabled = false;
             fControls.enableDamping = true;    
             gsap.to(camera.position, {
-                duration: 1.5,
-                x: 0,
+                duration: 1,
+                x: -60,
                 y: 40,
-                z: 0,
+                z: 130,
                 onUpdate: function () {
                     camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                 },
                 onComplete: function () {
                     fControls.enabled = true;
                     fControls.enableDamping = false;    
-                    fControls.lookAt(mesh20.position)
+                    fControls.lookAt(-300,0,50)
                     camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
                 }
             });
@@ -550,8 +545,6 @@ const Palace = () => {
         renderer.render(scene, camera);
       });
 
-
-
       //애니메이션
       const clock = new THREE.Clock();  
       const animate = ()=>{
@@ -565,6 +558,10 @@ const Palace = () => {
         renderer.domElement.removeEventListener('click', onClick);
       };
     }, []);
+        //모바일 버전
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
     return ( 
         <section id='model' ref={main}></section>
      );
