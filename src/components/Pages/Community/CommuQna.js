@@ -8,7 +8,6 @@ const CommuQna = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
-    // Use the original qnaPosts for the initial state
     const originalPosts = qnaPosts.postIndex;
 
     // Check for any edited posts and update the title accordingly
@@ -34,8 +33,6 @@ const CommuQna = () => {
 
     setFilteredPosts(filtered);
   };
-
-
 
   return (
     <div className="CommuSection">

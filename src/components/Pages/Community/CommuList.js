@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CommuData from "./SubComponents/CommuData";
 import "./CommuList.css";
@@ -7,6 +7,23 @@ const CommuList = () => {
   const { noticePosts } = CommuData();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(noticePosts.postIndex);
+
+  useEffect(() => {
+    // Use the original noticePosts for the initial state
+    const originalPosts = noticePosts.postIndex;
+
+    // Check for any edited posts and update the title accordingly
+    const updatedPosts = originalPosts.map((post) => {
+      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
+      if (savedData) {
+        return { ...post, title: savedData.editedTitle };
+      } else {
+        return post;
+      }
+    });
+
+    setFilteredPosts(updatedPosts);
+  }, [noticePosts.postIndex]);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
