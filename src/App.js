@@ -1,9 +1,9 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import './font.css';
 
 import Header from './components/Header/Header';
-// import Main from './components/Pages/Main/Main';
+import Main from './components/Pages/Main/Main';
 import Login from './components/Pages/Login/Login';
 import Introduce from './components/Pages/Introduce/Introduce';
 import EbookList from './components/Pages/Ebook/EbookList';
@@ -12,7 +12,16 @@ import CommuList from './components/Pages/Community/CommuList';
 import CodeTestList from './components/Pages/CodeTest/CodeTestList';
 import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
-
+import CommuNoticeWrite from './components/Pages/Community/SubComponents/CommuNoticeWrite';
+import CommuNoticeDetail from './components/Pages/Community/SubComponents/CommuNoticeDetail';
+import CommuQnaDetail from './components/Pages/Community/SubComponents/CommuQnaDetail';
+import CommuQnaWrite from './components/Pages/Community/SubComponents/CommuQnaWrite';
+import CommuQna from './components/Pages/Community/CommuQna';
+import CommuFaq from './components/Pages/Community/CommuFaq';
+import CodeTestHtml from './components/Pages/CodeTest/CodeTestHtml';
+import CodeTestCss from './components/Pages/CodeTest/CodeTestCss';
+import CodeTestJs from './components/Pages/CodeTest/CodeTestJs';
+import NotFound from './components/Common/NotFound';
 
 function App() {
 
@@ -113,15 +122,21 @@ function App() {
     <div className="App">
       <Header isHeaderLoaded={isHeaderLoaded} headerDisable={headerDisable} KakaoLogout={KakaoLogout} isLogin={isLogin} user={user}/>
       <Routes>
-        <Route path='/*' element={<Main HeaderLoaded={HeaderLoaded}/>}/>
-        <Route path='/login/*' element={<Login/>}/>
-        <Route path='/introduce/*' element={<Introduce/>}/>
-        <Route path='/ebook/*' element={<EbookList/>}/>
-        <Route path='/test' element={<CodeTestList/>}/>
+        <Route exact path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
+        <Route exact path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable} KakaoLogin={KakaoLogin}/>}/>
+        <Route exact path='/introduce/*' element={<Introduce/>}/>
+        <Route exact path='/ebook/*' element={<EbookList/>}/>
+        <Route exact path='/ebook/:Ebookid' element={<EbookDetail/>}/>
+        <Route exact path='/test/*' element={<CodeTestList/>}/>
+        <Route exact path='/community/*' element={<CommuList/>}/>
+        <Route exact path='*' element={<NotFound HeaderDisable={HeaderDisable} FooterLoaded={FooterLoaded}/>}/>
+        <Route path='/codeTestHtml' element={<CodeTestHtml/>}/>
+        <Route path='/codeTestCss' element={<CodeTestCss/>}/>
+        <Route path='/codeTestJs' element={<CodeTestJs/>}/>
         <Route path='/community/*' element={<CommuList/>}/>
         <Route path='/community/notice' element={<CommuList/>}/>
-        <Route path='/community/noticeWrite' element={<CommuNoticeWrite />}/>
-        <Route path="/community/notice/:id" element={<CommuNoticeDetail />} />
+        <Route path='/community/noticeWrite' element={<CommuNoticeWrite/>}/>
+        <Route path="/community/notice/:id" element={<CommuNoticeDetail/>}/>
         <Route path='/community/qnaWrite' element={<CommuQnaWrite />}/>
         <Route path='/community/qna' element={<CommuQna />}/>
         <Route path="/community/qna/:id" element={<CommuQnaDetail />} />
