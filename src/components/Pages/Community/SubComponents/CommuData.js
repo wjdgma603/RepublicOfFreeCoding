@@ -6,21 +6,21 @@ export const noticePost = {
     {
       id: 3,
       title: '3번째 공지사항',
-      content: '세번째 공지사항 내용입니다!?',
+      content: '세번째 공지사항 내용입니다',
       date: '2023.11.09.',
     },
 
     {
       id: 2,
       title: '2번째 공지사항',
-      content: '두번째 공지사항 내용입니다!??',
+      content: '두번째 공지사항 내용입니다',
       date: '2023.11.12.',
     },
 
     {
       id: 1,
       title: '1번째 공지사항',
-      content: '첫번째 공지사항 내용입니다!???',
+      content: '첫번째 공지사항 내용입니다',
       date: '2023.11.18.',
     },
 
@@ -51,9 +51,17 @@ const addNoticePost = (newPost) => {
 export const qnaPost = {
   postIndex: [
     {
+      id: 5,
+      title: '다섯번째qna',
+      content: '다섯번째 qna입니다 질문이있습니다',
+      answer: '다섯번째 질문에대한 답변입니다.',
+      date: '2023.11.09.',
+      answerDate: '2023.11.10',
+    },
+    {
       id: 4,
       title: '네번째qna',
-      content: '네번째 qna입니다 질문이있습니다??',
+      content: '네번째 qna입니다 질문이있습니다',
       answer: '네번째 질문에대한 답변입니다.',
       date: '2023.11.09.',
       answerDate: '2023.11.10',
@@ -61,7 +69,7 @@ export const qnaPost = {
     {
       id: 3,
       title: '세번째 qna',
-      content: '세번째 qna입니다 질문이있습니다??',
+      content: '세번째 qna입니다 질문이있습니다',
       answer: '세번째 질문에대한 답변입니다.',
       date: '2023.11.09.',
       answerDate: '2023.11.10',
@@ -70,7 +78,7 @@ export const qnaPost = {
     {
       id: 2,
       title: '두번째 qna',
-      content: '두번째 qna입니다 질문이있습니다~~',
+      content: '두번째 qna입니다 질문이있습니다',
       answer: '두번째 질문에대한 답변입니다.',
       date: '2023.11.09.',
       answerDate: '2023.11.10',
@@ -79,7 +87,7 @@ export const qnaPost = {
     {
       id: 1,
       title: '첫번째 qna',
-      content: '첫번째 qna입니다 질문이있습니다!!',
+      content: '첫번째 qna입니다 질문이있습니다',
       answer: '첫번째 질문에대한 답변입니다.',
       date: '2023.11.09.',
       answerDate: '2023.11.10',

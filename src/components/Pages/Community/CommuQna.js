@@ -68,7 +68,7 @@ const CommuQna = () => {
         </div>
         <table className="CommuBoard">
           {filteredPosts.map((post) => (
-            <Link to={`/community/qna/${post.id}`} key={post.id}>
+            <Link to={`/community/qna/detail/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
@@ -82,10 +82,6 @@ const CommuQna = () => {
           <div></div>
           <div className="CommuPageButtonWrap">
             <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
           </div>
           <Link to='/community/qnaWrite'>
             <div className="CommuWrite">글쓰기</div>

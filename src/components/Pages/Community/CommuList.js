@@ -77,7 +77,7 @@ const CommuList = () => {
 
         <table className="CommuBoard">
           {filteredPosts.map((post) => (
-            <Link to={`/community/notice/${post.id}`} key={post.id}>
+            <Link to={`/community/notice/detail/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
@@ -89,13 +89,11 @@ const CommuList = () => {
 
         <div className="CommuBottomWrap">
           <div></div>
+
           <div className="CommuPageButtonWrap">
             <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
           </div>
+
           <Link to='/community/noticeWrite'>
             <div className="CommuWrite">글쓰기</div>
           </Link>
