@@ -26,7 +26,10 @@ const CommuQna = () => {
       </div>
 
       <div className="CommuRight">
-        <h1>문의사항</h1>
+        <div className="CommuRightHeaderWrap">
+          <h1>문의사항</h1>
+          <input className="CommuRightSearch" type="text" placeholder="검색어를 입력해주세요."/>
+        </div>
         <div className="CommuBoardHeader">
           <p className="CommuBoardNumber">번호</p>
           <p className="CommuBoardTitle">제목</p>
@@ -38,7 +41,6 @@ const CommuQna = () => {
               <tr>
                 <td>{post.id}</td>
                 <td>
-                  {/* 수정된 제목이 있는 경우 해당 제목을 표시, 없으면 기존 제목 표시 */}
                   {sessionStorage.getItem(`editedQuestion_${post.id}`) || post.title}
                 </td>
                 <td>{post.date}</td>

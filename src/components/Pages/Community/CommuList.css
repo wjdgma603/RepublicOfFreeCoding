@@ -30,9 +30,26 @@
 .CommuRight{
     width:980px     
 }
-.CommuRight>h1{
+.CommuRight h1{
     font-size: 36px;
     padding-bottom: 50px;
+}
+.CommuRightHeaderWrap{
+    display: flex;
+    justify-content: space-between;
+}
+.CommuRightSearch{
+    width:400px;
+    height:40px;
+    border:1px solid #cccccc;
+    padding-left: 10px;
+}
+.CommuRightHeaderSearchButton{
+    padding:0 20px;
+    height:40px;
+    border: 1px solid #cccccc;
+    margin-left: 10px;
+    cursor: pointer;
 }
 .CommuBoard{
     width:980px;
