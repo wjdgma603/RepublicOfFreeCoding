@@ -1,0 +1,112 @@
+.LoginSection{
+    width: 100%;
+    height: 100vh;
+}
+.LoginSection>article.Login{
+    margin: 0 auto;
+    padding-top: 100px;
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Login Wrap */
+.LoginSection>article.Login>div.LoginLogoWrap{
+    margin-bottom: 40px;
+}
+.LoginSection>article.Login>div.LoginLogoWrap>a>#LoginLogo{
+    width: 127px;
+}
+/* Login Logo */
+.LoginSection>article.Login>form{
+    width: 100%;
+}
+.LoginSection>article.Login>form>div{
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+}
+.LoginSection>article.Login>form>input.LoginText:first-of-type{
+    margin-bottom: 20px;
+}
+.LoginSection>article.Login>form>input.LoginText:nth-of-type(2){
+    margin-bottom: 15px;
+}
+.LoginSection>article.Login>form>input.LoginText{
+    height: 50px;
+    width: 100%;
+    appearance: none;
+    outline: none;
+    border: .5px solid #ddd;
+    background-color: rgba(238, 238, 238, 0.30);
+    transition: background-color .5s ease-in-out;
+    border-radius: 10px;
+}
+.LoginSection>article.Login>form>input.LoginText:focus{
+    border: 1px solid #999;
+    background-color: #fff;
+    outline: none;
+}
+.LoginSection>article.Login>form>section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.LoginSection>article.Login>form>section>div.SaveIdSection>input{
+    margin: 0 12px 0 2px;
+}
+.LoginSection>article.Login>form>section>div.FindIdSection{
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+}
+.LoginSection>article.Login>form>section>div.FindIdSection>a{
+    color: #555;
+    font-size: 13px;
+    font-weight: 400;
+}
+.LoginSection>article.Login>form>article{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.LoginSection>article.Login>form>article>a{
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid black;
+    color: #111;
+    font-size: 13px;
+    font-weight: 400;
+}
+/* Login Form */
+.LoginSection>article.Login>form>input[value="로그인"]{
+    display: block;
+    appearance: none;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+    color: #FFF;
+    background-color: #00D67A;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.LoginSection>article.Login>form>div.KakaoLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    background-color: #F9E000;
+    color: #371C1D;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 10px 0;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.LoginSection>article.Login>form>div.KakaoLogin>svg{
+    width: 50px;
+    fill: #371C1D;
+}

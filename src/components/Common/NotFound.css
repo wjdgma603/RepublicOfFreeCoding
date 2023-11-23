@@ -1,0 +1,24 @@
+.WrongURLPage{
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    background-color: #000;
+}
+.WrongURLPage>div{
+    font-family: 'CascadiaCode', sans-serif;
+    color: #00D67A;
+}
+.WrongURLPage>div.NotFound{
+    font-size: 100px;
+    margin-bottom: 40px;
+}
+
+.WrongURLPage>div.MovetoMain,
+.WrongURLPage>div.MovetoPrev
+{
+    font-size: 50px;
+    cursor: pointer;
+}
+.WrongURLPage>div.MovetoPrev{
+    margin-bottom: 30px;
+}

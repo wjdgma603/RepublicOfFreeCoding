@@ -42,4 +42,20 @@
 }
 /* 헤더 개인메뉴 */
 
+@media (max-width: 1280px) {
+    .HeaderComponent>section.HeaderWrap{
+        width: 100%;
+        padding: 0px 50px;
+    }
+}
+/* 
+@media (max-width: 1024px) {
+    .Intro_title{
+        font-size: 27px;
+        margin-bottom: 30px;
+    }
+    .IntroFirstSection>div>div>p:first-child{
+        width: 350px;
+    }
+} */
 

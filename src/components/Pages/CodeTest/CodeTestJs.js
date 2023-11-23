@@ -1,8 +1,7 @@
-import "./CodeTestList.css"
+import "./CodeTestJs.css"
 import { Link } from "react-router-dom";
-import CodeTestListJson from "./CodeTestList.json"
 
-const CodeTestList = () => {
+const CodeTestJs = () => {
     return ( 
         <section className="CodeTestSection">
             <article className="CodeTestArticle">
@@ -16,7 +15,7 @@ const CodeTestList = () => {
                     <div><Link to="/ebook/*"><button className="CodeTestTitleBtn">전자북 페이지</button></Link></div>
                 </div>
                 <div className="CodeTestArticleDiv2">
-                    <h1>HTML</h1>
+                    <h1>JAVASCRIPT</h1>
                     {/*HTML, CSS, SCRIPT 바뀔 창들 */}
                     <div className="CodeTestArticleDiv2TableHTML">
                         <tr className="CodeTestTitle">
@@ -27,11 +26,11 @@ const CodeTestList = () => {
                         <tr className="CodeTestText">
                             <td>중간 단계</td>
                             <td>
-                                <p>{CodeTestListJson.Text.test1}</p>
-                                <p>{CodeTestListJson.Text.test2}</p>
-                                <p>{CodeTestListJson.Text.test3}</p>
-                                <p>{CodeTestListJson.Text.test4}</p>
-                                <p>{CodeTestListJson.Text.test5}</p>
+                                <p>01. 시멘틱태그가 아닌 것은?</p>
+                                <p>02. Check Box를 만들기 위한 올바른 HTML을 고르세요.</p>
+                                <p>03. input type 중 알맞지 않은 것은?</p>
+                                <p>04. tag의 스펠링이 틀린 것은?</p>
+                                <p>05. html5 에서 새롭게 도입된 요소 중 하나는?</p>
                             </td>
                             <td className="CodeTestPlay">
                                 <p><span>문제 풀기</span></p>
@@ -44,11 +43,11 @@ const CodeTestList = () => {
                         <tr className="CodeTestText">
                             <td>상급 단계</td>
                             <td>
-                                <p>{CodeTestListJson.Text.test6}</p>
-                                <p>{CodeTestListJson.Text.test7}</p>
-                                <p>{CodeTestListJson.Text.test8}</p>
-                                <p>{CodeTestListJson.Text.test9}</p>
-                                <p>{CodeTestListJson.Text.test10}</p>
+                                <p>06. iframe의 기능으로 알맞은 것을 고르세요.</p>
+                                <p>07. html5 에서 더 이상 지원되지 않는 태그를 고르세요.</p>
+                                <p>08. html5 에서 새롭게 추가된 태그를 고르세요.</p>
+                                <p>09. meta 태그에 대한 설명으로 틀린 것을 고르세요.</p>
+                                <p>10. noscript 태그에 대한 설명으로 틀린 것을 고르세요.</p>
                             </td>
                             <td className="CodeTestPlay">
                                 <p><span>문제 풀기</span></p>
@@ -65,4 +64,4 @@ const CodeTestList = () => {
      );
 }
  
-export default CodeTestList;
+export default CodeTestJs;

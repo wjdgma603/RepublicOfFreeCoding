@@ -1,0 +1,320 @@
+
+.Introduce{
+    width: 100%;
+    padding: 0 0 150px 0;
+}
+
+.IntroImg{
+    width: 100%;
+    height: 552px;
+    background-image: url(../../../img/introImg.png);
+    background-size: cover;
+    z-index: -1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.IntroImg>div{
+    width: 100%;
+    padding-top: 90px;
+}
+
+.IntroImg>div>p:first-child{
+    margin-bottom: 20px;
+}
+
+.IntroWrap{
+    width: 1280px;  
+    margin: 0 auto;
+    padding: 150px 0;
+}
+
+.Intro_40px_w{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.Intro_title{
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.Intro_16px_w{
+    font-size: 16px;
+    color: white;
+}
+
+.Intro_30px_b{
+    font-size: 30px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.Flex{
+    display: flex;
+}
+
+.IntroTextCenter{
+    text-align: center;
+}
+
+/* intro firstSection 시작*/
+
+.IntroFirstSection{
+    margin-bottom: 150px;
+}
+
+.IntroFirstSection>div{
+    justify-content: space-between;
+}
+
+.IntroFirstSection>div>div{
+    width: calc((100% - 20px) / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 274px;
+    border: 1px solid #E4E4E4;
+    border-radius: 20px;
+}
+
+/* intro firstSection 끝*/
+/* intro secondSection 시작*/
+
+.IntroSecondSection>div{
+    justify-content: space-between;
+    border: 1px solid #E4E4E4;
+    border-radius: 20px;
+    padding: 60px 20px;
+}
+
+.IntroSecondSection>div>div{
+    width: calc((100% - 40px)/3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.IntroSecondSection>div>div>div{
+    width : 170px;
+    height: 172px;
+}
+
+.IntroSecondSection>div>div>.IntroImgHtml{
+    background-image: url(../../../img/intro_html.png);
+}
+
+.IntroSecondSection>div>div>.IntroImgCss{
+    background-image: url(../../../img/intro_css.png);
+}
+
+.IntroSecondSection>div>div>.IntroImgJs{
+    background-image: url(../../../img/intro_js.png);
+}
+
+.IntroSecondSection>div>div>.IntroClass{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.IntroFontHtml{
+    color: #FF5500;
+}
+
+.IntroFontCss{
+    color: #149EF2;
+}
+
+.IntroFontJs{
+    color: #FFA310;
+}
+
+/* intro secondSection 끝*/
+/* intro thirdSection 시작*/
+
+.introSliderContainer {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .sliderImages1 {
+    width: 100%; /* Assuming 2 times the number of images for continuous sliding */
+    animation: slideImages1 10s linear infinite;
+  }
+  .sliderImages2 {
+    width: 100%; /* Assuming 2 times the number of images for continuous sliding */
+    animation: slideImages2 10s linear infinite;
+  }
+  
+  .introSlider img {
+    width: 100%; /* Assuming 2 times the number of images for continuous sliding */
+    height: auto;
+    margin: 0 10px;
+  }
+  
+  @keyframes slideImages1 {
+    0% {
+      transform: translateX(0%);
+    }
+    50% {
+      transform: translateX(-100%);
+    }
+    /* 50.00001% {
+      transform: translateX(100%);
+    } */
+    100% {
+      transform: translateX(0%); /* Move continuously in one direction */
+    }
+  }
+  @keyframes slideImages2 {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%); /* Move continuously in one direction */
+    }
+  }
+  
+  
+/* intro thirdSection 끝*/
+
+@media (max-width: 1280px) {
+    .Introduce{
+        width: 100%;
+    }
+    .IntroWrap{
+        width: 100%;
+        padding: 150px 50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Intro_title{
+        font-size: 27px;
+        margin-bottom: 30px;
+    }
+    .IntroFirstSection>div>div>p:first-child{
+        width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Introduce{
+        padding: 0 0 125px 0;
+    }
+    .IntroImg{
+        height: 399px;
+    }
+    .IntroImg>div{
+        padding: 80px 30px 30px;
+    }
+    .IntroImg>div>p:first-child{
+        font-size: 27px;
+        margin-bottom: 10px;
+        padding: 0 30px;
+    }
+    .IntroImg>div>p:last-child{
+        margin-bottom: 10px;
+        padding: 0 30px;
+    }
+    .IntroWrap{
+        width: 100%;
+        padding: 125px 30px;
+    }
+    .Intro_title{
+        font-size: 27px;
+        margin-bottom: 30px;
+    }
+    .Intro_16px_w{
+        font-size: 14px;
+    }
+    .Intro_30px_b{
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .Intro_16px_b{
+        font-size: 14px;
+    }
+    .IntroFirstSection{
+        margin-bottom: 125px;
+    }
+    .IntroFirstSection>div{
+        flex-direction: column;
+    }
+    .IntroFirstSection>div>div{
+        width: 100%;
+        height: 190px;
+        border-radius: 20px;
+    }
+    .IntroSecondSection>div>div{
+        width: 500px;
+    }
+    .IntroFirstSection>div>div:first-child{
+        margin-bottom: 10px;
+    }
+    .IntroSecondSection>div>div>.IntroClass{
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    .IntroSecondSection>div>div>div{
+        width : 144px;
+        height: 146px;
+        background-size: cover;
+    }
+    .IntroSecondSection>div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .IntroSecondSection>div{
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #E4E4E4;
+        border-radius: 20px;
+        padding: 50px 0 0 0;
+    }
+    .IntroSecondSection>div>div{
+        margin-bottom: 50px;
+    }
+    /* .IntroSecondSection>div>div>.IntroClassFont{
+        word-break: keep-all;
+        width: 300px;
+    } */
+}
+
+@media (max-width: 460px) {
+    .Introduce{
+        padding: 0 0 70px 0;
+    }
+    .IntroWrap{
+        width: 100%;
+        padding: 70px 10px;
+    }
+    .IntroImg>div>p:first-child{
+        font-size: 24px;
+        word-break: keep-all;
+        margin-top: 80px;
+    }
+    .IntroImg>div{
+        padding: 80px 10px;
+        word-break: keep-all;
+    }
+    .IntroFirstSection{
+        margin-bottom: 70px;
+    }
+    .IntroSecondSection>div>div{
+        width: 100%;
+    }
+    
+}
+

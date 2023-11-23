@@ -1,27 +1,26 @@
 
 import './Main.css'
-import Back from "./SubComponent/Back"
-import Loading from './SubComponent/Loading'
-import Model from "./SubComponent/model"
-import {useEffect,useState} from "react"
+import React, { Suspense } from "react"
+import Loading from './SubComponent/Loading';
+const LazyThreeJSBack = React.lazy(() => import('./SubComponent/Back'));
+const LazyThreeJSModel = React.lazy(() => {
+  return Promise.all([
+    import("./SubComponent/model.js"),
+    new Promise(resolve => setTimeout(resolve, 2500))
+  ])
+  .then(([moduleExports]) => moduleExports);
+});
 
-const Main = ({HeaderLoaded}) => {
-    HeaderLoaded()
-    const [LodingPage, setLodingPage] = useState(true);
-    useEffect(()=>{
-      setTimeout(()=>{
-        setLodingPage(false)
-      },3000)
-    })
+const Main = ({HeaderLoaded, FooterLoaded, HeaderDisable}) => {
+    HeaderLoaded();
+    FooterLoaded();
+    // 헤더 변형, 푸터 비활성
     return (
       <div className="Main">
-        {LodingPage ? (
-          <Loading/>
-        ) : (
-        <div>
-          <Back/>
-          <Model/>
-        </div>)}
+        <Suspense fallback={<Loading HeaderDisable={HeaderDisable}/>}>
+          <LazyThreeJSBack/>
+          <LazyThreeJSModel/>
+        </Suspense>
       </div>
     );
 }

@@ -1,0 +1,32 @@
+.DepthComponent{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.DepthComponent>div.DepthName{
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: 0.16px;
+}
+.DepthComponent>div.DepthMenu{
+    width: 200px;
+    height: 70px;
+    border-radius: 6px;
+    border: 1px solid #D5D5D5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: 0.14px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.DepthComponent>div.DepthMenu.Activate{
+    color: #00D67A;
+    border: 1px solid #00D67A;
+}
