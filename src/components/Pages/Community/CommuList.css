@@ -1,0 +1,119 @@
+.CommuSection{
+    width:1280px;
+    height:100%;
+    margin:0 auto;
+    padding: 240px 0 150px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.CommuSection>div>div{
+    display: flex;
+    /* justify-content: space-between; */
+}
+.CommuNav{
+    padding-top: 20px;
+}
+.CommuNav>li{
+    width:202px;
+    height:70px;
+    border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding-left: 22px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+
+/********************************/
+.CommuRight{
+    width:980px     
+}
+.CommuRight h1{
+    font-size: 36px;
+    padding-bottom: 50px;
+}
+.CommuRightHeaderWrap{
+    display: flex;
+    justify-content: space-between;
+}
+.CommuRightSearch{
+    width:400px;
+    height:40px;
+    border:1px solid #cccccc;
+    padding-left: 10px;
+}
+.CommuRightHeaderSearchButton{
+    padding:0 20px;
+    height:40px;
+    border: 1px solid #cccccc;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.CommuBoard{
+    width:980px;
+    margin-bottom: 40px;
+    border-collapse: collapse;
+}
+.CommuBoardHeader{
+    width:100%;
+    background-color: #f5f5f5;
+    height:61px;
+    text-align: center;
+}
+.CommuBoardHeader>p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+}
+.CommuBoardNumber{
+    width:206px;
+}
+.CommuBoardTitle{
+    width:700px;
+}
+.CommuBoardDate{
+    width:100px;
+}
+.CommuBoard>a>tr{
+    height:62px;
+    border-bottom:1px solid #e4e4e4;
+    vertical-align: middle;
+}
+.CommuBoard>a>tr>td{
+    vertical-align: middle;
+}
+
+.CommuBoard>a>tr>td:nth-child(1){
+    width:206px;
+    text-align: center;
+}
+.CommuBoard>a>tr>td:nth-child(2){
+    width:700px;
+}
+.CommuBoard>a>tr>td:nth-child(3){
+    width:100px;
+    text-align: center;
+}
+
+.CommuBottomWrap{
+    display: flex;
+    justify-content: space-between;
+}
+.CommuPageButtonWrap{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+}
+.CommuPageButtonWrap>div{
+    border:1px solid black;
+    padding:10px 15px;
+    margin:0 5px;
+    cursor: pointer;
+}
+.CommuWrite{
+    padding:10px 15px;
+    border:1px solid black;
+}
