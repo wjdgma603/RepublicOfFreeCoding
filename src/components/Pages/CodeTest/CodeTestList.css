@@ -3,12 +3,12 @@
 }
 .CodeTestArticle{
     display: flex;
+    justify-content: space-between;
     width: 1280px;
     margin: 0 auto;
 }
 .CodeTestArticleDiv1{
     width: 15.7%;
-    margin-right: 100px;
 }
 .CodeTestArticleDiv1>div:first-child{
     display: flex;
@@ -22,15 +22,16 @@
     margin-bottom: 20px;
     align-items: center;
 }
-.CodeTestArticleDiv1>div:first-child>span:last-child{
-font-size: 11px;
+.CodeTestArticleDiv1>div:nth-child(2)>a>button{
+    border: 1px solid #00D67A;
+    color: #00D67A;
 }
 .CodeTestTitleBtn{
     width: 100%;
     background-color: transparent;
-    border: 1px solid #000;
+    border: 1px solid #D5D5D5;
     border-radius: 6px;
-    padding: 24px 22px;
+    padding: 24px 18px;
     text-align: left;
     font-size: 20px;
     margin-bottom: 10px;
@@ -42,39 +43,61 @@ font-size: 11px;
 .CodeTestArticleDiv1Span{
     font-size: 20px;
 }
+.CodeTestArticleDiv1Span + span{
+    font-size: 11px;
+}
 .CodeTestArticleDiv2{
-    width: 84.3%;
+    width: 77%;
 }
 .CodeTestArticleDiv2>h1{
     font-size: 36px;
     margin-bottom: 40px;
 }
-.CodeTestArticleDiv2Table{
-    background-color: antiquewhite;
-}
-.CodeTestArticleDiv2Table>tr:first-child{
+.CodeTestArticleDiv2TableHTML>tr:first-child{
     text-align: center;
 }
 .CodeTestTitle{
     background-color: #F5F5F5;
 }
 .CodeTestTitle>td:first-child{
-    width: 14%;
+    width: 9%;
     padding: 20px 0;
+    font-weight: bold;
 }
 .CodeTestTitle>td:nth-child(2){
-    width: 30%;
+    width: 32%;
+    font-weight: bold;
 }
 .CodeTestTitle>td:nth-child(3){
-    width: 6%;
+    width: 9%;
+    font-weight: bold;
+}
+.CodeTestText>td:first-child{
+    text-align: center;
+    vertical-align: middle;
 }
 .CodeTestText>td:nth-child(2)>p{
-    padding: 20px 0;
+    padding: 20px 0 20px 40px;
     border-left: 1px solid #E4E4E4;
     border-bottom: 1px solid #E4E4E4;
 }
+.CodeTestPlay{
+    text-align: center;
+}
 .CodeTestPlay>p{
-    padding: 20px 0; 
+    padding: 20px;
     border-left: 1px solid #E4E4E4;
     border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestPlay span{
+    background-color:#00D67A;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+@media (max-width : 1280px){
+    .CodeTestArticle{
+        width: 100%;
+    }
 }
