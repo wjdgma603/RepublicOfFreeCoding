@@ -40,8 +40,6 @@ const CommuNoticeDetail = () => {
     });
 
     setIsEditing(false);
-    
-    // Save the edited data to localStorage
     localStorage.setItem(`editedPost_${id}`, JSON.stringify({ editedTitle, editedContent }));
   };
 
@@ -53,12 +51,16 @@ const CommuNoticeDetail = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
       const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
-      setNoticePosts({ ...noticePosts, postIndex: updatedNoticePosts });
+      setNoticePosts(prevNoticePosts => ({
+        ...prevNoticePosts,
+        postIndex: updatedNoticePosts
+      }));
       setIsEditing(false);
       window.location.href = '/community';
       localStorage.removeItem(`editedPost_${id}`);
     }
   };
+  
   return (
     <div className="CommuSection">
       <div>
@@ -125,10 +127,12 @@ const CommuNoticeDetail = () => {
             <Link to="/community">
               <button className="CommuNoticePageButton">목록보기</button>
             </Link>
-            <button className="CommuNoticeEditButton" onClick={handleEditClick}>
-              글수정
-            </button>
-            <button onClick={deletePost}>게시글 삭제</button>
+            <div>
+              <button className="CommuNoticeEditButton" onClick={handleEditClick}>
+                글수정
+              </button>
+              <button className="CommuDetailDeleteButton" onClick={deletePost}>게시글 삭제</button>
+            </div>
           </div>
         )}
       </div>

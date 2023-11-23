@@ -9,15 +9,11 @@ const CommuList = () => {
   const [filteredPosts, setFilteredPosts] = useState(noticePosts.postIndex);
 
   useEffect(() => {
-    // 페이지가 새로고침되면 localStorage를 초기화
     window.onbeforeunload = () => {
       localStorage.clear();
     };
 
-    // 초기에는 공지사항 데이터를 그대로 사용
     const originalPosts = noticePosts.postIndex;
-
-    // 각 공지사항에 대해 localStorage에 저장된 편집된 제목이 있는지 확인하고 업데이트
     const updatedPosts = originalPosts.map((post) => {
       const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
       if (savedData && savedData.editedTitle) {
@@ -31,12 +27,18 @@ const CommuList = () => {
   }, [noticePosts.postIndex]);
 
   const handleSearch = (e) => {
-    // 검색어를 업데이트하고, 해당하는 게시물로 필터링
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
-    const filtered = noticePosts.postIndex.filter((post) =>
-      post.title.includes(searchTerm)
-    );
+
+    const filtered = noticePosts.postIndex.map((post) => {
+      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
+      if (savedData && savedData.editedTitle) {
+        return { ...post, title: savedData.editedTitle };
+      } else {
+        return post;
+      }
+    }).filter((post) => post.title.includes(searchTerm));
+
     setFilteredPosts(filtered);
   };
 

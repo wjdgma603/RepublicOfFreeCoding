@@ -10,17 +10,16 @@ const CommuQna = () => {
   useEffect(() => {
     const originalPosts = qnaPosts.postIndex;
     const updatedPosts = originalPosts.map((post) => {
-      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
+      const savedData = JSON.parse(localStorage.getItem(`editedQnaPost_${post.id}`));
       if (savedData) {
-        return { ...post, title: savedData.editedTitle };
+        return { ...post, title: savedData.editedQuestion };
       } else {
         return post;
       }
     });
-
+  
     setFilteredPosts(updatedPosts);
   }, [qnaPosts.postIndex]);
-
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
@@ -67,8 +66,6 @@ const CommuQna = () => {
           <p className="CommuBoardTitle">제목</p>
           <p className="CommuBoardDate">등록일</p>
         </div>
-
-
         <table className="CommuBoard">
           {filteredPosts.map((post) => (
             <Link to={`/community/qna/${post.id}`} key={post.id}>
@@ -80,7 +77,6 @@ const CommuQna = () => {
             </Link>
           ))}
         </table>
-        
         
         <div className="CommuBottomWrap">
           <div></div>

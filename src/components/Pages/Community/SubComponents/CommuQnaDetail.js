@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./CommuQnaDetail.css";
 import { qnaPost, updateQnaPost } from '../SubComponents/CommuData';
@@ -15,6 +15,16 @@ const CommuQnaDetail = () => {
   const [editedContent, setEditedContent] = useState(qnaPosts.postIndex[selectedPostIndex].content);
   const [editedAnswer, setEditedAnswer] = useState(qnaPosts.postIndex[selectedPostIndex].answer);
   const [editedQuestion, setEditedQuestion] = useState(qnaPosts.postIndex[selectedPostIndex].title);
+
+  useEffect(() => {
+    // 페이지 로딩 시 localStorage에서 수정된 데이터를 가져와서 상태에 적용
+    const savedData = JSON.parse(localStorage.getItem(`editedQnaPost_${id}`));
+    if (savedData) {
+      setEditedQuestion(savedData.editedQuestion);
+      setEditedContent(savedData.editedContent);
+      setEditedAnswer(savedData.editedAnswer);
+    }
+  }, [id]);
 
   const toggleEditQuestion = () => {
     setIsEditingQuestion((prev) => !prev);
@@ -36,6 +46,12 @@ const CommuQnaDetail = () => {
 
     setIsEditingQuestion(false);
     setIsEditingAnswer(false);
+
+    localStorage.setItem(`editedQnaPost_${id}`, JSON.stringify({
+      editedQuestion,
+      editedContent,
+      editedAnswer,
+    }));
   };
 
   const deletePost = () => {
@@ -45,16 +61,9 @@ const CommuQnaDetail = () => {
       setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
       setIsEditingQuestion(false);
       window.location.href = '/community/qna';
+      localStorage.removeItem(`editedQnaPost_${id}`);
     }
   };
-
-  // useEffect(() => {
-  //   // Qna 페이지에서 수정된 제목을 반영
-  //   const updatedQnaPosts = [...qnaPosts.postIndex];
-  //   updatedQnaPosts[selectedPostIndex].title = editedQuestion;
-  //   setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
-  // }, [editedQuestion, selectedPostIndex, qnaPosts]);
-
   return (
     <div className="CommuSection">
       <div>
