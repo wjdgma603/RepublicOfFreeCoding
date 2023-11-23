@@ -52,7 +52,7 @@ const Palace = () => {
     camera.lookAt(200,-200,-10);
     scene.add(camera)
  
-    const LightColorPow = 8;
+    const LightColorPow = 7;
     const LightColor = "#9F621B";
 
     //light 
@@ -133,12 +133,13 @@ const Palace = () => {
     orbitControls.enabled = false
     if(isMobileDevice()){
         fControls.enabled = false;
+        orbitControls.target.set(0, 70, 0);
         orbitControls.enabled = true;
         orbitControls.mouseButtons.RIGHT = null;
-        orbitControls.maxDistance =3;
-        orbitControls.minDistance =1;
-        orbitControls.target.y = 70;
-        
+        orbitControls.maxDistance = 80;
+        camera.position.set(-2, 70, 0);
+        camera.lookAt(0, 70, 0);
+        orbitControls.rotateSpeed = -0.5;
     }
     const imgPush = new TextureLoader()
     //로그인 링크
