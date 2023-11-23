@@ -133,11 +133,12 @@ const Palace = () => {
     orbitControls.enabled = false
     if(isMobileDevice()){
         fControls.enabled = false;
+        orbitControls.target.set(0, 70, 0);
         orbitControls.enabled = true;
         orbitControls.mouseButtons.RIGHT = null;
-        orbitControls.maxDistance =3;
-        orbitControls.minDistance =1;
-        orbitControls.target.y = 70;
+        orbitControls.maxDistance =80;
+        camera.position.set(-2, 70, 0);
+        camera.lookAt(0, 70, 0);
         
     }
     const imgPush = new TextureLoader()
