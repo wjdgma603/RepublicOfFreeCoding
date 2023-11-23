@@ -92,10 +92,10 @@ const CombinedComponent = () => {
         <div className="introSlider">
         <div className="introSliderContainer">
             {sliderImages.map((image, index) => (
-            <img className='sliderImages1' key={index} src={image} alt={`Intro Book ${index + 1}`} />
+            <img className='sliderImages1 slideImages' key={index} src={image} alt={`Intro Book ${index + 1}`} />
             ))}
             {sliderImages.map((image, index) => (
-            <img className='sliderImages2' key={`duplicate-${index}`} src={image} alt={`Intro Book ${index + 1}`} />
+            <img className='sliderImages2 slideImages' key={`duplicate-${index}`} src={image} alt={`Intro Book ${index + 1}`} />
             ))}
         </div>
         </div>

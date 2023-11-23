@@ -146,43 +146,50 @@
     overflow: hidden;
   }
   
-  .sliderImages1 {
-    width: 100%; /* Assuming 2 times the number of images for continuous sliding */
-    animation: slideImages1 10s linear infinite;
-  }
-  .sliderImages2 {
-    width: 100%; /* Assuming 2 times the number of images for continuous sliding */
-    animation: slideImages2 10s linear infinite;
-  }
   
-  .introSlider img {
-    width: 100%; /* Assuming 2 times the number of images for continuous sliding */
+  .introSliderContainer img {
+    width: calc((100% - 60px) / 6);
     height: auto;
-    margin: 0 10px;
-  }
+    margin: 0 5px;
+}
+
+.sliderImages1 {
+    width: 100%; 
+    animation: slideImages1 10s linear infinite;
+}
+.sliderImages2 {
+    width: 100%; 
+    animation: slideImages2 10s linear infinite;
+}
+
   
-  @keyframes slideImages1 {
+@keyframes slideImages1 {
     0% {
-      transform: translateX(0%);
+        transform: translateX(0%);
     }
-    50% {
-      transform: translateX(-100%);
+    /* 50% {
+        transform: translateX(-100%);
     }
-    /* 50.00001% {
-      transform: translateX(100%);
+    50.01% {
+        transform: translateX(100%);
     } */
     100% {
-      transform: translateX(0%); /* Move continuously in one direction */
+        transform: translateX(-620%);
     }
-  }
-  @keyframes slideImages2 {
+}
+@keyframes slideImages2 {
     0% {
-      transform: translateX(0%);
+        transform: translateX(0%);
     }
     100% {
-      transform: translateX(-100%); /* Move continuously in one direction */
+        transform: translateX(-620%);
     }
-  }
+}
+
+
+/* .sliderImages2 {
+    animation-delay: 10s;
+} */
   
   
 /* intro thirdSection 끝*/
@@ -194,6 +201,11 @@
     .IntroWrap{
         width: 100%;
         padding: 150px 50px;
+    }
+    .introSliderContainer img {
+        width: calc((100% - 30px) / 3);
+        height: auto;
+        margin: 0 5px;
     }
 }
 
@@ -286,10 +298,22 @@
     .IntroSecondSection>div>div{
         margin-bottom: 50px;
     }
-    /* .IntroSecondSection>div>div>.IntroClassFont{
-        word-break: keep-all;
-        width: 300px;
-    } */
+    @keyframes slideImages1 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-625%);
+        }
+    }
+    @keyframes slideImages2 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-625%);
+        }
+    }
 }
 
 @media (max-width: 460px) {
@@ -314,6 +338,27 @@
     }
     .IntroSecondSection>div>div{
         width: 100%;
+    }
+    .introSliderContainer img {
+        width: calc((100% - 20px) / 2);
+        height: auto;
+        margin: 0 5px;
+    }
+    @keyframes slideImages1 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-627%);
+        }
+    }
+    @keyframes slideImages2 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-627%);
+        }
     }
     
 }

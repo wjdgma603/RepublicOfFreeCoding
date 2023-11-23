@@ -3,7 +3,9 @@
     width: 100%;
     height: 90px;
     background: #FFF;
-    box-shadow: 0px 11px 10px 0px rgba(0, 0, 0, 0.16);
+    /* box-shadow: 0px 11px 10px 0px rgba(0, 0, 0, 0.16); */
+    border-bottom: 1px solid #E4E4E4;
+    z-index: 3;
 }
 .HeaderComponent>section.HeaderWrap{
     display: flex;
@@ -11,7 +13,7 @@
     align-items: center;
     margin: 0 auto;
     width: 1280px;
-    padding: 5px 0;
+    /* padding: 5px 0; */
 }
 /* 헤더 전체 */
 
@@ -42,20 +44,149 @@
 }
 /* 헤더 개인메뉴 */
 
+/* 햄버거바 */
+.HeaderComponent>section.HeaderWrap>div.HeaderMenu{
+    position: relative;
+    width: 34px;
+    height: 30px;
+    display: none;
+    cursor: pointer;
+}
+.HeaderComponent>section.HeaderWrap>div.HeaderMenu
+.HeaderComponent>section.HeaderWrap>div.HeaderMenu span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+}
+.HeaderComponent>section.HeaderWrap>div.HeaderMenu span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    border-radius: 4px;
+    transition: 0.4s;
+} 
+
+.HeaderMenu span:nth-of-type(1) {
+    top: 0;
+}
+.HeaderMenu span:nth-of-type(2) {
+    top: 14px;
+}
+.HeaderMenu span:nth-of-type(3) {
+    bottom: 0;
+}
+
+.HeaderMenu.active span:nth-of-type(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+} 
+.HeaderMenu.active span:nth-of-type(2) {
+    opacity: 0;
+}
+.HeaderMenu.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.HeaderNavigationMo {
+    position: fixed;
+    width: 100%;
+    top: 0px; 
+    /* right:-100%; */
+    padding: 80px 30px 0 30px;
+    height:100vh;
+    font-size: 20px;
+    background-color: #FFF;
+    z-index: 2;
+  }
+
+.HeaderNavigationMo.ShowActive{
+    animation-name: example ;
+    animation-duration: 1s ;
+}
+
+@keyframes example {
+    from {
+        right:-100%;
+    }
+    to {
+         right:0%;
+        }
+  }
+
+.HeaderNavigationMo>div{
+    display: flex;
+}
+
+.HeaderNavigationMo>div>div{
+    padding: 20px 0 20px 20px;
+    font-size: 16px;
+}
+
+
+/* 햄버거바 끝 */
+
+/* 모바일 nav 시작 */
+header{
+    position: absolute;
+}
+
+/* 모바일 nav 끝 */
+
+
 @media (max-width: 1280px) {
     .HeaderComponent>section.HeaderWrap{
+        height: 100%;
         width: 100%;
-        padding: 0px 50px;
+        padding: 0 50px;
     }
 }
-/* 
-@media (max-width: 1024px) {
-    .Intro_title{
-        font-size: 27px;
-        margin-bottom: 30px;
-    }
-    .IntroFirstSection>div>div>p:first-child{
-        width: 350px;
-    }
-} */
 
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+    .HeaderComponent>section.HeaderWrap>nav.HeaderNavigation>ul{
+        display: none;
+    }
+    .HeaderComponent>section.HeaderWrap>article.HeaderPersonalMenu{
+        display: none;
+    }
+    .HeaderComponent>section.HeaderWrap>div.HeaderMenu{
+        display: block;
+      }
+
+    .HeaderNavigationMo>ul>li{
+        padding: 40px 20px;
+        border-bottom: 1px solid #E4E4E4;
+    }
+    .HeaderComponent{
+        height: 80px;
+    }
+    .HeaderComponent>section.HeaderWrap{
+        width: 100%;
+        padding: 0 30px;
+    }
+    .HeaderComponent>section.HeaderWrap>article.HeaderLogoWrap{
+        padding-top: 4px;
+        height: 100%;
+        width: 60px;
+    }
+}
+
+@media (max-width: 460px) {
+    .HeaderComponent{
+        height: 80px;
+    }
+    .HeaderComponent>section.HeaderWrap{
+        width: 100%;
+        padding: 0 10px;
+    }
+    .HeaderComponent>section.HeaderWrap>article.HeaderLogoWrap{
+        height: 100%;
+        width: 60px;
+    }
+}
