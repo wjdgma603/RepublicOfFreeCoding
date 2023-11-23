@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CommuData from './SubComponents/CommuData';
 
 const CommuQna = () => {
   const { qnaPosts } = CommuData();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  useEffect(() => {
+    // Use the original qnaPosts for the initial state
+    const originalPosts = qnaPosts.postIndex;
+
+    // Check for any edited posts and update the title accordingly
+    const updatedPosts = originalPosts.map((post) => {
+      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
+      if (savedData) {
+        return { ...post, title: savedData.editedTitle };
+      } else {
+        return post;
+      }
+    });
+
+    setFilteredPosts(updatedPosts);
+  }, [qnaPosts.postIndex]);
+
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+
+    const filtered = qnaPosts.postIndex.filter((post) =>
+      post.title.includes(searchTerm)
+    );
+
+    setFilteredPosts(filtered);
+  };
+
+
 
   return (
     <div className="CommuSection">
@@ -28,7 +60,12 @@ const CommuQna = () => {
       <div className="CommuRight">
         <div className="CommuRightHeaderWrap">
           <h1>문의사항</h1>
-          <input className="CommuRightSearch" type="text" placeholder="검색어를 입력해주세요."/>
+          <input
+            className="CommuRightSearch"
+            type="text"
+            placeholder="검색어를 입력해주세요."
+            onChange={handleSearch}
+          />
         </div>
         <div className="CommuBoardHeader">
           <p className="CommuBoardNumber">번호</p>
@@ -36,13 +73,11 @@ const CommuQna = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-          {qnaPosts.postIndex.map((post) => (
+          {filteredPosts.map((post) => (
             <Link to={`/community/qna/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
-                <td>
-                  {sessionStorage.getItem(`editedQuestion_${post.id}`) || post.title}
-                </td>
+                <td>{post.title}</td>
                 <td>{post.date}</td>
               </tr>
             </Link>

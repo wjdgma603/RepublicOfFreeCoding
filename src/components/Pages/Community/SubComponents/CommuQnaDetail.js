@@ -12,29 +12,12 @@ const CommuQnaDetail = () => {
   const [isEditingQuestion, setIsEditingQuestion] = useState(false);
   const [isEditingAnswer, setIsEditingAnswer] = useState(false);
 
-  const [editedContent, setEditedContent] = useState(
-    () => sessionStorage.getItem(`editedContent_${id}`) || qnaPosts.postIndex[selectedPostIndex].content
-  );
-  const [editedAnswer, setEditedAnswer] = useState(
-    () => sessionStorage.getItem(`editedAnswer_${id}`) || qnaPosts.postIndex[selectedPostIndex].answer
-  );
-  const [editedQuestion, setEditedQuestion] = useState(
-    () => sessionStorage.getItem(`editedQuestion_${id}`) || qnaPosts.postIndex[selectedPostIndex].title
-  );
-
-  useEffect(() => {
-    sessionStorage.setItem(`editedContent_${id}`, editedContent);
-    sessionStorage.setItem(`editedAnswer_${id}`, editedAnswer);
-    sessionStorage.setItem(`editedQuestion_${id}`, editedQuestion);
-  }, [id, editedContent, editedAnswer, editedQuestion]);
+  const [editedContent, setEditedContent] = useState(qnaPosts.postIndex[selectedPostIndex].content);
+  const [editedAnswer, setEditedAnswer] = useState(qnaPosts.postIndex[selectedPostIndex].answer);
+  const [editedQuestion, setEditedQuestion] = useState(qnaPosts.postIndex[selectedPostIndex].title);
 
   const toggleEditQuestion = () => {
     setIsEditingQuestion((prev) => !prev);
-
-    if (!isEditingQuestion) {
-      setEditedQuestion(qnaPosts.postIndex[selectedPostIndex].title);
-      setEditedContent(qnaPosts.postIndex[selectedPostIndex].content);
-    }
   };
 
   const toggleEditAnswer = () => {
@@ -65,6 +48,13 @@ const CommuQnaDetail = () => {
     }
   };
 
+  useEffect(() => {
+    // Qna 페이지에서 수정된 제목을 반영
+    const updatedQnaPosts = [...qnaPosts.postIndex];
+    updatedQnaPosts[selectedPostIndex].title = editedQuestion;
+    setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
+  }, [editedQuestion, selectedPostIndex, qnaPosts]);
+
   return (
     <div className="CommuSection">
       <div>
@@ -86,6 +76,7 @@ const CommuQnaDetail = () => {
       </div>
 
       <div className="CommuRight">
+        <h1>문의사항</h1>
         <div className="CommuQnaTitleWrap">
           <div className="CommuQnaTitle">
             <div>
@@ -157,91 +148,3 @@ const CommuQnaDetail = () => {
 };
 
 export default CommuQnaDetail;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import { Link, useParams } from "react-router-dom";
-// import "./CommuQnaDetail.css";
-// import CommuData from './CommuData';
-
-// const CommuQnaDetail = () => {
-//   const { id } = useParams(); // URL 파라미터로부터 id 추출
-//   const { qnaPosts } = CommuData();
-
-//   // id에 해당하는 게시글 찾기
-//   const selectedQna = qnaPosts.postIndex.find((post) => post.id === parseInt(id));
-
-//   // id에 해당하는 게시글이 없을 경우 처리
-//   if (!selectedQna) {
-//     return <div>게시글이 없습니다.</div>;
-//   }
-
-//   return (
-//     <div className="CommuSection">
-//       <div>
-//         <div>
-//           <div>커뮤니티</div>
-//           <div>초기화</div>
-//         </div>
-//         <ul className="CommuNav">
-//           <li>
-//             <Link to="/community">공지사항</Link>
-//           </li>
-//           <li>
-//             <Link to="/community/qna">문의사항</Link>
-//           </li>
-//           <li>
-//             <Link to="/community/faq">FAQ</Link>
-//           </li>
-//         </ul>
-//       </div>
-//       <div className="CommuRight">
-        // <h1>문의사항</h1>
-        // <div className="CommuQnaTitleWrap">
-        //   {/* 질문글 부분 */}
-        //   <div className="CommuQnaTitle">
-        //     <div>{selectedQna.title}</div>
-        //     <div>{selectedQna.date}</div>
-        //   </div>
-        // </div>
-        // <div className="CommuQnaText">{selectedQna.content}</div>
-
-//         {/* 답변글 부분 */}
-//         <div className="CommuQnaTitle">
-//           <div>문의답변</div>
-//           <div>{selectedQna.answerDate}</div>
-//         </div>
-//         <div className="CommuQnaText">{selectedQna.answer}</div>
-
-//         <div className="CommuQnaButtonWrap">
-//           <div>
-//             <button>답변수정</button>
-//             <button>답변삭제</button>
-//           </div>
-//           <Link to="/community/qna">
-//             <button className="CommuQnaButton">목록보기</button>
-//           </Link>
-//           <button>글수정</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CommuQnaDetail;

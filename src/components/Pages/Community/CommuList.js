@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CommuData from "./SubComponents/CommuData";
 import "./CommuList.css";
 
 const CommuList = () => {
   const { noticePosts } = CommuData();
-  const location = useLocation();
-  const updatedTitle = location.state ? location.state.updatedTitle : null;
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(noticePosts.postIndex);
 
@@ -56,11 +54,7 @@ const CommuList = () => {
             <Link to={`/community/notice/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
-                <td>
-                  {post.title === updatedTitle
-                    ? updatedTitle
-                    : sessionStorage.getItem(`editedTitle_${post.id}`) || post.title}
-                </td>
+                <td>{post.title}</td>
                 <td>{post.date}</td>
               </tr>
             </Link>

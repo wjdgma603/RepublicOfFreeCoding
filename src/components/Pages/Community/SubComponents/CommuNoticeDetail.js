@@ -6,37 +6,48 @@ import './CommuNoticeDetail.css';
 const CommuNoticeDetail = () => {
   const { id } = useParams();
   const [noticePosts, setNoticePosts] = useState(noticePost);
-  const selectedPost = noticePost.postIndex.find((post) => post.id === parseInt(id));
+  const selectedPost = noticePosts.postIndex.find((post) => post.id === parseInt(id));
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState(() => {
-    const storedContent = sessionStorage.getItem(`editedContent_${id}`);
-    return storedContent !== null ? storedContent : selectedPost.content;
-  });
-  const [editedTitle, setEditedTitle] = useState(() => {
-    const storedTitle = sessionStorage.getItem(`editedTitle_${id}`);
-    return storedTitle !== null ? storedTitle : selectedPost.title;
-  });
+  const [editedContent, setEditedContent] = useState(selectedPost.content);
+  const [editedTitle, setEditedTitle] = useState(selectedPost.title);
+
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
+    if (savedData) {
+      setEditedTitle(savedData.editedTitle);
+      setEditedContent(savedData.editedContent);
+    }
+  }, [id]);
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSaveClick = () => {
-    updateNoticePost(parseInt(id), editedTitle, editedContent);
+
+    setNoticePosts((prevNoticePosts) => {
+      const updatedPosts = prevNoticePosts.postIndex.map((post) => {
+        if (post.id === parseInt(id)) {
+          return { ...post, title: editedTitle, content: editedContent };
+        } else {
+          return post;
+        }
+      });
+
+      return { ...prevNoticePosts, postIndex: updatedPosts };
+    });
+
     setIsEditing(false);
+    
+    // Save the edited data to localStorage
+    localStorage.setItem(`editedPost_${id}`, JSON.stringify({ editedTitle, editedContent }));
   };
 
   const handleCancelClick = () => {
-    setEditedContent(selectedPost.content);
-    setEditedTitle(selectedPost.title);
     setIsEditing(false);
   };
-
-  useEffect(() => {
-    sessionStorage.setItem(`editedContent_${id}`, editedContent);
-    sessionStorage.setItem(`editedTitle_${id}`, editedTitle);
-  }, [id, editedContent, editedTitle]);
 
   const deletePost = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
@@ -44,10 +55,10 @@ const CommuNoticeDetail = () => {
       const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
       setNoticePosts({ ...noticePosts, postIndex: updatedNoticePosts });
       setIsEditing(false);
-      window.location.href = '/community'; // 페이지 이동
+      window.location.href = '/community';
+      localStorage.removeItem(`editedPost_${id}`);
     }
   };
-
   return (
     <div className="CommuSection">
       <div>
@@ -68,7 +79,7 @@ const CommuNoticeDetail = () => {
         </ul>
       </div>
 
-      <div className="CommuRight">
+    <div className="CommuRight">
         <h1>공지사항</h1>
 
         {isEditing ? (
