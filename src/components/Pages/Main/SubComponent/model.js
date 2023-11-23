@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import TWEEN from '@tweenjs/tween.js'
 import { useRef,useEffect } from 'react';
 import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
@@ -21,8 +20,7 @@ import communitySec from "../images/2d/communitySec.png" //커뮤니티 섹션
 import CodeTest from "../images/2d/CodeTest.png" //커뮤니티 섹션
 import Introduce from "../images/2d/Introduce.png" // 소개 섹션
 import Ebook from "../images/2d/Ebook.png" // 소개 섹션
-
-
+import  gsap  from  "gsap" ;
 
 const Palace = () => {
     const main = useRef()
@@ -45,9 +43,10 @@ const Palace = () => {
         0.25,
         2000
     );
-    camera.position.z = 0;
-    camera.position.y = 35; 
-    camera.position.x = 0;
+    camera.position.x = 120;
+    camera.position.z = -10;
+    camera.position.y = 40; 
+    camera.lookAt(200,-200,-10);
     scene.add(camera)
 
 
@@ -173,6 +172,7 @@ const Palace = () => {
     const aboutLinkPush = imgPush.load(aboutLink)
     const section44 = new THREE.MeshStandardMaterial({
         map : aboutLinkPush,
+        // alphaHash : true,
     }) 
     const mesh4 = new THREE.Mesh(section4, section44)
     mesh4.position.set(286,80, 130)
@@ -336,11 +336,12 @@ const Palace = () => {
 
 
 
-    const clickableMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5, mesh6];
+    const clickableMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5, mesh6,mesh14,mesh15,mesh16,mesh17,mesh18,mesh19,mesh20,mesh21];
+  
 
       // Raycaster
     const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
+    const mouse = new THREE.Vector2(); 
 
 
  
@@ -353,41 +354,23 @@ const Palace = () => {
         mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
         // Update the picking ray with the camera and mouse position
         raycaster.setFromCamera(mouse, camera);
-  
+      
         // Calculate objects intersecting the picking ray
         const intersects = raycaster.intersectObjects(clickableMeshes);
   
         if (intersects.length > 0) {
             // Handle click on the intersected object(s) here
             const clickedMesh = intersects[0].object;
-    
+            const startOrientation = camera.quaternion.clone();
+            const targetOrientation = clickedMesh.quaternion.clone().normalize();
+        
             if (clickedMesh === mesh1) {
                 console.log('Clicked on mesh1');
                 // Perform actions specific to mesh1
                 // For example, navigate to a different page
                 window.location = 'http://localhost:3000/login';
             } else if (clickedMesh === mesh2) {
-                
-                const targetPosition = { x: 0, y: 0, z: 0 };
-    const targetLookAt = new THREE.Vector3(0, 0, 0); // 캡슐을 바라볼 방향
-    const duration = 1500;
-
-    // 카메라 위치 변경
-    new TWEEN.Tween(camera.position)
-        .to(targetPosition, duration)
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .start();
-
-    // 카메라 방향 변경
-    new TWEEN.Tween(camera.rotation)
-        .to({ x: 0, y: 0, z: 0 }, duration)  // 이 부분을 수정하여 시선을 조절
-        .easing(TWEEN.Easing.Quadratic.InOut)
-        .start()
-        .onComplete(() => {
-            // 이동이 끝난 후 실행되는 부분
-            camera.lookAt(targetLookAt);
-        });
-                
+               
             } else if (clickedMesh === mesh3) {
                 console.log('Clicked on mesh3');
                 window.location = 'http://localhost:3000/community';
@@ -400,7 +383,162 @@ const Palace = () => {
             } else if (clickedMesh === mesh6) {
                 console.log('Clicked on mesh6');
                 window.location = 'http://localhost:3000/ebook'
-            }
+            
+            } else if (clickedMesh === mesh16) {
+                console.log('Clicked on mesh16');
+                fControls.enabled = false;
+                fControls.enableDamping = true;    
+                gsap.to(camera.position, {
+                    duration: 1.5,
+                    x: -10,
+                    y: 40,
+                    z: -30,
+                    onUpdate: function () {
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    },
+                    onComplete: function () {
+                        fControls.enabled = true;
+                        fControls.enableDamping = false;    
+                        fControls.lookAt(80,40,-280)
+                      
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    }
+                });
+            } else if (clickedMesh === mesh17) {
+                console.log('Clicked on mesh17');
+                fControls.enabled = false;
+                fControls.enableDamping = true;    
+                gsap.to(camera.position, {
+                    duration: 1.5,
+                    x: 30,
+                    y: 40,
+                    z: 80,
+                    onUpdate: function () {
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    },
+                    onComplete: function () {
+                        fControls.enabled = true;
+                        fControls.enableDamping = false;    
+                        fControls.lookAt(0,0,240)
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    }
+                });
+            }else if (clickedMesh === mesh14) {
+                console.log('Clicked on mesh14');
+                fControls.enabled = false;
+                fControls.enableDamping = true;    
+                gsap.to(camera.position, {
+                    duration: 1.5,
+                    x: -90,
+                    y: 40,
+                    z: 190,
+                    onUpdate: function () {
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    },
+                    onComplete: function () {
+                        fControls.enabled = true;
+                        fControls.enableDamping = false;    
+                        fControls.lookAt(-460,0,-50)
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    }
+                });
+            }else if (clickedMesh === mesh15) {
+                console.log('Clicked on mesh15');
+                fControls.enabled = false;
+                fControls.enableDamping = true;    
+                gsap.to(camera.position, {
+                    duration: 1.5,
+                    x: 120,
+                    y: 40,
+                    z: 10,
+                    onUpdate: function () {
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    },
+                    onComplete: function () {
+                        fControls.enabled = true;
+                        fControls.enableDamping = false;    
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                        fControls.lookAt(360,40,-170)
+          
+                    }
+                });
+            }else if (clickedMesh === mesh20) {
+                    console.log('Clicked on mesh20');
+                fControls.enabled = false;
+                fControls.enableDamping = true;    
+                gsap.to(camera.position, {
+                    duration: 1.5,
+                    x: 10,
+                    y: 40,
+                    z: 80,
+                    onUpdate: function () {
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    },
+                    onComplete: function () {
+                        fControls.enabled = true;
+                        fControls.enableDamping = false;    
+                        fControls.lookAt(20,40,400)
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    }
+                });
+            }else if (clickedMesh === mesh21) {
+                console.log('Clicked on mesh21');
+                fControls.enabled = false;
+                fControls.enableDamping = true;    
+                gsap.to(camera.position, {
+                    duration: 1.5,
+                    x: 0,
+                    y: 40,
+                    z: -20,
+                    onUpdate: function () {
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    },
+                    onComplete: function () {
+                        fControls.enabled = true;
+                        fControls.enableDamping = false;    
+                        fControls.lookAt(100,40,-280)
+                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                    }
+                });
+            }else if (clickedMesh === mesh18) {
+                console.log('Clicked on mesh18');
+            fControls.enabled = false;
+            fControls.enableDamping = true;    
+            gsap.to(camera.position, {
+                duration: 1.5,
+                x: 10,
+                y: 40,
+                z: 80,
+                onUpdate: function () {
+                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                },
+                onComplete: function () {
+                    fControls.enabled = true;
+                    fControls.enableDamping = false;    
+                    fControls.lookAt(-100,40,360)
+                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                }
+            });
+            }else if (clickedMesh === mesh19) {
+                console.log('Clicked on mesh19');
+            fControls.enabled = false;
+            fControls.enableDamping = true;    
+            gsap.to(camera.position, {
+                duration: 1.5,
+                x: 0,
+                y: 40,
+                z: 0,
+                onUpdate: function () {
+                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                },
+                onComplete: function () {
+                    fControls.enabled = true;
+                    fControls.enableDamping = false;    
+                    fControls.lookAt(mesh20.position)
+                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
+                }
+            });
+    }
 
         }
       };
@@ -413,12 +551,12 @@ const Palace = () => {
       });
 
 
+
       //애니메이션
       const clock = new THREE.Clock();  
       const animate = ()=>{
           const delta = clock.getDelta();
           fControls.update(delta);
-          TWEEN.update();
           renderer.render(scene, camera);
           renderer.setAnimationLoop(animate);
       }
