@@ -9,8 +9,6 @@ const CommuQna = () => {
 
   useEffect(() => {
     const originalPosts = qnaPosts.postIndex;
-
-    // Check for any edited posts and update the title accordingly
     const updatedPosts = originalPosts.map((post) => {
       const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
       if (savedData) {
@@ -69,6 +67,8 @@ const CommuQna = () => {
           <p className="CommuBoardTitle">제목</p>
           <p className="CommuBoardDate">등록일</p>
         </div>
+
+
         <table className="CommuBoard">
           {filteredPosts.map((post) => (
             <Link to={`/community/qna/${post.id}`} key={post.id}>
@@ -80,6 +80,7 @@ const CommuQna = () => {
             </Link>
           ))}
         </table>
+        
         
         <div className="CommuBottomWrap">
           <div></div>

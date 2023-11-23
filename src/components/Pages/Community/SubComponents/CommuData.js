@@ -5,22 +5,25 @@ export const noticePost = {
   postIndex: [
     {
       id: 3,
-      title: '세번째 공지사항',
-      content: '세번째 공지사항 내용입니다!',
+      title: '3번째 공지사항',
+      content: '세번째 공지사항 내용입니다!?',
       date: '2023.11.09.',
     },
+
     {
       id: 2,
-      title: '두번째 공지사항',
-      content: '두번째 공지사항 내용입니다!',
+      title: '2번째 공지사항',
+      content: '두번째 공지사항 내용입니다!??',
       date: '2023.11.12.',
     },
+
     {
       id: 1,
-      title: '첫번째 공지사항',
-      content: '첫번째 공지사항 내용입니다!',
+      title: '1번째 공지사항',
+      content: '첫번째 공지사항 내용입니다!???',
       date: '2023.11.18.',
     },
+
   ],
 };
 
@@ -34,7 +37,7 @@ export const updateNoticePost = (id, updatedContent, updatedAnswer) => {
 
 const addNoticePost = (newPost) => {
   noticePost.postIndex.unshift({
-    id: noticePost.postIndex.length + 1, //id 4부터 시작
+    id: noticePost.postIndex.length + 1,
     title: newPost.title,
     content: newPost.content,
     date: new Date().toLocaleDateString(),
@@ -44,8 +47,17 @@ const addNoticePost = (newPost) => {
 
 /******************************************* */
 
+
 export const qnaPost = {
   postIndex: [
+    {
+      id: 4,
+      title: '네번째qna',
+      content: '네번째 qna입니다 질문이있습니다??',
+      answer: '네번째 질문에대한 답변입니다.',
+      date: '2023.11.09.',
+      answerDate: '2023.11.10',
+    },
     {
       id: 3,
       title: '세번째 qna',
@@ -54,6 +66,7 @@ export const qnaPost = {
       date: '2023.11.09.',
       answerDate: '2023.11.10',
     },
+
     {
       id: 2,
       title: '두번째 qna',
@@ -62,6 +75,7 @@ export const qnaPost = {
       date: '2023.11.09.',
       answerDate: '2023.11.10',
     },
+
     {
       id: 1,
       title: '첫번째 qna',
@@ -70,6 +84,7 @@ export const qnaPost = {
       date: '2023.11.09.',
       answerDate: '2023.11.10',
     },
+
   ],
 };
 
@@ -81,13 +96,14 @@ export const updateQnaPost = (id, updatedContent, updatedAnswer) => {
 
 const addQnaPost = (newPost) => {
   qnaPost.postIndex.unshift({
-    id: qnaPost.postIndex.length + 1, //id 4부터시작임
+    id: qnaPost.postIndex.length + 1,
     title: newPost.title,
     content: newPost.content,
     date: new Date().toLocaleDateString(),
   });
 };
 
+/************************************** */
 
 const CommuData = () => {
   const [noticePosts, setNoticePosts] = useState(noticePost);

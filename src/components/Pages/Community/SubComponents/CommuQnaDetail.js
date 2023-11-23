@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./CommuQnaDetail.css";
 import { qnaPost, updateQnaPost } from '../SubComponents/CommuData';
@@ -48,12 +48,12 @@ const CommuQnaDetail = () => {
     }
   };
 
-  useEffect(() => {
-    // Qna 페이지에서 수정된 제목을 반영
-    const updatedQnaPosts = [...qnaPosts.postIndex];
-    updatedQnaPosts[selectedPostIndex].title = editedQuestion;
-    setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
-  }, [editedQuestion, selectedPostIndex, qnaPosts]);
+  // useEffect(() => {
+  //   // Qna 페이지에서 수정된 제목을 반영
+  //   const updatedQnaPosts = [...qnaPosts.postIndex];
+  //   updatedQnaPosts[selectedPostIndex].title = editedQuestion;
+  //   setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
+  // }, [editedQuestion, selectedPostIndex, qnaPosts]);
 
   return (
     <div className="CommuSection">
