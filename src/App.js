@@ -11,6 +11,11 @@ import EbookDetail from './components/Pages/Ebook/SubComponents/EbookDetail';
 import CommuList from './components/Pages/Community/CommuList';
 import CodeTestList from './components/Pages/CodeTest/CodeTestList';
 import Footer from './components/Footer/Footer';
+
+//codeTest
+import CodeTestHtml from "./components/Pages/CodeTest/CodeTestHtml"
+import CodeTestCss from "./components/Pages/CodeTest/CodeTestCss"
+import CodeTestJs from "./components/Pages/CodeTest/CodeTestJs"
 import { useEffect, useState } from 'react'; 
 import NotFound from './components/Common/NotFound';
 
@@ -121,6 +126,9 @@ function App() {
         <Route exact path='/test/*' element={<CodeTestList/>}/>
         <Route exact path='/community/*' element={<CommuList/>}/>
         <Route exact path='*' element={<NotFound HeaderDisable={HeaderDisable} FooterLoaded={FooterLoaded}/>}/>
+        <Route path='/codeTestHtml' element={<CodeTestHtml/>}/>
+        <Route path='/codeTestCss' element={<CodeTestCss/>}/>
+        <Route path='/codeTestJs' element={<CodeTestJs/>}/>
       </Routes>
       <Footer isFooterLoaded={isFooterLoaded}/>
     </div>

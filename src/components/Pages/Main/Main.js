@@ -5,7 +5,7 @@ import Loading from './SubComponent/Loading';
 const LazyThreeJSBack = React.lazy(() => import('./SubComponent/Back'));
 const LazyThreeJSModel = React.lazy(() => {
   return Promise.all([
-    import("./SubComponent/model"),
+    import("./SubComponent/model.js"),
     new Promise(resolve => setTimeout(resolve, 2500))
   ])
   .then(([moduleExports]) => moduleExports);
