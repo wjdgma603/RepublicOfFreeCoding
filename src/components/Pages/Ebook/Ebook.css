@@ -135,6 +135,9 @@
 
 /* ebook 리스트 페이지  =============================== */
 
+
+
+/* ebook 디테일 페이지  =============================== */
 section.EbookDetailPage{
     width: 1280px;
     padding-top: 247px;
@@ -159,6 +162,7 @@ section.EbookDetailPage>.MainItemWrap{
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 145px;
 }
 section.EbookDetailPage>.MainItemWrap>.Suggest{
     border-radius: 10px;
@@ -171,6 +175,7 @@ section.EbookDetailPage>.MainItemWrap>.Suggest{
     transform: translateY(100%);
     z-index: -1;
     position: relative;
+    align-items: center;
 }
 section.EbookDetailPage>.MainItemWrap>.Suggest::after{
     display: block;
@@ -203,6 +208,7 @@ section.EbookDetailPage>.MainItemWrap>.Suggest>.Review>.ReviewScore>svg{
 }
 section.EbookDetailPage>.MainItemWrap>.Suggest>.Review>.ReviewTotal{
     text-align: center;
+    font-size: 14px;
 }
 section.EbookDetailPage>.MainItemWrap>.Suggest>.Review>.ReviewTotal>span{
     color: #00D67A;
@@ -219,6 +225,8 @@ section.EbookDetailPage>.MainItemWrap>.Suggest>.Buyer>.BuyerReview{
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.15px;
+    margin-bottom: 26px;
+    transform: translateY(25%);
 }
 section.EbookDetailPage>.MainItemWrap>.Suggest>.Buyer>.BuyerPer{
     text-align: center;
@@ -226,6 +234,9 @@ section.EbookDetailPage>.MainItemWrap>.Suggest>.Buyer>.BuyerPer{
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0.15px;
+}
+section.EbookDetailPage>.MainItemWrap>.Suggest>.Buyer>.BuyerPer>span{
+    color: #00D67A;
 }
 section.EbookDetailPage>.MainItemWrap>.ImgWrap{
     height: 550px;
@@ -242,6 +253,149 @@ section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer{
     flex-direction: column;
     flex: 1;
 }
+section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.Author{
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+}
+section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.Publisher{
+    color: #444;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
 section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.AuthorExplain{
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    flex: 1;
+}
+section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.GotoEbookPage>a{
+    border-radius: 10px;
+    border: 1px solid #00D67A;
+    background-color: #FFF;
+    color: #00D67A;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: 0.13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 0;
+    transition: background-color .3s ease-in-out;
+}
+section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.GotoEbookPage>a:hover{
+    background-color: #000;
+}
+section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.GotoEbookPage>a>svg{
+    width: 15px;
+    margin-right: 15px;
+}
+/* 디테일 Main 아이템 Wrap 완성 */
+
+section.EbookDetailPage>.ExplainWrap>.BookSuggest,
+section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+section.EbookDetailPage>.ExplainWrap>.BookSuggest{
+    margin-bottom: 40px;
+}
+section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{
+    margin-bottom: 100px;
+}
+section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText>.Title,
+section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText>.Title{
+    color: #000;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText>.Content,
+section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText>.Content{
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    width: 750px;
+}
+section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg{
+    width: 245px;
+    height: 400px;
+    background-color: #00D67A;
+    border-radius: 0 30px 30px 0 ;
+    display: flex;
+    align-items: center;
+}
+section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestImg{
+    width: 245px;
+    height: 400px;
+    background-color: #00D67A;
+    border-radius: 30px 0 0 30px ;
+    display: flex;
+    align-items: center;
+}
+section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg>img{
+    width: 100%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestImg>img{
+    width: 100%;
+    transform: translateX(50%);
+    z-index: 0;
+}
+/* 디테일 설명 페이지 CSS 완성 */
+
+section.EbookDetailPage>.BookBasicInfo{
+    margin-bottom: 150px    ;
+}
+section.EbookDetailPage>.BookBasicInfo>.Title{
+    color: #000;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0px 0px 15px 5px;
+}
+section.EbookDetailPage>.BookBasicInfo>.BasicInfo{
+    border-width: 1px 0;
+    border-color: black transparent;
+    border-style: solid;
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div{
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+}
+section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div>span{
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 5px;  
     display: inline-block;
+    width: 200px;
+}
+section.EbookDetailPage>.GotoList{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 150px;
+}
+section.EbookDetailPage>.GotoList>a{
+    display: inline-block;
+    padding: 25px 0;
+    text-align: center;
+    width: 360px;
+    color: #00D67A;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: 0.13px;
+    border-radius: 10px;
+    background-color: #FFF;
+    border: 1px solid #00D67A;
 }
