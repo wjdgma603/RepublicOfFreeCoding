@@ -137,10 +137,10 @@ function App() {
         <Route path='/community/notice' element={<CommuList/>}/>
         <Route path='/community/noticeWrite' element={<CommuNoticeWrite/>}/>
         <Route path="/community/notice/:id" element={<CommuNoticeDetail/>}/>
-        <Route path='/community/qnaWrite' element={<CommuQnaWrite />}/>
-        <Route path='/community/qna' element={<CommuQna />}/>
-        <Route path="/community/qna/:id" element={<CommuQnaDetail />} />
-        <Route path='/community/faq' element={<CommuFaq />}/>
+        <Route path='/community/qnaWrite' element={<CommuQnaWrite/>}/>
+        <Route path='/community/qna' element={<CommuQna/>}/>
+        <Route path="/community/qna/:id" element={<CommuQnaDetail/>}/>
+        <Route path='/community/faq' element={<CommuFaq/>}/>
       </Routes>
       <Footer isFooterLoaded={isFooterLoaded}/>
     </div>
