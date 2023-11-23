@@ -5,8 +5,6 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import model from '../images/3d/new3.glb'
 import { TextureLoader} from "three";
-import leftArrow from "../images/2d/leftArrow.png"
-import rightArrow from "../images/2d/rightArrow.png"
 
 //link
 import aboutLink from "../images/2d/Link.png" // 홈페이지 소개 링크
@@ -23,12 +21,14 @@ import communitySec from "../images/2d/communitySec.png" //커뮤니티 섹션
 import CodeTest from "../images/2d/CodeTest.png" //커뮤니티 섹션
 import Introduce from "../images/2d/Introduce.png" // 소개 섹션
 import Ebook from "../images/2d/Ebook.png" // 소개 섹션
-import  gsap  from  "gsap" ;
+import { useNavigate } from 'react-router-dom';
 
 const Palace = () => {
     const main = useRef()
-    useEffect(() => {  
-        const mainCur = main.current
+    const Navigate = useNavigate()
+    useEffect(() => {
+        
+    const mainCur = main.current
     //render
     const renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -53,8 +53,6 @@ const Palace = () => {
     scene.add(camera)
  
     const LightColorPow = 8;
-    // const LightColor = "#755409";
-    // const LightColor = "#774825";
     const LightColor = "#9F621B";
 
     //light 
@@ -107,14 +105,10 @@ const Palace = () => {
     // 입구 조명
     const PointLight14 = new THREE.PointLight( "green",  2000);
     PointLight14.position.set(240,50,210)
-    
-    const helper = new THREE.PointLightHelper(PointLight14,10)
 
     scene.add(PointLight,PointLight1,PointLight2,PointLight3,
         PointLight6,PointLight7,PointLight8,
-        PointLight9,PointLight10,PointLight11,PointLight12,PointLight13,PointLight14, helper
-        );
-
+        PointLight9,PointLight10,PointLight11,PointLight12,PointLight13,PointLight14);
 
     //GLTF 건물 불러옴
     const gltfLoader = new GLTFLoader();
@@ -125,24 +119,27 @@ const Palace = () => {
         imgs.position.x = 0;
         imgs.position.y =0;
     })
-
     // //컨트롤러
 
     const fControls = new FirstPersonControls( camera, renderer.domElement );
     fControls.movementSpeed = 50;
-    fControls.activeLook =true;
+    fControls.activeLook = true;
     fControls.lookSpeed = 0.02;
-    fControls.lookVertical=true;
-    fControls.constrainVertical=true;
-    fControls.verticalMax=1.5;
+    fControls.lookVertical= true;
+    fControls.constrainVertical= true;
+    fControls.verticalMax= 1.5;
     fControls.verticalMin= 1;
     const orbitControls = new OrbitControls(camera,renderer.domElement)
     orbitControls.enabled = false
     if(isMobileDevice()){
         fControls.enabled = false;
         orbitControls.enabled = true;
+        orbitControls.mouseButtons.RIGHT = null;
+        orbitControls.maxDistance =3;
+        orbitControls.minDistance =1;
+        orbitControls.target.y = 70;
+        
     }
-
     const imgPush = new TextureLoader()
     //로그인 링크
     const section1 = new THREE.BoxGeometry(1,20,20)
@@ -152,14 +149,6 @@ const Palace = () => {
     }) 
     const mesh1 = new THREE.Mesh(section1, section11)
     mesh1.position.set(-300,155,-80)
-
-    //아래 오른쪽 캡슐
-    const section2 = new THREE.CapsuleGeometry(2,3,3,20)
-    const section22 = new THREE.MeshStandardMaterial({
-        color : 'red',
-    }) 
-    const mesh2 = new THREE.Mesh(section2, section22)
-    mesh2.position.set(0,0,0)
     // 커뮤니티 링크
     const section3 = new THREE.BoxGeometry(1,30,30)
     const communityLinkPush = imgPush.load(communityLink)
@@ -195,7 +184,7 @@ const Palace = () => {
     const mesh6 = new THREE.Mesh(section6, section66)
     mesh6.position.set(-130,60,-225)
 
-    scene.add(mesh1,mesh2,mesh3,mesh4,mesh5,mesh6);
+    scene.add(mesh1,mesh3,mesh4,mesh5,mesh6);
     // 커뮤니티 칠판
     const section7 = new THREE.BoxGeometry(160,80,1)
     const communitySecPush = imgPush.load(communitySec)
@@ -258,90 +247,15 @@ const Palace = () => {
     mesh13.position.set(210,58,-212)
     mesh13.rotation.y = -0.3;
 
-    //섹션 이동 버튼들임
-    // Ebook북 왼쪽 버튼
-    const ebookLeft = new THREE.BoxGeometry(10,10,1)
-    const ebookLeftPush = imgPush.load(leftArrow)
-    const ebookLeft1 = new THREE.MeshStandardMaterial({
-        map : ebookLeftPush
-    }) 
-    const mesh14 = new THREE.Mesh(ebookLeft, ebookLeft1)
-    mesh14.position.set(-100,0,-220)
-
-    // Ebook북 오른쪽 버튼
-    const ebookRight = new THREE.BoxGeometry(10,10,1)
-    const ebookRightPush = imgPush.load(rightArrow)
-    const ebookRight1 = new THREE.MeshStandardMaterial({
-        map : ebookRightPush
-    }) 
-    const mesh15 = new THREE.Mesh(ebookRight, ebookRight1)
-    mesh15.position.set(240,60,-210)
-
-    // Introduce 왼쪽 버튼
-    const introduceLeft = new THREE.BoxGeometry(1,10,10)
-    const introduceLeftPush = imgPush.load(leftArrow)
-    const introduceLeft1 = new THREE.MeshStandardMaterial({
-        map : introduceLeftPush
-    }) 
-    const mesh16 = new THREE.Mesh(introduceLeft, introduceLeft1)
-    mesh16.position.set(282,0,-150)
-    // Introduce 오른족 버튼
-    const introduceRight = new THREE.BoxGeometry(1,10,10)
-    const introduceRightPush = imgPush.load(rightArrow)
-    const introduceRight1 = new THREE.MeshStandardMaterial({
-        map : introduceRightPush
-    }) 
-    const mesh17 = new THREE.Mesh(introduceRight, introduceRight1)
-    mesh17.position.set(282,0,140)
-
-   // codeTest 왼쪽 버튼
-   const codeTestLeft = new THREE.BoxGeometry(10,10,1)
-   const codeTestLeftPush = imgPush.load(leftArrow)
-   const codeTestLeft1 = new THREE.MeshStandardMaterial({
-       map : codeTestLeftPush
-   }) 
-   const mesh18 = new THREE.Mesh(codeTestLeft, codeTestLeft1)
-   mesh18.position.set(80,0,210)
-   // codeTest 오른쪽 버튼
-   const codeTestRight = new THREE.BoxGeometry(10,10,1)
-   const codeTestRightPush = imgPush.load(rightArrow)
-   const codeTestRight1 = new THREE.MeshStandardMaterial({
-       map : codeTestRightPush
-   }) 
-   const mesh19 = new THREE.Mesh(codeTestRight, codeTestRight1)
-   mesh19.position.set(-50,28,210)
-
-   // community 왼쪽 버튼
-   const communityLeft = new THREE.BoxGeometry(1,10,10)
-   const communityLeftPush = imgPush.load(leftArrow)
-   const communityLeft1 = new THREE.MeshStandardMaterial({
-       map : communityLeftPush
-   }) 
-   const mesh20 = new THREE.Mesh(communityLeft, communityLeft1)
-   mesh20.position.set(-240,30,213)
-   // community 오른쪽 버튼
-   const communityRight = new THREE.BoxGeometry(1,10,10)
-   const communityRightPush = imgPush.load(rightArrow)
-   const communityRight1 = new THREE.MeshStandardMaterial({
-       map : communityRightPush
-   }) 
-   const mesh21 = new THREE.Mesh(communityRight, communityRight1)
-   mesh21.position.set(-250,7,10)
-
-
-
-    scene.add(mesh1,mesh2,mesh3,mesh4,mesh5,mesh6,mesh7,mesh8,mesh9,mesh10,mesh11,
-        mesh12,mesh13,mesh14,mesh15,mesh16,mesh17,mesh18,mesh19,mesh20,mesh21,
+    scene.add(mesh1,mesh3,mesh4,mesh5,mesh6,mesh7,mesh8,mesh9,mesh10,mesh11,
+        mesh12,mesh13
         );
 
-    const clickableMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5, mesh6,mesh11,mesh12,mesh13,mesh14,mesh15,mesh16,mesh17,mesh18,mesh19,mesh20,mesh21];
+    const clickableMeshes = [mesh1, mesh3, mesh4, mesh5, mesh6,mesh11,mesh12,mesh13];
   
       // Raycaster
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2(); 
-
-
- 
 
     const onClick = (e) => {
         e.preventDefault();
@@ -358,183 +272,23 @@ const Palace = () => {
         if (intersects.length > 0) {
             // Handle click on the intersected object(s) here
             const clickedMesh = intersects[0].object;
-            const startOrientation = camera.quaternion.clone();
-            const targetOrientation = clickedMesh.quaternion.clone().normalize();
-        
             if (clickedMesh === mesh1) {
-                window.location = 'http://localhost:3000/login';
-            } else if (clickedMesh === mesh2) {
-               
+                Navigate('/login');
             } else if (clickedMesh === mesh3) {
-                window.location = 'http://localhost:3000/community';
+                Navigate('/community');
             } else if (clickedMesh === mesh4) {
-                window.location = 'http://localhost:3000/introduce';
+                Navigate('/introduce');
             } else if (clickedMesh === mesh5) {
-                window.location = 'http://localhost:3000/test';
+                Navigate('/test');
             } else if (clickedMesh === mesh6) {
-                window.location = 'http://localhost:3000/ebook'
+                Navigate('/ebook');
             } else if (clickedMesh === mesh11) {
-                window.location = 'http://localhost:3000/ebook'
+                Navigate('/ebook');
             } else if (clickedMesh === mesh12) {
-                window.location = 'http://localhost:3000/ebook'
+                Navigate('/ebook');
             } else if (clickedMesh === mesh13) {
-                window.location = 'http://localhost:3000/ebook'
-            }else if (clickedMesh === mesh16) {
-                console.log('Clicked on mesh16');
-                fControls.enabled = false;
-                fControls.enableDamping = true;    
-                gsap.to(camera.position, {
-                    duration: 1,
-                    x: 60,
-                    y: 40,
-                    z: 0,
-                    onUpdate: function () {
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    },
-                    onComplete: function () {
-                        fControls.enabled = true;
-                        fControls.enableDamping = false;    
-                        fControls.lookAt(80,40,-300)
-                      
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    }
-                });
-            } else if (clickedMesh === mesh17) {
-                console.log('Clicked on mesh17');
-                fControls.enabled = false;
-                fControls.enableDamping = true;    
-                gsap.to(camera.position, {
-                    duration: 1,
-                    x: 30,
-                    y: 40,
-                    z: 50,
-                    onUpdate: function () {
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    },
-                    onComplete: function () {
-                        fControls.enabled = true;
-                        fControls.enableDamping = false;    
-                        fControls.lookAt(30,0,500)
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    }
-                });
-            }else if (clickedMesh === mesh14) {
-                console.log('Clicked on mesh14');
-                fControls.enabled = false;
-                fControls.enableDamping = true;    
-                gsap.to(camera.position, {
-                    duration: 1,
-                    x: -60,
-                    y: 40,
-                    z: 130,
-                    onUpdate: function () {
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    },
-                    onComplete: function () {
-                        fControls.enabled = true;
-                        fControls.enableDamping = false;    
-                        fControls.lookAt(-300,0,50)
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    }
-                });
-            }else if (clickedMesh === mesh15) {
-                console.log('Clicked on mesh15');
-                fControls.enabled = false;
-                fControls.enableDamping = true;    
-                gsap.to(camera.position, {
-                    duration: 1,
-                    x: 110,
-                    y: 40,
-                    z: 10,
-                    onUpdate: function () {
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    },
-                    onComplete: function () {
-                        fControls.enabled = true;
-                        fControls.enableDamping = false;    
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                        fControls.lookAt(360,-200,0)
-          
-                    }
-                });
-            }else if (clickedMesh === mesh20) {
-                    console.log('Clicked on mesh20');
-                fControls.enabled = false;
-                fControls.enableDamping = true;    
-                gsap.to(camera.position, {
-                    duration: 1,
-                    x: 30,
-                    y: 40,
-                    z: 50,
-                    onUpdate: function () {
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    },
-                    onComplete: function () {
-                        fControls.enabled = true;
-                        fControls.enableDamping = false;    
-                        fControls.lookAt(30,0,500)
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    }
-                });
-            }else if (clickedMesh === mesh21) {
-                console.log('Clicked on mesh21');
-                fControls.enabled = false;
-                fControls.enableDamping = true;    
-                gsap.to(camera.position, {
-                    duration: 1,
-                    x: 60,
-                    y: 40,
-                    z: 0,
-                    onUpdate: function () {
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    },
-                    onComplete: function () {
-                        fControls.enabled = true;
-                        fControls.enableDamping = false;    
-                        fControls.lookAt(80,40,-300)
-                        camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                    }
-                });
-            }else if (clickedMesh === mesh18) {
-                console.log('Clicked on mesh18');
-            fControls.enabled = false;
-            fControls.enableDamping = true;    
-            gsap.to(camera.position, {
-                duration: 1,
-                x: 110,
-                y: 40,
-                z: 10,
-                onUpdate: function () {
-                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                },
-                onComplete: function () {
-                    fControls.enabled = true;
-                    fControls.enableDamping = false;    
-                    fControls.lookAt(360,-200,0)
-                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                }
-            });
-            }else if (clickedMesh === mesh19) {
-                console.log('Clicked on mesh19');
-            fControls.enabled = false;
-            fControls.enableDamping = true;    
-            gsap.to(camera.position, {
-                duration: 1,
-                x: -60,
-                y: 40,
-                z: 130,
-                onUpdate: function () {
-                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                },
-                onComplete: function () {
-                    fControls.enabled = true;
-                    fControls.enableDamping = false;    
-                    fControls.lookAt(-300,0,50)
-                    camera.quaternion.copy(startOrientation).slerp(targetOrientation, this.progress());
-                }
-            });
-    }
-
+                Navigate('/ebook');
+            }
         }
       };
       renderer.domElement.addEventListener('click', onClick);
@@ -557,7 +311,7 @@ const Palace = () => {
       return () => {
         renderer.domElement.removeEventListener('click', onClick);
       };
-    }, []);
+    }, [Navigate]);
         //모바일 버전
         function isMobileDevice() {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
