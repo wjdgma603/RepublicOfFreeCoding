@@ -1,32 +1,32 @@
-.CodeTestSection>article{
+.CodeTestCssSection>article{
     padding-top: 240px;
 }
-.CodeTestArticle{
+.CodeTestCssArticle{
     display: flex;
     justify-content: space-between;
     width: 1280px;
-    margin: 0 auto;
+    margin: 0 auto 150px;
 }
-.CodeTestArticleDiv1{
+.CodeTestCssArticleDiv1{
     width: 15.7%;
 }
-.CodeTestArticleDiv1>div:first-child{
+.CodeTestCssArticleDiv1>div:first-child{
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     align-items: center;
 }
-.CodeTestArticleDiv1>div:nth-child(6){
+.CodeTestCssArticleDiv1>div:nth-child(6){
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     align-items: center;
 }
-.CodeTestArticleDiv1>div:nth-child(2)>a>button{
+.CodeTestCssArticleDiv1>div:nth-child(4)>a>button{
     border: 1px solid #00D67A;
     color: #00D67A;
 }
-.CodeTestTitleBtn{
+.CodeTestCssTitleBtn{
     width: 100%;
     background-color: transparent;
     border: 1px solid #D5D5D5;
@@ -37,67 +37,69 @@
     margin-bottom: 10px;
     cursor: pointer;
 }
-.CodeTestArticleDiv1>div:nth-child(5){
+.CodeTestCssArticleDiv1>div:nth-child(5){
     margin-bottom: 50px;
 }
-.CodeTestArticleDiv1Span{
+.CodeTestCssArticleDiv1Span{
     font-size: 20px;
 }
-.CodeTestArticleDiv1Span + span{
+.CodeTestCssArticleDiv1Span + span{
     font-size: 11px;
 }
-.CodeTestArticleDiv2{
+.CodeTestCssArticleDiv2{
     width: 77%;
 }
-.CodeTestArticleDiv2>h1{
+.CodeTestCssArticleDiv2>h1{
     font-size: 36px;
     margin-bottom: 40px;
 }
-.CodeTestArticleDiv2TableHTML>tr:first-child{
+.CodeTestCssArticleDiv2Table>tr:first-child{
     text-align: center;
 }
-.CodeTestTitle{
+.CodeTestCssTitle{
     background-color: #F5F5F5;
 }
-.CodeTestTitle>td:first-child{
+.CodeTestCssTitle>td:first-child{
     width: 9%;
     padding: 20px 0;
     font-weight: bold;
 }
-.CodeTestTitle>td:nth-child(2){
+.CodeTestCssTitle>td:nth-child(2){
     width: 32%;
     font-weight: bold;
 }
-.CodeTestTitle>td:nth-child(3){
+.CodeTestCssTitle>td:nth-child(3){
     width: 9%;
     font-weight: bold;
 }
-.CodeTestText>td:first-child{
+.CodeTestCssText>td:first-child{
     text-align: center;
     vertical-align: middle;
+    border-bottom: 1px solid #E4E4E4;
 }
-.CodeTestText>td:nth-child(2)>p{
+.CodeTestCssText>td:nth-child(2)>p{
     padding: 20px 0 20px 40px;
     border-left: 1px solid #E4E4E4;
     border-bottom: 1px solid #E4E4E4;
 }
-.CodeTestPlay{
+.CodeTestCssPlay{
     text-align: center;
 }
-.CodeTestPlay>p{
+.CodeTestCssPlay>p{
     padding: 20px;
     border-left: 1px solid #E4E4E4;
     border-bottom: 1px solid #E4E4E4;
 }
-.CodeTestPlay span{
+.CodeTestCssPlay span{
     background-color:#00D67A;
     padding: 8px 10px;
     border-radius: 3px;
     color: #fff;
+    cursor: pointer;
 }
 
 @media (max-width : 1280px){
-    .CodeTestArticle{
+    .CodeTestCssArticle{
         width: 100%;
     }
 }

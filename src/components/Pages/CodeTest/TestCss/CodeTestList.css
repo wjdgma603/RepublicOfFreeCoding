@@ -1,0 +1,138 @@
+.CodeTestListSection>article{
+    padding-top: 240px;
+}
+.CodeTestListArticle{
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    margin: 0 auto 150px;
+}
+.CodeTestListArticleDiv1{
+    width: 15.7%;
+}
+.CodeTestListArticleDiv1>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestListArticleDiv1>div:nth-child(6){
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestListArticleDiv1>div:nth-child(2)>a>button{
+    border: 1px solid #00D67A;
+    color: #00D67A;
+}
+.CodeTestListTitleBtn{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #D5D5D5;
+    border-radius: 6px;
+    padding: 24px 18px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.CodeTestListArticleDiv1>div:nth-child(5){
+    margin-bottom: 50px;
+}
+.CodeTestListArticleDiv1Span{
+    font-size: 20px;
+}
+.CodeTestListArticleDiv1Span + span{
+    font-size: 11px;
+}
+.CodeTestListArticleDiv2{
+    width: 77%;
+}
+.CodeTestListArticleDiv2>h1{
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+.CodeTestListArticleDiv2Table>tr:first-child{
+    text-align: center;
+}
+.CodeTestListTitle{
+    background-color: #F5F5F5;
+}
+.CodeTestListTitle>td:first-child{
+    width: 9%;
+    padding: 20px 0;
+    font-weight: bold;
+}
+.CodeTestListTitle>td:nth-child(2){
+    width: 32%;
+    font-weight: bold;
+}
+.CodeTestListTitle>td:nth-child(3){
+    width: 9%;
+    font-weight: bold;
+}
+.CodeTestListText>td:first-child{
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestListText>td:nth-child(2)>p{
+    padding: 20px 0 20px 40px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestListPlay{
+    text-align: center;
+}
+.CodeTestListPlay>p{
+    padding: 20px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestListPlay span{
+    background-color:#00D67A;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+/*모달 css*/
+.listModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100;
+}
+.opacityModal{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(225, 225, 225, 0.5);
+}
+.listModalWrap{
+    background-color: #fff;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-30%);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 500px;
+}
+.listModalTitle{
+    font-size: 20px;
+    font-weight: bold;
+    color: #00D67A;
+    margin-bottom: 15px;
+}
+.listModalContent{
+    margin-bottom: 10px;
+}
+
+
+@media (max-width : 1280px){
+    .CodeTestListArticle{
+        width: 100%;
+    }
+}

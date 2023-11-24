@@ -1,0 +1,105 @@
+.CodeTestHtmlSection>article{
+    padding-top: 240px;
+}
+.CodeTestHtmlArticle{
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    margin: 0 auto 150px;
+}
+.CodeTestHtmlArticleDiv1{
+    width: 15.7%;
+}
+.CodeTestHtmlArticleDiv1>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestHtmlArticleDiv1>div:nth-child(6){
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestHtmlArticleDiv1>div:nth-child(3)>a>button{
+    border: 1px solid #00D67A;
+    color: #00D67A;
+}
+.CodeTestHtmlTitleBtn{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #D5D5D5;
+    border-radius: 6px;
+    padding: 24px 18px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.CodeTestHtmlArticleDiv1>div:nth-child(5){
+    margin-bottom: 50px;
+}
+.CodeTestHtmlArticleDiv1Span{
+    font-size: 20px;
+}
+.CodeTestHtmlArticleDiv1Span + span{
+    font-size: 11px;
+}
+.CodeTestHtmlArticleDiv2{
+    width: 77%;
+}
+.CodeTestHtmlArticleDiv2>h1{
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+.CodeTestHtmlArticleDiv2Table>tr:first-child{
+    text-align: center;
+}
+.CodeTestHtmlTitle{
+    background-color: #F5F5F5;
+}
+.CodeTestHtmlTitle>td:first-child{
+    width: 9%;
+    padding: 20px 0;
+    font-weight: bold;
+}
+.CodeTestHtmlTitle>td:nth-child(2){
+    width: 32%;
+    font-weight: bold;
+}
+.CodeTestHtmlTitle>td:nth-child(3){
+    width: 9%;
+    font-weight: bold;
+}
+.CodeTestHtmlText>td:first-child{
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestHtmlText>td:nth-child(2)>p{
+    padding: 20px 0 20px 40px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestHtmlPlay{
+    text-align: center;
+}
+.CodeTestHtmlPlay>p{
+    padding: 20px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestHtmlPlay span{
+    background-color:#00D67A;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width : 1280px){
+    .CodeTestHtmlArticle{
+        width: 100%;
+    }
+}

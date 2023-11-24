@@ -148,11 +148,11 @@
   
   .sliderImages1 {
     width: 100%; /* Assuming 2 times the number of images for continuous sliding */
-    animation: slideImages1 10s linear infinite;
+    animation: slideImages1 20s linear infinite;
   }
   .sliderImages2 {
     width: 100%; /* Assuming 2 times the number of images for continuous sliding */
-    animation: slideImages2 10s linear infinite;
+    animation: slideImages2 20s linear infinite;
   }
   
   .introSlider img {
@@ -166,11 +166,11 @@
       transform: translateX(0%);
     }
     50% {
-      transform: translateX(-100%);
+      transform: translateX(-620%);
     }
-    /* 50.00001% {
-      transform: translateX(100%);
-    } */
+    50.00001% {
+      transform: translateX(620%);
+    }
     100% {
       transform: translateX(0%); /* Move continuously in one direction */
     }
@@ -180,7 +180,7 @@
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(-100%); /* Move continuously in one direction */
+      transform: translateX(-1240%); /* Move continuously in one direction */
     }
   }
   

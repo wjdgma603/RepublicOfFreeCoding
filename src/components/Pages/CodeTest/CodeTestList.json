@@ -10,5 +10,41 @@
         "test8" : "08. html5 에서 새롭게 추가된 태그를 고르세요.",
         "test9" : "09. meta 태그에 대한 설명으로 틀린 것을 고르세요.",
         "test10" : "10. noscript 태그에 대한 설명으로 틀린 것을 고르세요."
+    },
+    "CssText" : {
+        "test1" : "01. 다음 중 존재하지 않는 속성을 고르세요.",
+        "test2" : "02. background-size 속성에 대한 설명으로 올바른것을 고르시오.",
+        "test3" : "03. 선택자의 우선순위가 제일 낮은 것은?",
+        "test4" : "04. 캐모마일의 텍스트 색상을 red로 변경하려고 할 때 올바른 사용은?",
+        "test5" : "05. 다음 중 a 태그를 선택해야 할 때 선택자로 올바르지 않은 것은?",
+        "test6" : "06. 다음과 같은 선택자를 사용했을 때, 선택되는 요소는?",
+        "test7" : "07. CSS 속성 중 설명과 맞지 않는 속성을 고르세요.",
+        "test8" : "준비중입니다.",
+        "test9" : "준비중입니다.",
+        "test10" : "준비중입니다."
+    },
+    "ListTestModal" : {
+        "listTest1" : "1. 시멘틱태그가 아닌 태그를 고르세요.",
+        "listTest1_1" : "1. header",
+        "listTest1_2" : "2. address",
+        "listTest1_3" : "3. area",
+        "listTest1_4" : "4. time",
+        "listTest2" : "2. Check Box를 만들기 위한 올바른 HTML을 고르세요.",
+        "listTest2_1" : "1 <checkbox>",
+        "listTest2_2" : "2 <input type=”check”>",
+        "listTest2_3" : "3 <input type=”checkbox”>",
+        "listTest2_4" : "4 <button>",
+        "listTest3" : "3. input type 중 맞지 않은 속성을 고르세요.",
+        "listTest3_1" : "1 file",
+        "listTest3_2" : "2 color",
+        "listTest3_3" : "3 size",
+        "listTest3_4" : "4 range",
+        "listTest4" : "문제14",
+        "listTest5" : "문제15",
+        "listTest6" : "문제16",
+        "listTest7" : "문제17",
+        "listTest8" : "문제81",
+        "listTest9" : "문제19",
+        "listTest10" : "문제10"
     }
 }
