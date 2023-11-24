@@ -49,7 +49,6 @@ const Footer = ({isFooterLoaded}) => {
                 </section>
             }
         </footer>
-
      );
 }
  

@@ -1,14 +1,37 @@
 import { Link } from "react-router-dom";
 import './Header.css'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => {
+    // const [activeIndexes, setActiveIndexes] = useState([]);
+
+    // const handleClick = (index) => {
+    //   setActiveIndexes((prevIndexes) => {
+    //     const indexExists = prevIndexes.includes(index);
+    //     return indexExists
+    //       ? prevIndexes.filter((prevIndex) => prevIndex !== index)
+    //       : [...prevIndexes, index];
+    //   });
+    // };
+    
+    const [isNavMenuVisible, setIsNavMenuVisible] = useState(false);
+
+    const handleMenuClick = () => {
+      setIsNavMenuVisible(!isNavMenuVisible);
+    };  
+
+    const handleMenuItemClick = () => {
+        setIsNavMenuVisible(false);
+      };
+
+    
     useEffect(()=>{
+        
         const Header = document.querySelector('.HeaderComponent')
         const HeaderLogo = document.querySelector('#HeaderLogo')
         const Navigation = document.querySelectorAll('.HeaderNavigation>ul>li>a')
         const PersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div>a')
-        const HeaderPersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div')
+        const HeaderMenu = document.querySelectorAll('.HeaderComponent>section.HeaderWrap>div.HeaderMenu span')
         if(isHeaderLoaded){
             Header.style.background = 'transparent'
             Header.style.boxShadow = 'none'
@@ -16,13 +39,16 @@ const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => 
             HeaderLogo.style.fill = '#00D67A'
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
             PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#00D67A"})
+            Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
+            HeaderMenu.forEach((HeaderMenuItem)=>{HeaderMenuItem.style.background = "#00D67A"})
         }else{
             Header.style.background = '#FFF'
-            Header.style.boxShadow = '0px 11px 10px 0px rgba(0, 0, 0, 0.16)'
-            Header.style.borderBottom = 'none'
+            // Header.style.boxShadow = '0px 11px 10px 0px rgba(0, 0, 0, 0.16)'
+            Header.style.borderBottom = '1px solid #E4E4E4'
             HeaderLogo.style.fill = '#2f2f2f'
+            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#000"})
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#222"})
-            PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#222"})
+            HeaderMenu.forEach((HeaderMenuItem)=>{HeaderMenuItem.style.background = "#000"})
         }
         if(headerDisable){
             Header.style.display = 'none'
@@ -92,8 +118,25 @@ const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => 
                     <div className="ToSignIn"><Link to=''>회원가입</Link></div>
                 </article>
                 }
-
+                <div className={`HeaderMenu ${isNavMenuVisible ? 'active' : ''}`}  onClick={handleMenuClick}  >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </section>
+            {isNavMenuVisible && (
+                 <nav className={`HeaderNavigationMo ${isNavMenuVisible ? 'ShowActive' : 'ShowHide'}`}>
+                    <ul>
+                        <li><Link to="/introduce" onClick={handleMenuItemClick}>소개</Link></li>
+                        <li><Link to="/ebook" onClick={handleMenuItemClick}>전자북</Link></li>
+                        <li><Link to="/test" onClick={handleMenuItemClick}>문제집</Link></li>
+                        <li><Link to="/community" onClick={handleMenuItemClick}>커뮤니티</Link></li>
+                    </ul>
+                    <div>
+                        <div className="ToLogInM"><Link to='/login' onClick={handleMenuItemClick}>로그인</Link></div>
+                        <div className="ToSignInM"><Link to='' onClick={handleMenuItemClick}>회원가입</Link></div>
+                    </div>
+                </nav>)}
         </header>
      );
 }
