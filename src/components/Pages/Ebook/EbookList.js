@@ -10,10 +10,10 @@ const EbookList = () => {
     const [ sortList, setSortList] = useState(EbookItem);
     const getSortList = ()=>{
         const sortcallBack = (item)=>{
-            if(TabMenu === "Html"){
-                return item.Category === "Html"
-            }else if(TabMenu === "Css"){
-                return item.Category === "Css"
+            if(TabMenu === "HTML"){
+                return item.Category === "HTML"
+            }else if(TabMenu === "CSS"){
+                return item.Category === "CSS"
             }else if(TabMenu === "Javascript"){
                 return item.Category === "Javascript"
             }        

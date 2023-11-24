@@ -37,7 +37,6 @@ const EbookViewer = () => {
         const SlideWidth = 1280 / DesktopEnv;
         SlideRef.current.style.transform = `translateX(-${slideState * SlideWidth}px)`
     }, [slideState, End])
-    console.log(Data)
     return ( 
         <section className="EbookViewer">
             <article className="TitleWrap">
