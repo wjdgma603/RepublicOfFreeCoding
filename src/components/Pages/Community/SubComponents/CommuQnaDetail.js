@@ -5,8 +5,7 @@ import { qnaPost, updateQnaPost } from '../SubComponents/CommuData';
 
 const CommuQnaDetail = () => {
   const { id, page } = useParams();
-
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
 
   const [qnaPosts, setQnaPosts] = useState(qnaPost);
   const selectedPostIndex = qnaPosts.postIndex.findIndex((post) => post.id === parseInt(id));
@@ -14,19 +13,41 @@ const CommuQnaDetail = () => {
   const [isEditingQuestion, setIsEditingQuestion] = useState(false);
   const [isEditingAnswer, setIsEditingAnswer] = useState(false);
 
-  const [editedContent, setEditedContent] = useState(qnaPosts.postIndex[selectedPostIndex].content);
-  const [editedAnswer, setEditedAnswer] = useState(qnaPosts.postIndex[selectedPostIndex].answer);
-  const [editedQuestion, setEditedQuestion] = useState(qnaPosts.postIndex[selectedPostIndex].title);
+  const [editedContent, setEditedContent] = useState(
+    qnaPosts.postIndex[selectedPostIndex].content
+  );
+  const [editedAnswer, setEditedAnswer] = useState(
+    qnaPosts.postIndex[selectedPostIndex].answer
+  );
+  const [editedQuestion, setEditedQuestion] = useState(
+    qnaPosts.postIndex[selectedPostIndex].title
+  );
 
   useEffect(() => {
-    // 페이지 로딩 시 localStorage에서 수정된 데이터를 가져와서 적용
     const savedData = JSON.parse(localStorage.getItem(`editedQnaPost_${id}`));
     if (savedData) {
       setEditedQuestion(savedData.editedQuestion);
       setEditedContent(savedData.editedContent);
       setEditedAnswer(savedData.editedAnswer);
     }
+
+    // 편집된 데이터를 기반으로 초기 상태를 업데이트합니다.
+    setQnaPosts((prevQnaPosts) => {
+      const updatedQnaPosts = [...prevQnaPosts.postIndex];
+      updatedQnaPosts[selectedPostIndex].title = savedData?.editedQuestion || '';
+      updatedQnaPosts[selectedPostIndex].content = savedData?.editedContent || '';
+      updatedQnaPosts[selectedPostIndex].answer = savedData?.editedAnswer || '';
+      return { ...prevQnaPosts, postIndex: updatedQnaPosts };
+    });
   }, [id]);
+
+  useEffect(() => {
+    localStorage.setItem(`editedQnaPost_${id}`, JSON.stringify({
+      editedQuestion,
+      editedContent,
+      editedAnswer,
+    }));
+  }, [id, editedQuestion, editedContent, editedAnswer]);
 
   const toggleEditQuestion = () => {
     setIsEditingQuestion((prev) => !prev);
@@ -49,11 +70,21 @@ const CommuQnaDetail = () => {
     setIsEditingQuestion(false);
     setIsEditingAnswer(false);
 
+    // localStorage에 저장
     localStorage.setItem(`editedQnaPost_${id}`, JSON.stringify({
       editedQuestion,
       editedContent,
       editedAnswer,
     }));
+
+    // 여기에서 직접 상태를 업데이트하여 반영
+    setQnaPosts((prevQnaPosts) => {
+      const updatedQnaPosts = [...prevQnaPosts.postIndex];
+      updatedQnaPosts[selectedPostIndex].title = editedQuestion;
+      updatedQnaPosts[selectedPostIndex].content = editedContent;
+      updatedQnaPosts[selectedPostIndex].answer = editedAnswer;
+      return { ...prevQnaPosts, postIndex: updatedQnaPosts };
+    });
   };
 
   const deletePost = () => {
@@ -66,12 +97,13 @@ const CommuQnaDetail = () => {
       }));
       setIsEditingQuestion(false);
       setIsEditingAnswer(false);
-      navigate(`/community/qna/${page}`);  // 목록보기 버튼 클릭 시 현재 페이지로 이동
+      navigate(`/community/qna/${page}`);
       localStorage.removeItem(`editedQnaPost_${id}`);
     }
   };
+
   const goBack = () => {
-    navigate(-1); // -1을 전달하여 이전 페이지로 이동
+    navigate(-1);
   };
   return (
     <div className="CommuSection">
@@ -105,10 +137,10 @@ const CommuQnaDetail = () => {
                   onChange={(e) => setEditedQuestion(e.target.value)}
                 />
               ) : (
-                qnaPosts.postIndex[selectedPostIndex].title
+                qnaPosts.postIndex[selectedPostIndex]?.title || ''
               )}
             </div>
-            <div>{qnaPosts.postIndex[selectedPostIndex].date}</div>
+            <div>{qnaPosts.postIndex[selectedPostIndex]?.date || ''}</div>
           </div>
         </div>
         <div className="CommuQnaText">
@@ -119,7 +151,7 @@ const CommuQnaDetail = () => {
               onChange={(e) => setEditedContent(e.target.value)}
             />
           ) : (
-            qnaPosts.postIndex[selectedPostIndex].content
+            qnaPosts.postIndex[selectedPostIndex]?.content || ''
           )}
         </div>
         <div className="CommuDetailQuestionButtonWrap">
@@ -133,7 +165,7 @@ const CommuQnaDetail = () => {
 
         <div className="CommuQnaTitle">
           <div>문의답변</div>
-          <div>{qnaPosts.postIndex[selectedPostIndex].answerDate}</div>
+          <div>{qnaPosts.postIndex[selectedPostIndex]?.answerDate || ''}</div>
         </div>
         <div className="CommuQnaText">
           {isEditingAnswer ? (
@@ -143,24 +175,24 @@ const CommuQnaDetail = () => {
               onChange={(e) => setEditedAnswer(e.target.value)}
             />
           ) : (
-            qnaPosts.postIndex[selectedPostIndex].answer
+            qnaPosts.postIndex[selectedPostIndex]?.answer || ''
           )}
         </div>
 
         <div className="CommuQnaButtonWrap">
-        <div></div>
-        <button className="CommuQnaButton" onClick={goBack}>
-          목록보기
-        </button>
-
-        <div>
-          <button onClick={isEditingAnswer ? handleEditComplete : toggleEditAnswer}>
-            {isEditingAnswer ? "답변수정완료" : "답변수정"}
+          <div></div>
+          <button className="CommuQnaButton" onClick={goBack}>
+            목록보기
           </button>
-          <button onClick={deletePost}>게시글 삭제</button>
+
+          <div>
+            <button onClick={isEditingAnswer ? handleEditComplete : toggleEditAnswer}>
+              {isEditingAnswer ? "답변수정완료" : "답변수정"}
+            </button>
+            <button onClick={deletePost}>게시글 삭제</button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

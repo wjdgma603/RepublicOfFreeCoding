@@ -1,26 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { addNoticePost } from "./CommuData";
-import "./CommuNoticeWrite.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { addNoticePost,noticePost } from './CommuData';
+import './CommuNoticeWrite.css';
 
 const CommuNoticeWrite = () => {
-
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const handlePostSubmit = () => {
     if (!title || !content) {
-      alert("제목과 내용을 입력해주세요.");
+      alert('제목과 내용을 입력해주세요.');
       return;
     }
 
     const newPost = {
-      id: Date.now(),
+      id: noticePost.postIndex.length + 1,  // 여기서 id를 설정
       title,
       content,
       date: new Date().toLocaleDateString(),
     };
-
+    // addNoticePost 함수에 newPost를 전달하여 id를 연동
     addNoticePost(newPost);
     setTitle('');
     setContent('');

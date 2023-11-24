@@ -14,7 +14,7 @@ const CommuQnaWrite = () => {
     }
 
     const newPost = {
-      id: Date.now(), // Unique ID generation (you might want to use a better method)
+      id: Date.now(),
       title,
       content,
       date: new Date().toLocaleDateString(),
@@ -23,7 +23,6 @@ const CommuQnaWrite = () => {
     setTitle('');
     setContent('');
     alert('글이 성공적으로 작성되었습니다.');
-
   };
 
   return (

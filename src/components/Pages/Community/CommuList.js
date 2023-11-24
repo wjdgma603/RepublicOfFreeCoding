@@ -41,7 +41,7 @@ const CommuList = () => {
     setFilteredPosts(filtered);
   };
 
-  // Pagination logic
+  
   const postsPerPage = 5;
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const currentPage = page ? parseInt(page) : 1;
@@ -49,7 +49,7 @@ const CommuList = () => {
   const endIndex = startIndex + postsPerPage;
   const currentPosts = filteredPosts.slice(startIndex, endIndex);
 
-  // Generate page buttons
+
   const pageButtons = [];
   for (let i = 1; i <= totalPages; i++) {
     pageButtons.push(

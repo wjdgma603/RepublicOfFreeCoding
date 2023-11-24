@@ -4,15 +4,16 @@ import { noticePost, updateNoticePost } from './CommuData';
 import './CommuNoticeDetail.css';
 
 const CommuNoticeDetail = () => {
-  const { id,page } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [noticePosts, setNoticePosts] = useState(noticePost);
-  const selectedPost = noticePosts.postIndex.find((post) => post.id === parseInt(id));
+  
+  // Check if noticePosts is defined and has postIndex before accessing
+  const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState(selectedPost.content);
-  const [editedTitle, setEditedTitle] = useState(selectedPost.title);
-
+  const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
+  const [editedTitle, setEditedTitle] = useState(selectedPost?.title || '');
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
@@ -27,9 +28,8 @@ const CommuNoticeDetail = () => {
   };
 
   const handleSaveClick = () => {
-
     setNoticePosts((prevNoticePosts) => {
-      const updatedPosts = prevNoticePosts.postIndex.map((post) => {
+      const updatedPosts = prevNoticePosts?.postIndex?.map((post) => {
         if (post.id === parseInt(id)) {
           return { ...post, title: editedTitle, content: editedContent };
         } else {
@@ -51,19 +51,26 @@ const CommuNoticeDetail = () => {
   const deletePost = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
-      const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
+      const updatedNoticePosts = noticePosts?.postIndex?.filter((post) => post.id !== parseInt(id));
+  
+      // Update the noticePosts state
       setNoticePosts(prevNoticePosts => ({
         ...prevNoticePosts,
-        // postIndex: updatedNoticePosts
+        postIndex: updatedNoticePosts
       }));
-      setIsEditing(false);
-      window.location.href = '/community';
+  
+      // Remove the edited post data from localStorage
       localStorage.removeItem(`editedPost_${id}`);
+  
+      // Navigate to the community page
+      navigate('/community');
     }
   };
+
   const goBack = () => {
-    navigate(-1); // -1을 전달하여 이전 페이지로 이동
+    navigate(-1);
   };
+
   return (
     <div className="CommuSection">
       <div>

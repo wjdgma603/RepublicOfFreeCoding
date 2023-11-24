@@ -47,15 +47,35 @@ export const updateNoticePost = (id, updatedContent, updatedAnswer) => {
   );
 };
 
+export const addNoticePost = (newPost) => {
+  const updatedPosts = [
+    { id: noticePost.postIndex.length + 1, ...newPost },
+    ...noticePost.postIndex
+  ];
+  noticePost.postIndex = updatedPosts;
 
-const addNoticePost = (newPost) => {
-  noticePost.postIndex.unshift({
-    id: noticePost.postIndex.length + 1,
-    title: newPost.title,
-    content: newPost.content,
-    date: new Date().toLocaleDateString(),
-  });
+  localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedPosts }));
 };
+
+
+
+
+// export const addNoticePost = (newPost) => {
+//   noticePost.postIndex.unshift({
+//     id: noticePost.postIndex.length + 1,
+//     title: newPost.title,
+//     content: newPost.content,
+//     date: new Date().toLocaleDateString(),
+//   });
+
+//   // 로컬 스토리지에 데이터 저장
+//   const updatedPosts = [newPost, ...noticePost.postIndex];
+//   localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedPosts }));
+// };
+
+
+
+
 
 
 /******************************************* */
@@ -115,29 +135,31 @@ export const updateQnaPost = (id, updatedContent, updatedAnswer) => {
   );
 };
 
-const addQnaPost = (newPost) => {
+export const addQnaPost = (newPost) => {
   qnaPost.postIndex.unshift({
     id: qnaPost.postIndex.length + 1,
     title: newPost.title,
     content: newPost.content,
     date: new Date().toLocaleDateString(),
   });
+
+  const updatedPosts = [newPost, ...qnaPost.postIndex];
+  localStorage.setItem('qnaPosts', JSON.stringify({ postIndex: updatedPosts }));
 };
 
-/************************************** */
-
 const CommuData = () => {
-  const [noticePosts, setNoticePosts] = useState(noticePost);
-  const [qnaPosts, setQnaPosts] = useState(qnaPost);
+  const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts'));
+  const [noticePosts, setNoticePosts] = useState(storedNoticePosts || noticePost);
 
+  const [qnaPosts, setQnaPosts] = useState(qnaPost);
+  
   const addNoticePost = (newPost) => {
-    setQnaPosts((prevPosts) => {
+    setNoticePosts((prevPosts) => {
       const updatedPosts = [newPost, ...prevPosts.postIndex];
       return { postIndex: updatedPosts };
     });
   };
 
-  
   return {
     noticePosts,
     qnaPosts,
@@ -146,4 +168,4 @@ const CommuData = () => {
   };
 };
 
-export { CommuData as default, addNoticePost, addQnaPost };
+export default CommuData;
