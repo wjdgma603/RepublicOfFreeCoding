@@ -7,13 +7,10 @@ const CommuNoticeDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [noticePosts, setNoticePosts] = useState(noticePost);
-  
-  // Check if noticePosts is defined and has postIndex before accessing
-  const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
-
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
+  const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
   const [editedTitle, setEditedTitle] = useState(selectedPost?.title || '');
+  const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
@@ -48,24 +45,32 @@ const CommuNoticeDetail = () => {
     setIsEditing(false);
   };
 
+  
+
   const deletePost = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
+      // 게시글 삭제 로직
       const updatedNoticePosts = noticePosts?.postIndex?.filter((post) => post.id !== parseInt(id));
+      const updatedNoticePostsObject = {
+        ...noticePosts,
+        postIndex: updatedNoticePosts,
+      };
+      setNoticePosts(updatedNoticePostsObject);
   
-      // Update the noticePosts state
-      setNoticePosts(prevNoticePosts => ({
-        ...prevNoticePosts,
-        postIndex: updatedNoticePosts
-      }));
+      // 로컬 스토리지에서도 삭제
+      const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts'));
+      const updatedStoredNoticePosts = storedNoticePosts.postIndex.filter((post) => post.id !== parseInt(id));
+      localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedStoredNoticePosts }));
   
-      // Remove the edited post data from localStorage
+      // 해당 게시글의 편집 정보도 삭제
       localStorage.removeItem(`editedPost_${id}`);
   
-      // Navigate to the community page
       navigate('/community');
     }
   };
+
+
 
   const goBack = () => {
     navigate(-1);

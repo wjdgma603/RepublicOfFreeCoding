@@ -55,30 +55,13 @@ export const addNoticePost = (newPost) => {
   noticePost.postIndex = updatedPosts;
 
   localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedPosts }));
+  //로컬스토리지에 noticePosts라는 이름으로 게시글 작성시 저장됨
 };
 
 
 
-
-// export const addNoticePost = (newPost) => {
-//   noticePost.postIndex.unshift({
-//     id: noticePost.postIndex.length + 1,
-//     title: newPost.title,
-//     content: newPost.content,
-//     date: new Date().toLocaleDateString(),
-//   });
-
-//   // 로컬 스토리지에 데이터 저장
-//   const updatedPosts = [newPost, ...noticePost.postIndex];
-//   localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedPosts }));
-// };
-
-
-
-
-
-
 /******************************************* */
+
 
 
 export const qnaPost = {
