@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CommuData from './SubComponents/CommuData';
 
 const CommuQna = () => {
   const { qnaPosts } = CommuData();
+  const { page } = useParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const postsPerPage = 5;
 
   useEffect(() => {
     const originalPosts = qnaPosts.postIndex;
@@ -17,9 +19,10 @@ const CommuQna = () => {
         return post;
       }
     });
-  
+
     setFilteredPosts(updatedPosts);
   }, [qnaPosts.postIndex]);
+
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
@@ -30,6 +33,24 @@ const CommuQna = () => {
 
     setFilteredPosts(filtered);
   };
+
+// Pagination logic
+const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+const currentPage = page ? parseInt(page) : 1;
+const startIndex = (currentPage - 1) * postsPerPage;
+const endIndex = startIndex + postsPerPage;
+const currentPosts = filteredPosts.slice(startIndex, endIndex);
+
+  // Generate page buttons
+  const pageButtons = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageButtons.push(
+      <div key={i}>
+        <Link to={`/community/qna/${i}`}>{i}</Link>
+      </div>
+    );
+  }
+
 
   return (
     <div className="CommuSection">
@@ -51,7 +72,7 @@ const CommuQna = () => {
         </ul>
       </div>
 
-      <div className="CommuRight">
+       <div className="CommuRight">
         <div className="CommuRightHeaderWrap">
           <h1>문의사항</h1>
           <input
@@ -67,7 +88,7 @@ const CommuQna = () => {
           <p className="CommuBoardDate">등록일</p>
         </div>
         <table className="CommuBoard">
-          {filteredPosts.map((post) => (
+          {currentPosts.map((post) => (
             <Link to={`/community/qna/detail/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
@@ -81,7 +102,7 @@ const CommuQna = () => {
         <div className="CommuBottomWrap">
           <div></div>
           <div className="CommuPageButtonWrap">
-            <div>1</div>
+            {pageButtons}
           </div>
           <Link to='/community/qnaWrite'>
             <div className="CommuWrite">글쓰기</div>

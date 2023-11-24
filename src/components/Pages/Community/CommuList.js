@@ -9,9 +9,12 @@ const CommuList = () => {
   const [filteredPosts, setFilteredPosts] = useState(noticePosts.postIndex);
 
   useEffect(() => {
-    window.onbeforeunload = () => {
-      localStorage.clear();
-    };
+
+
+
+    // window.onbeforeunload = () => {              //페이지 이동시 로컬스토리지 초기화
+    //   localStorage.clear();
+    // };
 
     const originalPosts = noticePosts.postIndex;
     const updatedPosts = originalPosts.map((post) => {

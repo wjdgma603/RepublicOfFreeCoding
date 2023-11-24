@@ -17,7 +17,7 @@ const CommuQnaDetail = () => {
   const [editedQuestion, setEditedQuestion] = useState(qnaPosts.postIndex[selectedPostIndex].title);
 
   useEffect(() => {
-    // 페이지 로딩 시 localStorage에서 수정된 데이터를 가져와서 상태에 적용
+    // 페이지 로딩 시 localStorage에서 수정된 데이터를 가져와서 적용
     const savedData = JSON.parse(localStorage.getItem(`editedQnaPost_${id}`));
     if (savedData) {
       setEditedQuestion(savedData.editedQuestion);
@@ -58,12 +58,17 @@ const CommuQnaDetail = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
       const updatedQnaPosts = qnaPosts.postIndex.filter((post) => post.id !== parseInt(id));
-      setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
+      setQnaPosts(prevQnaPosts => ({
+        ...prevQnaPosts,
+        postIndex: updatedQnaPosts
+      }));
       setIsEditingQuestion(false);
+      setIsEditingAnswer(false);
       window.location.href = '/community/qna';
       localStorage.removeItem(`editedQnaPost_${id}`);
     }
   };
+
   return (
     <div className="CommuSection">
       <div>

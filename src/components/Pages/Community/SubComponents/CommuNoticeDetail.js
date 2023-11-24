@@ -53,7 +53,7 @@ const CommuNoticeDetail = () => {
       const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
       setNoticePosts(prevNoticePosts => ({
         ...prevNoticePosts,
-        postIndex: updatedNoticePosts
+        // postIndex: updatedNoticePosts
       }));
       setIsEditing(false);
       window.location.href = '/community';
