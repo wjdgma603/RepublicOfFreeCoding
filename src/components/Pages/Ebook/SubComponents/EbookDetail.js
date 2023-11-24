@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 const EbookDetail = () => {
     const location = useLocation();
     const Ebook = location.state.Ebook;
+    const Data = {Ebook}
     let suggestArray = ["집중돼요","도움돼요","쉬웠어요","최고에요","추천해요"]
     return ( 
         <section className="EbookDetailPage">
@@ -27,7 +28,7 @@ const EbookDetail = () => {
                     </div>
                 </div>
                 <div className="ImgWrap">
-                    <img src={require(`../images/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
+                    <img src={require(`../images/List/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
                 </div>
                 <div className="ExplainEbookViewer">
                     <div className="Author">{Ebook.Author} 저자&#40;글&#41;</div>
@@ -50,12 +51,12 @@ const EbookDetail = () => {
                         <div className="Content">{Ebook.BookSuggest[1]}</div>
                     </div>
                     <div className="BookSuggestImg">
-                        <img src={require(`../images/${Ebook.Category}.png`)} alt={Ebook.Category}/>
+                        <img src={require(`../images/Common/${Ebook.Category.toUpperCase()}.png`)} alt={Ebook.Category}/>
                     </div>
                 </div>
                 <div className="PublisherSuggest">
                     <div className="PublisherSuggestImg">
-                        <img src={require(`../images/Books.png`)} alt="Books"/>
+                        <img src={require(`../images/Common/Books.png`)} alt="Books"/>
                     </div>
                     <div className="PublisherSuggestText">
                         <div className="Title">출판사 서평</div>
@@ -73,7 +74,7 @@ const EbookDetail = () => {
                 </div>
             </article>
             <div className="GotoList">
-                <Link to="/ebook">
+                <Link to={`/ebook/viewer/${Ebook.id}`} state={{Ebook : Data}}>
                     <svg width="24" height="15" viewBox="0 0 24 15" fill="none">
                         <g clip-path="url(#clip0_132_659)">
                             <path d="M0.0332031 0.748742C0.254692 0.268064 0.523307 0.0701374 0.923872 0.103125C1.32444 0.136113 1.62133 0.423578 1.66845 0.81943C1.71558 1.22471 1.47995 1.58286 1.09352 1.70067C0.716521 1.81378 0.320668 1.64884 0.136879 1.30482C0.103891 1.23885 0.0709034 1.17287 0.0379157 1.11161C0.0332031 0.989082 0.0332031 0.871268 0.0332031 0.748742Z" fill="#00D67A"/>

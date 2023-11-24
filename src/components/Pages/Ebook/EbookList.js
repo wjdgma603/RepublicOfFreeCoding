@@ -16,7 +16,7 @@ const EbookList = () => {
                     <div className='EbookItem' key={Ebook.id}>
                         <div className='ImgWrap'>
                             <Link to={`/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>
-                                <img src={require(`./images/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
+                                <img src={require(`./images/List/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
                             </Link>
                         </div>
                         <div className='ItemExplain'>
@@ -31,7 +31,7 @@ const EbookList = () => {
                                 </div>
                                 <div className='RightSection'>
                                     <Link to={`/ebook/${Ebook.id}`} state={{Ebook : Ebook}}>내용 자세히 보기</Link>
-                                    <Link to=''>E-Book 읽기</Link>
+                                    <Link to={`/ebook/viewer/${Ebook.id}`} state={{Ebook : Ebook}}>E-Book 읽기</Link>
                                 </div>
                             </div>
                         </div>
