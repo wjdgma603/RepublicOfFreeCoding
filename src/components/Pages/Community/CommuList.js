@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CommuData from "./SubComponents/CommuData";
 import "./CommuList.css";
 
 const CommuList = () => {
   const { noticePosts } = CommuData();
+  const { page } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(noticePosts.postIndex);
 
   useEffect(() => {
-
-
-
-    // window.onbeforeunload = () => {              //페이지 이동시 로컬스토리지 초기화
-    //   localStorage.clear();
-    // };
-
     const originalPosts = noticePosts.postIndex;
     const updatedPosts = originalPosts.map((post) => {
       const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
@@ -33,18 +27,37 @@ const CommuList = () => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
 
-    const filtered = noticePosts.postIndex.map((post) => {
-      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
-      if (savedData && savedData.editedTitle) {
-        return { ...post, title: savedData.editedTitle };
-      } else {
-        return post;
-      }
-    }).filter((post) => post.title.includes(searchTerm));
+    const filtered = noticePosts.postIndex
+      .map((post) => {
+        const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
+        if (savedData && savedData.editedTitle) {
+          return { ...post, title: savedData.editedTitle };
+        } else {
+          return post;
+        }
+      })
+      .filter((post) => post.title.includes(searchTerm));
 
     setFilteredPosts(filtered);
   };
 
+  // Pagination logic
+  const postsPerPage = 5;
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const currentPage = page ? parseInt(page) : 1;
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const currentPosts = filteredPosts.slice(startIndex, endIndex);
+
+  // Generate page buttons
+  const pageButtons = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageButtons.push(
+      <Link to={`/community/notice/${i}`} key={i}>
+        <div>{i}</div>
+      </Link>
+    );
+  }
 
   return (
     <section className="CommuSection">
@@ -79,7 +92,7 @@ const CommuList = () => {
         </div>
 
         <table className="CommuBoard">
-          {filteredPosts.map((post) => (
+          {currentPosts.map((post) => (
             <Link to={`/community/notice/detail/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
@@ -93,11 +106,9 @@ const CommuList = () => {
         <div className="CommuBottomWrap">
           <div></div>
 
-          <div className="CommuPageButtonWrap">
-            <div>1</div>
-          </div>
+          <div className="CommuPageButtonWrap">{pageButtons}</div>
 
-          <Link to='/community/noticeWrite'>
+          <Link to="/community/noticeWrite">
             <div className="CommuWrite">글쓰기</div>
           </Link>
         </div>

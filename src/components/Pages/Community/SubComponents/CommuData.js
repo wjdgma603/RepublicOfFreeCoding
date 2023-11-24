@@ -4,6 +4,19 @@ export const noticePost = {
   
   postIndex: [
     {
+      id: 5,
+      title: '5번째 공지사항',
+      content: '다섯번째 공지사항 내용입니다',
+      date: '2023.11.09.',
+    },
+
+    {
+      id: 4,
+      title: '4번째 공지사항',
+      content: '네번째 공지사항 내용입니다',
+      date: '2023.11.12.',
+    },
+    {
       id: 3,
       title: '3번째 공지사항',
       content: '세번째 공지사항 내용입니다',

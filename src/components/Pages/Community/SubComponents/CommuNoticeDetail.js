@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { noticePost, updateNoticePost } from './CommuData';
 import './CommuNoticeDetail.css';
 
 const CommuNoticeDetail = () => {
-  const { id } = useParams();
+  const { id,page } = useParams();
+  const navigate = useNavigate();
   const [noticePosts, setNoticePosts] = useState(noticePost);
   const selectedPost = noticePosts.postIndex.find((post) => post.id === parseInt(id));
 
@@ -60,7 +61,9 @@ const CommuNoticeDetail = () => {
       localStorage.removeItem(`editedPost_${id}`);
     }
   };
-  
+  const goBack = () => {
+    navigate(-1); // -1을 전달하여 이전 페이지로 이동
+  };
   return (
     <div className="CommuSection">
       <div>
@@ -124,9 +127,9 @@ const CommuNoticeDetail = () => {
         ) : (
           <div className="CommuNoticeDetailButtonWrap">
             <div></div>
-            <Link to="/community">
-              <button className="CommuNoticePageButton">목록보기</button>
-            </Link>
+           
+              <button className="CommuNoticePageButton" onClick={goBack}>목록보기</button>
+
             <div>
               <button className="CommuNoticeEditButton" onClick={handleEditClick}>
                 글수정

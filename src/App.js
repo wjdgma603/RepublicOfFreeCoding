@@ -137,6 +137,7 @@ function App() {
 
         <Route path='/community/*' element={<CommuList/>}/>
         <Route path='/community/notice' element={<CommuList/>}/>
+        <Route path='/community/notice/:page' element={<CommuList/>}/>
         <Route path='/community/noticeWrite' element={<CommuNoticeWrite/>}/>
         <Route path="/community/notice/detail/:id" element={<CommuNoticeDetail/>}/>
         <Route path='/community/qnaWrite' element={<CommuQnaWrite/>}/>

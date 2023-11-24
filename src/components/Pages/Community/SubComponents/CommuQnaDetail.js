@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "./CommuQnaDetail.css";
 import { qnaPost, updateQnaPost } from '../SubComponents/CommuData';
 
 const CommuQnaDetail = () => {
-  const { id } = useParams();
+  const { id, page } = useParams();
+
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const [qnaPosts, setQnaPosts] = useState(qnaPost);
   const selectedPostIndex = qnaPosts.postIndex.findIndex((post) => post.id === parseInt(id));
@@ -64,11 +66,13 @@ const CommuQnaDetail = () => {
       }));
       setIsEditingQuestion(false);
       setIsEditingAnswer(false);
-      window.location.href = '/community/qna';
+      navigate(`/community/qna/${page}`);  // 목록보기 버튼 클릭 시 현재 페이지로 이동
       localStorage.removeItem(`editedQnaPost_${id}`);
     }
   };
-
+  const goBack = () => {
+    navigate(-1); // -1을 전달하여 이전 페이지로 이동
+  };
   return (
     <div className="CommuSection">
       <div>
@@ -144,19 +148,19 @@ const CommuQnaDetail = () => {
         </div>
 
         <div className="CommuQnaButtonWrap">
-          <div></div>
-          <Link to="/community/qna">
-            <button className="CommuQnaButton">목록보기</button>
-          </Link>
+        <div></div>
+        <button className="CommuQnaButton" onClick={goBack}>
+          목록보기
+        </button>
 
-          <div>
-            <button onClick={isEditingAnswer ? handleEditComplete : toggleEditAnswer}>
-              {isEditingAnswer ? "답변수정완료" : "답변수정"}
-            </button>
-            <button onClick={deletePost}>게시글 삭제</button>
-          </div>
+        <div>
+          <button onClick={isEditingAnswer ? handleEditComplete : toggleEditAnswer}>
+            {isEditingAnswer ? "답변수정완료" : "답변수정"}
+          </button>
+          <button onClick={deletePost}>게시글 삭제</button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -45,9 +45,9 @@ const currentPosts = filteredPosts.slice(startIndex, endIndex);
   const pageButtons = [];
   for (let i = 1; i <= totalPages; i++) {
     pageButtons.push(
-      <div key={i}>
-        <Link to={`/community/qna/${i}`}>{i}</Link>
-      </div>
+      
+        <Link to={`/community/qna/${i}`}><div key={i}>{i}</div></Link>
+
     );
   }
 
