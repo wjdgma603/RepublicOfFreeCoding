@@ -26,10 +26,10 @@ const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => 
 
     
     useEffect(()=>{
-        
         const Header = document.querySelector('.HeaderComponent')
         const HeaderLogo = document.querySelector('#HeaderLogo')
         const Navigation = document.querySelectorAll('.HeaderNavigation>ul>li>a')
+        const HeaderPersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div')
         const PersonalMenu = document.querySelectorAll('.HeaderPersonalMenu>div>a')
         const HeaderMenu = document.querySelectorAll('.HeaderComponent>section.HeaderWrap>div.HeaderMenu span')
         if(isHeaderLoaded){
@@ -39,16 +39,17 @@ const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => 
             HeaderLogo.style.fill = '#00D67A'
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
             PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#00D67A"})
-            Navigation.forEach((NavItem)=>{NavItem.style.color = "#00D67A"})
             HeaderMenu.forEach((HeaderMenuItem)=>{HeaderMenuItem.style.background = "#00D67A"})
+            HeaderPersonalMenu.forEach((HeaderMenuItem)=>{HeaderMenuItem.style.color = "#00D67A"})
         }else{
             Header.style.background = '#FFF'
-            // Header.style.boxShadow = '0px 11px 10px 0px rgba(0, 0, 0, 0.16)'
+            Header.style.boxShadow = '0px 11px 10px 0px rgba(0, 0, 0, 0.16)'
             Header.style.borderBottom = '1px solid #E4E4E4'
             HeaderLogo.style.fill = '#2f2f2f'
             PersonalMenu.forEach((PersonalItem)=>{PersonalItem.style.color = "#000"})
             Navigation.forEach((NavItem)=>{NavItem.style.color = "#222"})
             HeaderMenu.forEach((HeaderMenuItem)=>{HeaderMenuItem.style.background = "#000"})
+            HeaderPersonalMenu.forEach((HeaderMenuItem)=>{HeaderMenuItem.style.color = "#00D67A"})
         }
         if(headerDisable){
             Header.style.display = 'none'

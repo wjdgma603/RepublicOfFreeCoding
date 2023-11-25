@@ -73,34 +73,34 @@ const Palace = () => {
     PointLight3.castShadow =true
 
     //light 천장 왼쪽 조명
-    const PointLight6 = new THREE.PointLight( "white",  5000);
+    const PointLight6 = new THREE.PointLight( "#fff",  5000);
     PointLight6.position.set(-150,140,0)
     PointLight6.castShadow =true
     //light 천장 왼쪽 뒤
-    const PointLight7 = new THREE.PointLight( "white",  5000);
+    const PointLight7 = new THREE.PointLight( "#fff",  5000);
     PointLight7.position.set(-230,140,0)
     PointLight7.castShadow =true
     //light 천장 오른쪽
-    const PointLight8 = new THREE.PointLight( "white",  5000);
+    const PointLight8 = new THREE.PointLight( "#fff",  5000);
     PointLight8.position.set(150,140,0)
     PointLight8.castShadow =true
     //light 천장 오른쪽 뒤
-    const PointLight9 = new THREE.PointLight( "white",  3000);
+    const PointLight9 = new THREE.PointLight( "#fff",  3000);
     PointLight9.position.set(240,100,130)
     PointLight9.castShadow =true
     //light 커뮤니티 불빛
-    const PointLight10 = new THREE.PointLight( "white",  7000);
+    const PointLight10 = new THREE.PointLight( "#fff",  7000);
     PointLight10.position.set(-230,60,130)
     PointLight10.castShadow =true
     //light ebook링크 불빛
-    const PointLight11 = new THREE.PointLight( "white",  1500);
+    const PointLight11 = new THREE.PointLight( "#fff",  1500);
     PointLight11.position.set(-130,80,-200)
     PointLight11.castShadow =true
     //light 입구쪽 기둥
-    const PointLight12 = new THREE.PointLight( "white",  2000);
+    const PointLight12 = new THREE.PointLight( "#fff",  2000);
     PointLight12.position.set(70,80,190)
     //light ebook 책쪽
-    const PointLight13 = new THREE.PointLight( "white",  2000);
+    const PointLight13 = new THREE.PointLight( "#fff",  2000);
     PointLight13.position.set(173,60,-170)
     // 입구 조명
     const PointLight14 = new THREE.PointLight( "green",  2000);
