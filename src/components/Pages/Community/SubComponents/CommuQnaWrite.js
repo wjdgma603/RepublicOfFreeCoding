@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CommuQnaWrite.css';
-import { addQnaPost } from './CommuData';
+import { addQnaPost, qnaPost } from './CommuData';
 
 const CommuQnaWrite = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePostSubmit = () => {
-    if (!title || !content) {
+    if (!title || !content || isSubmitting) {
       alert('제목과 내용을 입력해주세요.');
       return;
     }
 
+    setIsSubmitting(true);
+
     const newPost = {
-      id: Date.now(),
+      id: qnaPost.postIndex.length + 1,
       title,
       content,
       date: new Date().toLocaleDateString(),
     };
+
     addQnaPost(newPost);
+
     setTitle('');
     setContent('');
+    setIsSubmitting(false);
+
     alert('글이 성공적으로 작성되었습니다.');
   };
+
 
   return (
     <div className="CommuSection">
@@ -58,7 +66,15 @@ const CommuQnaWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <Link to='/community/qna'><button className="CommuWriteButton" onClick={handlePostSubmit}>글쓰기</button></Link>
+        <Link to='/community/qna'>
+        <button
+          className="CommuWriteButton"
+          onClick={handlePostSubmit}
+          disabled={isSubmitting}
+        >
+          글쓰기
+        </button>
+        </Link>
       </div>
     </div>
   );

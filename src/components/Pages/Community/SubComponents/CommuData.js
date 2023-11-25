@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const noticePost = {
   
@@ -41,10 +41,19 @@ export const noticePost = {
 };
 
 
-export const updateNoticePost = (id, updatedContent, updatedAnswer) => {
+export const updateNoticePost = (id, updatedTitle, updatedContent) => {
   noticePost.postIndex = noticePost.postIndex.map((post) =>
-    post.id === id ? { ...post, content: updatedContent, answer: updatedAnswer } : post
+    post.id === id
+      ? {
+          ...post,
+          title: updatedTitle,
+          content: updatedContent,
+        }
+      : post
   );
+
+  // 로컬 스토리지 업데이트 추가
+  localStorage.setItem('noticePosts', JSON.stringify(noticePost));
 };
 
 export const addNoticePost = (newPost) => {
@@ -112,36 +121,43 @@ export const qnaPost = {
   ],
 };
 
-export const updateQnaPost = (id, updatedContent, updatedAnswer) => {
+
+export const updateQnaPost = (id, updatedQuestion, updatedContent, updatedAnswer) => {
   qnaPost.postIndex = qnaPost.postIndex.map((post) =>
-    post.id === id ? { ...post, content: updatedContent, answer: updatedAnswer } : post
+    post.id === id
+      ? {
+          ...post,
+          title: updatedQuestion,
+          content: updatedContent,
+          answer: updatedAnswer,
+        }
+      : post
   );
+
+  // 로컬 스토리지 업데이트 추가
+  localStorage.setItem('qnaPosts', JSON.stringify(qnaPost));
 };
+
 
 export const addQnaPost = (newPost) => {
-  qnaPost.postIndex.unshift({
-    id: qnaPost.postIndex.length + 1,
-    title: newPost.title,
-    content: newPost.content,
-    date: new Date().toLocaleDateString(),
-  });
+  const updatedPosts = [
+    { id: qnaPost.postIndex.length + 1, ...newPost },
+    ...qnaPost.postIndex
+  ];
+  qnaPost.postIndex = updatedPosts;
 
-  const updatedPosts = [newPost, ...qnaPost.postIndex];
   localStorage.setItem('qnaPosts', JSON.stringify({ postIndex: updatedPosts }));
 };
-
 const CommuData = () => {
   const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts'));
   const [noticePosts, setNoticePosts] = useState(storedNoticePosts || noticePost);
 
-  const [qnaPosts, setQnaPosts] = useState(qnaPost);
-  
-  const addNoticePost = (newPost) => {
-    setNoticePosts((prevPosts) => {
-      const updatedPosts = [newPost, ...prevPosts.postIndex];
-      return { postIndex: updatedPosts };
-    });
-  };
+  const storedQnaPosts = JSON.parse(localStorage.getItem('qnaPosts'));
+  const [qnaPosts, setQnaPosts] = useState(storedQnaPosts || qnaPost);
+
+  useEffect(() => {
+    localStorage.setItem('qnaPosts', JSON.stringify(qnaPosts));
+  }, [qnaPosts]);
 
   return {
     noticePosts,

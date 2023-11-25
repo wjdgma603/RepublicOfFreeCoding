@@ -13,6 +13,7 @@ const CommuNoticeDetail = () => {
   const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
 
   useEffect(() => {
+    // 페이지 진입 시, 로컬 스토리지에서 편집된 정보를 가져와 초기 상태로 설정
     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
     if (savedData) {
       setEditedTitle(savedData.editedTitle);
@@ -38,39 +39,33 @@ const CommuNoticeDetail = () => {
     });
 
     setIsEditing(false);
-    localStorage.setItem(`editedPost_${id}`, JSON.stringify({ editedTitle, editedContent }));
+
+
+    // 수정된 내용을 updateNoticePost 함수에 전달
+    updateNoticePost(parseInt(id), editedTitle, editedContent);
   };
 
   const handleCancelClick = () => {
     setIsEditing(false);
   };
 
-  
 
   const deletePost = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
-      // 게시글 삭제 로직
       const updatedNoticePosts = noticePosts?.postIndex?.filter((post) => post.id !== parseInt(id));
       const updatedNoticePostsObject = {
         ...noticePosts,
         postIndex: updatedNoticePosts,
       };
       setNoticePosts(updatedNoticePostsObject);
-  
-      // 로컬 스토리지에서도 삭제
       const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts'));
       const updatedStoredNoticePosts = storedNoticePosts.postIndex.filter((post) => post.id !== parseInt(id));
       localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedStoredNoticePosts }));
-  
-      // 해당 게시글의 편집 정보도 삭제
       localStorage.removeItem(`editedPost_${id}`);
-  
       navigate('/community');
     }
   };
-
-
 
   const goBack = () => {
     navigate(-1);
