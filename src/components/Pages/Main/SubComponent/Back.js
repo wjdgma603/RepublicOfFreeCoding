@@ -49,7 +49,7 @@ function Back() {
 
         // 입자
         const particlesGeometry = new THREE.BoxGeometry(0.003,0.003,0.003);  // 입자의 크기임
-        const particlesMaterial = new THREE.MeshBasicMaterial({ color: `#white` }); //입자 색
+        const particlesMaterial = new THREE.MeshBasicMaterial({ color: `#ffffff` }); //입자 색
         const particlesMeshes = [];
 
         for (let i = 0; i < 1000; i++) {

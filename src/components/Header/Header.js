@@ -3,28 +3,13 @@ import './Header.css'
 import { useEffect, useState } from "react";
 
 const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => {
-    // const [activeIndexes, setActiveIndexes] = useState([]);
-
-    // const handleClick = (index) => {
-    //   setActiveIndexes((prevIndexes) => {
-    //     const indexExists = prevIndexes.includes(index);
-    //     return indexExists
-    //       ? prevIndexes.filter((prevIndex) => prevIndex !== index)
-    //       : [...prevIndexes, index];
-    //   });
-    // };
-    
     const [isNavMenuVisible, setIsNavMenuVisible] = useState(false);
-
     const handleMenuClick = () => {
       setIsNavMenuVisible(!isNavMenuVisible);
     };  
-
     const handleMenuItemClick = () => {
         setIsNavMenuVisible(false);
-      };
-
-    
+    };
     useEffect(()=>{
         const Header = document.querySelector('.HeaderComponent')
         const HeaderLogo = document.querySelector('#HeaderLogo')

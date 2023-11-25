@@ -70,7 +70,7 @@ function App() {
               Kakao.API.request({
                   url : '/v2/user/me',
                   success(res){
-                      console.log('카카오 데이터 인가 요청 성공')
+                      // console.log('카카오 데이터 인가 요청 성공')
                       const KakaoAccount = res.kakao_account;
                       setUser({
                         Nickname: KakaoAccount.profile.nickname,
