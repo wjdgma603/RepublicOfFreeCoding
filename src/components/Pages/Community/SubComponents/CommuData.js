@@ -149,14 +149,16 @@ export const addQnaPost = (newPost) => {
   localStorage.setItem('qnaPosts', JSON.stringify({ postIndex: updatedPosts }));
 };
 const CommuData = () => {
-  const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts'));
-  const [noticePosts, setNoticePosts] = useState(storedNoticePosts || noticePost);
+  const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
+  const [noticePosts, setNoticePosts] = useState(storedNoticePosts);
 
-  const storedQnaPosts = JSON.parse(localStorage.getItem('qnaPosts'));
-  const [qnaPosts, setQnaPosts] = useState(storedQnaPosts || qnaPost);
+  const storedQnaPosts = JSON.parse(localStorage.getItem('qnaPosts')) || qnaPost;
+  const [qnaPosts, setQnaPosts] = useState(storedQnaPosts);
 
   useEffect(() => {
     localStorage.setItem('qnaPosts', JSON.stringify(qnaPosts));
+    setNoticePosts((prevNoticePosts) => ({ ...prevNoticePosts }));
+    // setQnaPosts((prevQnaPosts) => ({ ...prevQnaPosts })); // 만약 필요하면 추가
   }, [qnaPosts]);
 
   return {

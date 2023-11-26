@@ -13,13 +13,23 @@ const CommuNoticeDetail = () => {
   const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
 
   useEffect(() => {
-    // 페이지 진입 시, 로컬 스토리지에서 편집된 정보를 가져와 초기 상태로 설정
+    const storedData = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
+    setNoticePosts(storedData);
+
     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
     if (savedData) {
       setEditedTitle(savedData.editedTitle);
       setEditedContent(savedData.editedContent);
     }
   }, [id]);
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
+    if (savedData) {
+      setEditedTitle(savedData.editedTitle);
+      setEditedContent(savedData.editedContent);
+    }
+  }, []);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -38,33 +48,21 @@ const CommuNoticeDetail = () => {
       return { ...prevNoticePosts, postIndex: updatedPosts };
     });
 
+    updateNoticePost(parseInt(id), editedTitle, editedContent);
     setIsEditing(false);
 
-
-    // 수정된 내용을 updateNoticePost 함수에 전달
-    updateNoticePost(parseInt(id), editedTitle, editedContent);
+    localStorage.setItem(`editedPost_${id}`, JSON.stringify({ editedTitle, editedContent }));
   };
 
   const handleCancelClick = () => {
     setIsEditing(false);
   };
 
-
   const deletePost = () => {
-    const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
-    if (confirmation) {
-      const updatedNoticePosts = noticePosts?.postIndex?.filter((post) => post.id !== parseInt(id));
-      const updatedNoticePostsObject = {
-        ...noticePosts,
-        postIndex: updatedNoticePosts,
-      };
-      setNoticePosts(updatedNoticePostsObject);
-      const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts'));
-      const updatedStoredNoticePosts = storedNoticePosts.postIndex.filter((post) => post.id !== parseInt(id));
-      localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedStoredNoticePosts }));
-      localStorage.removeItem(`editedPost_${id}`);
-      navigate('/community');
-    }
+    // ... (이전 코드 생략)
+
+    localStorage.removeItem(`editedPost_${id}`);
+    navigate('/community');
   };
 
   const goBack = () => {

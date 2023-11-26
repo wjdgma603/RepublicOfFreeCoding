@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { addNoticePost,noticePost } from './CommuData';
+import { Link, useNavigate } from 'react-router-dom';
+import { addNoticePost, noticePost } from './CommuData';
 import './CommuNoticeWrite.css';
 
 const CommuNoticeWrite = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -14,16 +15,19 @@ const CommuNoticeWrite = () => {
     }
 
     const newPost = {
-      id: noticePost.postIndex.length + 1,  // 여기서 id를 설정
+      id: noticePost.postIndex.length + 1,
       title,
       content,
       date: new Date().toLocaleDateString(),
     };
-    // addNoticePost 함수에 newPost를 전달하여 id를 연동
+
     addNoticePost(newPost);
     setTitle('');
     setContent('');
     alert('글이 성공적으로 작성되었습니다.');
+
+    // 새로 작성된 글의 ID를 가져와 URL로 이동
+    navigate(`/community/notice/${newPost.id}`);
   };
 
   return (

@@ -12,16 +12,13 @@ const CommuList = () => {
   useEffect(() => {
     const originalPosts = noticePosts.postIndex;
     const updatedPosts = originalPosts.map((post) => {
-      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`));
-      if (savedData && savedData.editedTitle) {
-        return { ...post, title: savedData.editedTitle };
-      } else {
-        return post;
-      }
+      const savedData = JSON.parse(localStorage.getItem(`editedPost_${post.id}`)) || {};
+      return savedData.editedTitle ? { ...post, title: savedData.editedTitle } : post;
     });
-
+  
     setFilteredPosts(updatedPosts);
   }, [noticePosts.postIndex]);
+  
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;

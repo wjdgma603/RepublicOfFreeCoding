@@ -1,5 +1,3 @@
-// CommuQnaDetail.jsx
-
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import './CommuQnaDetail.css';
@@ -17,31 +15,33 @@ const CommuQnaDetail = () => {
   const [editedQuestion, setEditedQuestion] = useState('');
 
   useEffect(() => {
-    // 페이지 진입 시, 로컬 스토리지에서 편집된 정보를 가져와 초기 상태로 설정
     const savedData = JSON.parse(localStorage.getItem(`editedQnaPost_${id}`));
     if (savedData) {
       setEditedQuestion(savedData.editedQuestion || '');
       setEditedContent(savedData.editedContent || '');
       setEditedAnswer(savedData.editedAnswer || '');
+    } else {
+      // 편집 중이 아닐 때만 로컬스토리지에서 데이터 불러오기
+      const storedData = JSON.parse(localStorage.getItem('qnaPosts')) || qnaPost;
+      setQnaPosts(storedData);
     }
   }, [id]);
 
+
   const handleEditQuestion = () => {
-    // 현재 내용을 가져와서 편집 필드에 설정
     setEditedQuestion(qnaPosts.postIndex[selectedPostIndex]?.title || '');
     setEditedContent(qnaPosts.postIndex[selectedPostIndex]?.content || '');
     setEditedAnswer(qnaPosts.postIndex[selectedPostIndex]?.answer || '');
-
     setIsEditingQuestion(true);
+    setIsEditingAnswer(false);
   };
 
   const handleEditAnswer = () => {
-    // 현재 내용을 가져와서 편집 필드에 설정
     setEditedAnswer(qnaPosts.postIndex[selectedPostIndex]?.answer || '');
     setEditedQuestion(qnaPosts.postIndex[selectedPostIndex]?.title || '');
     setEditedContent(qnaPosts.postIndex[selectedPostIndex]?.content || '');
-
     setIsEditingAnswer(true);
+    setIsEditingQuestion(false);
   };
 
   const handleEditCompleteQuestion = () => {
@@ -57,27 +57,24 @@ const CommuQnaDetail = () => {
     );
 
     setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
-
-    // 수정된 내용을 updateQnaPost 함수에 전달
     updateQnaPost(parseInt(id), editedQuestion, editedContent, editedAnswer);
 
     setIsEditingQuestion(false);
     setIsEditingAnswer(false);
+
+    localStorage.setItem(`editedQnaPost_${id}`, JSON.stringify({ editedQuestion, editedContent, editedAnswer }));
   };
 
   const handleDeletePost = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
-      // 해당 id를 가진 게시글을 제외한 게시글들로 업데이트
       const updatedQnaPosts = qnaPosts.postIndex.filter((post) => post.id !== parseInt(id));
       setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
 
-      // 로컬 스토리지에서도 삭제
       const storedQnaPosts = JSON.parse(localStorage.getItem('qnaPosts'));
       const updatedStoredQnaPosts = storedQnaPosts.postIndex.filter((post) => post.id !== parseInt(id));
       localStorage.setItem('qnaPosts', JSON.stringify({ postIndex: updatedStoredQnaPosts }));
 
-      // 해당 게시글의 편집 정보도 삭제
       localStorage.removeItem(`editedQnaPost_${id}`);
 
       navigate(-1);
@@ -87,6 +84,7 @@ const CommuQnaDetail = () => {
   const goBack = () => {
     navigate(-1);
   };
+
 
   return (
     <div className="CommuSection">
