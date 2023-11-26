@@ -8,28 +8,29 @@ const CommuNoticeDetail = () => {
   const navigate = useNavigate();
   const [noticePosts, setNoticePosts] = useState(noticePost);
   const [isEditing, setIsEditing] = useState(false);
-  const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
-  const [editedTitle, setEditedTitle] = useState(selectedPost?.title || '');
-  const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
+  const [editedTitle, setEditedTitle] = useState('');
+  const [editedContent, setEditedContent] = useState('');
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
-    setNoticePosts(storedData);
+    setNoticePosts({ ...storedData });
+
+    const selectedPost = storedData.postIndex.find((post) => post.id === parseInt(id));
+    if (selectedPost) {
+      setEditedTitle(selectedPost.title || '');
+      setEditedContent(selectedPost.content || '');
+    }
 
     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
     if (savedData) {
-      setEditedTitle(savedData.editedTitle);
-      setEditedContent(savedData.editedContent);
+      setEditedTitle(savedData.editedTitle || '');
+      setEditedContent(savedData.editedContent || '');
     }
   }, [id]);
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
   const handleSaveClick = () => {
     setNoticePosts((prevNoticePosts) => {
-      const updatedPosts = prevNoticePosts?.postIndex?.map((post) => {
+      const updatedPosts = prevNoticePosts.postIndex.map((post) => {
         if (post.id === parseInt(id)) {
           return { ...post, title: editedTitle, content: editedContent };
         } else {
@@ -43,34 +44,39 @@ const CommuNoticeDetail = () => {
     updateNoticePost(parseInt(id), editedTitle, editedContent);
     setIsEditing(false);
 
-    localStorage.setItem(`editedPost_${id}`, JSON.stringify({ editedTitle, editedContent }));
+    const updatedPostData = { id, editedTitle, editedContent };
+    localStorage.setItem(`editedPost_${id}`, JSON.stringify(updatedPostData));
   };
 
   const handleCancelClick = () => {
     setIsEditing(false);
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
   const deletePost = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
-      // noticePost에서 해당 게시글 삭제
-      const updatedNoticePosts = noticePosts?.postIndex?.filter((post) => post.id !== parseInt(id));
+      const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
       const updatedNoticePostsObject = {
         ...noticePosts,
         postIndex: updatedNoticePosts,
       };
       setNoticePosts(updatedNoticePostsObject);
-      localStorage.setItem('noticePosts', JSON.stringify(updatedNoticePostsObject));
 
-      // editedPost에서 해당 게시글 삭제
+      const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
+      const updatedStoredNoticePosts = storedNoticePosts.postIndex.filter((post) => post.id !== parseInt(id));
+      localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedStoredNoticePosts }));
+
       localStorage.removeItem(`editedPost_${id}`);
-
       navigate('/community');
     }
-  };
-
-  const goBack = () => {
-    navigate(-1);
   };
 
   return (
@@ -93,7 +99,7 @@ const CommuNoticeDetail = () => {
         </ul>
       </div>
 
-    <div className="CommuRight">
+      <div className="CommuRight">
         <h1>공지사항</h1>
 
         {isEditing ? (
@@ -136,8 +142,8 @@ const CommuNoticeDetail = () => {
         ) : (
           <div className="CommuNoticeDetailButtonWrap">
             <div></div>
-           
-              <button className="CommuNoticePageButton" onClick={goBack}>목록보기</button>
+
+            <button className="CommuNoticePageButton" onClick={goBack}>목록보기</button>
 
             <div>
               <button className="CommuNoticeEditButton" onClick={handleEditClick}>
@@ -157,6 +163,13 @@ export default CommuNoticeDetail;
 
 
 
+
+
+
+
+
+
+
 // import React, { useState, useEffect } from 'react';
 // import { Link, useParams, useNavigate } from 'react-router-dom';
 // import { noticePost, updateNoticePost } from './CommuData';
@@ -167,28 +180,27 @@ export default CommuNoticeDetail;
 //   const navigate = useNavigate();
 //   const [noticePosts, setNoticePosts] = useState(noticePost);
 //   const [isEditing, setIsEditing] = useState(false);
-//   const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
-//   const [editedTitle, setEditedTitle] = useState(selectedPost?.title || '');
-//   const [editedContent, setEditedContent] = useState(selectedPost?.content || '');
 
 //   useEffect(() => {
 //     const storedData = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
-//     setNoticePosts(storedData);
+//     setNoticePosts((prevNoticePosts) => ({ ...prevNoticePosts, postIndex: storedData.postIndex }));
+
+//     const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
+//     if (selectedPost) {
+//       setEditedTitle(selectedPost.title || '');
+//       setEditedContent(selectedPost.content || '');
+//     }
 
 //     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
 //     if (savedData) {
-//       setEditedTitle(savedData.editedTitle);
-//       setEditedContent(savedData.editedContent);
+//       setEditedTitle(savedData.editedTitle || '');
+//       setEditedContent(savedData.editedContent || '');
 //     }
-//   }, [id]);
+//   }, [id, noticePosts]);
 
-//   useEffect(() => {
-//     const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
-//     if (savedData) {
-//       setEditedTitle(savedData.editedTitle);
-//       setEditedContent(savedData.editedContent);
-//     }
-//   }, []);
+//   const selectedPost = noticePosts?.postIndex?.find((post) => post.id === parseInt(id));
+//   const [editedTitle, setEditedTitle] = useState(selectedPost?.title || ''); // 수정된 부분
+//   const [editedContent, setEditedContent] = useState(selectedPost?.content || ''); // 수정된 부분
 
 //   const handleEditClick = () => {
 //     setIsEditing(true);
@@ -207,10 +219,13 @@ export default CommuNoticeDetail;
 //       return { ...prevNoticePosts, postIndex: updatedPosts };
 //     });
 
+//     // 수정된 내용을 updateNoticePost 함수에 전달
 //     updateNoticePost(parseInt(id), editedTitle, editedContent);
 //     setIsEditing(false);
 
-//     localStorage.setItem(`editedPost_${id}`, JSON.stringify({ editedTitle, editedContent }));
+//     // 수정된 내용을 로컬 스토리지에 저장
+//     const updatedPostData = { id, editedTitle, editedContent }; // 수정된 부분
+//     localStorage.setItem(`editedPost_${id}`, JSON.stringify(updatedPostData));
 //   };
 
 //   const handleCancelClick = () => {
@@ -218,10 +233,22 @@ export default CommuNoticeDetail;
 //   };
 
 //   const deletePost = () => {
-//     // ... (이전 코드 생략)
+//     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
+//     if (confirmation) {
+//       const updatedNoticePosts = noticePosts?.postIndex?.filter((post) => post.id !== parseInt(id));
+//       const updatedNoticePostsObject = {
+//         ...noticePosts,
+//         postIndex: updatedNoticePosts,
+//       };
+//       setNoticePosts(updatedNoticePostsObject);
 
-//     localStorage.removeItem(`editedPost_${id}`);
-//     navigate('/community');
+//       const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
+//       const updatedStoredNoticePosts = storedNoticePosts.postIndex.filter((post) => post.id !== parseInt(id));
+//       localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedStoredNoticePosts }));
+
+//       localStorage.removeItem(`editedPost_${id}`);
+//       navigate('/community');
+//     }
 //   };
 
 //   const goBack = () => {
@@ -248,7 +275,7 @@ export default CommuNoticeDetail;
 //         </ul>
 //       </div>
 
-//     <div className="CommuRight">
+//       <div className="CommuRight">
 //         <h1>공지사항</h1>
 
 //         {isEditing ? (
@@ -291,8 +318,8 @@ export default CommuNoticeDetail;
 //         ) : (
 //           <div className="CommuNoticeDetailButtonWrap">
 //             <div></div>
-           
-//               <button className="CommuNoticePageButton" onClick={goBack}>목록보기</button>
+
+//             <button className="CommuNoticePageButton" onClick={goBack}>목록보기</button>
 
 //             <div>
 //               <button className="CommuNoticeEditButton" onClick={handleEditClick}>

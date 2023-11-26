@@ -194,7 +194,7 @@ export default CommuQnaDetail;
 
 
 
-// // CommuQnaDetail.jsx
+// CommuQnaDetail
 
 // import React, { useState, useEffect } from 'react';
 // import { Link, useParams, useNavigate } from 'react-router-dom';

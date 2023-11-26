@@ -64,7 +64,6 @@ export const addNoticePost = (newPost) => {
   noticePost.postIndex = updatedPosts;
 
   localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedPosts }));
-  //로컬스토리지에 noticePosts라는 이름으로 게시글 작성시 저장됨
 };
 
 
@@ -148,6 +147,19 @@ export const addQnaPost = (newPost) => {
 
   localStorage.setItem('qnaPosts', JSON.stringify({ postIndex: updatedPosts }));
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 const CommuData = () => {
   const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
   const [noticePosts, setNoticePosts] = useState(storedNoticePosts);
