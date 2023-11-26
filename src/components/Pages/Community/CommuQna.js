@@ -91,7 +91,10 @@ const CommuQna = () => {
             <Link to={`/community/qna/detail/${post.id}`} key={post.id}>
               <tr>
                 <td>{post.id}</td>
-                <td>{post.title}</td>
+                <td className="CommuTitleWrap">
+                  <p>{post.title}</p>
+                  {post.answer ? null : <div>답변을 등록해주세요</div>}
+                </td>
                 <td>{post.date}</td>
               </tr>
             </Link>
@@ -113,6 +116,7 @@ const CommuQna = () => {
 };
 
 export default CommuQna;
+
 
 
 

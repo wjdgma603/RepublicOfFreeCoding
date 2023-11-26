@@ -4,7 +4,7 @@ import './CommuQnaDetail.css';
 import { qnaPost, updateQnaPost } from '../SubComponents/CommuData';
 
 const CommuQnaDetail = () => {
-  const { id, page } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [qnaPosts, setQnaPosts] = useState(qnaPost);
   const selectedPostIndex = qnaPosts.postIndex.findIndex((post) => post.id === parseInt(id));
@@ -140,7 +140,7 @@ const CommuQnaDetail = () => {
             className="CommuQuestionDetailButton"
             onClick={isEditingQuestion ? handleEditCompleteQuestion : handleEditQuestion}
           >
-            {isEditingQuestion ? "수정완료" : "수정"}
+            {isEditingQuestion ? "저장" : "수정"}
           </button>
         </div>
 
@@ -168,7 +168,7 @@ const CommuQnaDetail = () => {
 
           <div>
             <button onClick={isEditingAnswer ? handleEditCompleteQuestion : handleEditAnswer}>
-              {isEditingAnswer ? "수정완료" : "수정"}
+              {isEditingAnswer ? "저장" : "등록 및 수정"}
             </button>
             <button onClick={handleDeletePost}>게시글 삭제</button>
           </div>

@@ -20,12 +20,6 @@ const CommuNoticeDetail = () => {
       setEditedTitle(selectedPost.title || '');
       setEditedContent(selectedPost.content || '');
     }
-
-    const savedData = JSON.parse(localStorage.getItem(`editedPost_${id}`));
-    if (savedData) {
-      setEditedTitle(savedData.editedTitle || '');
-      setEditedContent(savedData.editedContent || '');
-    }
   }, [id]);
 
   const handleSaveClick = () => {
@@ -43,9 +37,6 @@ const CommuNoticeDetail = () => {
 
     updateNoticePost(parseInt(id), editedTitle, editedContent);
     setIsEditing(false);
-
-    const updatedPostData = { id, editedTitle, editedContent };
-    localStorage.setItem(`editedPost_${id}`, JSON.stringify(updatedPostData));
   };
 
   const handleCancelClick = () => {
@@ -74,7 +65,6 @@ const CommuNoticeDetail = () => {
       const updatedStoredNoticePosts = storedNoticePosts.postIndex.filter((post) => post.id !== parseInt(id));
       localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedStoredNoticePosts }));
 
-      localStorage.removeItem(`editedPost_${id}`);
       navigate('/community');
     }
   };
@@ -147,7 +137,7 @@ const CommuNoticeDetail = () => {
 
             <div>
               <button className="CommuNoticeEditButton" onClick={handleEditClick}>
-                글수정
+                수정
               </button>
               <button className="CommuDetailDeleteButton" onClick={deletePost}>게시글 삭제</button>
             </div>
@@ -159,6 +149,7 @@ const CommuNoticeDetail = () => {
 };
 
 export default CommuNoticeDetail;
+
 
 
 

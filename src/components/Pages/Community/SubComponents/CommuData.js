@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 export const noticePost = {
-  
   postIndex: [
     {
       id: 5,
@@ -52,7 +50,6 @@ export const updateNoticePost = (id, updatedTitle, updatedContent) => {
       : post
   );
 
-  // 로컬 스토리지 업데이트 추가
   localStorage.setItem('noticePosts', JSON.stringify(noticePost));
 };
 
@@ -133,7 +130,6 @@ export const updateQnaPost = (id, updatedQuestion, updatedContent, updatedAnswer
       : post
   );
 
-  // 로컬 스토리지 업데이트 추가
   localStorage.setItem('qnaPosts', JSON.stringify(qnaPost));
 };
 
@@ -151,15 +147,6 @@ export const addQnaPost = (newPost) => {
 
 
 
-
-
-
-
-
-
-
-
-
 const CommuData = () => {
   const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
   const [noticePosts, setNoticePosts] = useState(storedNoticePosts);
@@ -170,7 +157,6 @@ const CommuData = () => {
   useEffect(() => {
     localStorage.setItem('qnaPosts', JSON.stringify(qnaPosts));
     setNoticePosts((prevNoticePosts) => ({ ...prevNoticePosts }));
-    // setQnaPosts((prevQnaPosts) => ({ ...prevQnaPosts })); // 만약 필요하면 추가
   }, [qnaPosts]);
 
   return {

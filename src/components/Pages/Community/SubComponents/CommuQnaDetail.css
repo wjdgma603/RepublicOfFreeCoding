@@ -38,7 +38,7 @@
     background-color: #00D67A;
     cursor: pointer;
 }
-.CommuQnaButtonWrap>a>.CommuQnaButton{
+.CommuQnaButtonWrap>.CommuQnaButton{
     background-color: #444444;
     border: none;
     padding:10px 20px;
