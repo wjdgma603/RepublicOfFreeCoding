@@ -568,12 +568,14 @@ section.EbookViewer>.ViewerSlide>.Progressbar>.Progress{
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        width: 100%;
     }
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.TopSection>div.EbookSubTitle{
         font-size: 16px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        width: 100%;
     }
 }
 
