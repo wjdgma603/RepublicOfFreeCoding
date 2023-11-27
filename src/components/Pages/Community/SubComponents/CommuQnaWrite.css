@@ -1,0 +1,28 @@
+.CommuWriteTitle{
+    width:100%;
+    height:60px;
+    margin-top: 20px;
+    padding:17px;
+    font-weight: bold;
+}
+.CommuWriteTitle::placeholder {
+    color:#d5d5d5;
+}
+.CommuWriteText{
+    width:100%;
+    height:450px;
+    margin-top: 10px;
+    padding:17px;
+}
+.CommuWriteText::placeholder{
+    color:#d5d5d5;
+}
+.CommuWriteButton{
+    padding:10px 20px;
+    color:#fff;
+    background-color: #00D67A;
+    border:none;
+    margin-top: 40px;
+    float:right;
+    cursor: pointer;
+}

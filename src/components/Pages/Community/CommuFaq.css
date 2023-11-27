@@ -1,0 +1,60 @@
+.CommuFaqQuestion {
+    width: 100%;
+    background-color: #f5f5f5;
+    line-height: 61px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-bottom: 1px;
+    cursor: pointer;
+
+  }
+  
+  .CommuFaqQuestionLeft {
+    display: flex;
+  }
+  
+  .CommuFaqQuestionLeft > h1 {
+    padding: 0 30px 0 0;
+  }
+  
+  .CommuFaqArrow {
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    transform: rotate(135deg);
+    transition:0.5s;
+  }
+  
+  .CommuFaqArrow.rotate {
+    transform: rotate(315deg);
+    margin-top: 25px;
+  }
+
+  .CommuFaqQuestionAnswer {
+    display: flex;
+    transition: opacity 1s, max-height 0.2s, margin 0.5s; /* margin에 대한 트랜지션 추가 */
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+  
+    margin-left: 20px;
+  }
+  
+  .CommuFaqQuestionAnswer.show {
+    max-height: 1000px; /* Adjust to your desired height */
+    opacity: 1;
+    margin-left: 20px;
+    margin: 20px;
+  }
+  
+  .CommuFaqQuestionAnswer > h1 {
+    padding-right: 30px;
+  }
+  
+  .CommuFaqQuestionAnswer > p {
+    padding-top: 10px;
+    white-space: pre-wrap;
+  }

@@ -1,11 +1,12 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './App.css';
 import './font.css';
 
 import Header from './components/Header/Header';
-import Main from './components/Pages/Main/Main';
+// import Main from './components/Pages/Main/Main';
 import Login from './components/Pages/Login/Login';
-import Introduce from './components/Pages/Introduce/Introduce';
+// import Introduce from './components/Pages/Introduce/Introduce';
 import EbookList from './components/Pages/Ebook/EbookList';
 import EbookDetail from './components/Pages/Ebook/SubComponents/EbookDetail';
 import EbookViewer from './components/Pages/Ebook/SubComponents/EbookViewer';
@@ -119,18 +120,30 @@ function App() {
     <div className="App">
       <Header isHeaderLoaded={isHeaderLoaded} headerDisable={headerDisable} KakaoLogout={KakaoLogout} isLogin={isLogin} user={user}/>
       <Routes>
-        <Route exact path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/>
+        {/* <Route exact path='/*' element={<Main HeaderLoaded={HeaderLoaded} FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable}/>}/> */}
         <Route exact path='/login/*' element={<Login FooterLoaded={FooterLoaded} HeaderDisable={HeaderDisable} KakaoLogin={KakaoLogin}/>}/>
-        <Route exact path='/introduce/*' element={<Introduce/>}/>
+        {/* <Route exact path='/introduce/*' element={<Introduce/>}/> */}
         <Route exact path='/ebook/*' element={<EbookList/>}/>
         <Route exact path='/ebook/:Ebookid' element={<EbookDetail/>}/>
         <Route exact path='/ebook/viewer/:EbookViewid' element={<EbookViewer/>}/>
         <Route exact path='/test/*' element={<CodeTestList/>}/>
         <Route exact path='/community/*' element={<CommuList/>}/>
-        <Route exact path='*' element={<NotFound HeaderDisable={HeaderDisable} FooterLoaded={FooterLoaded}/>}/>
+        {/* <Route exact path='*' element={<NotFound HeaderDisable={HeaderDisable} FooterLoaded={FooterLoaded}/>}/> */}
         <Route path='/codeTestHtml' element={<CodeTestHtml/>}/>
         <Route path='/codeTestCss' element={<CodeTestCss/>}/>
         <Route path='/codeTestJs' element={<CodeTestJs/>}/>
+
+
+        <Route path='/community/*' element={<CommuList/>}/>
+        <Route path='/community/notice' element={<CommuList/>}/>
+        <Route path='/community/notice/:page' element={<CommuList/>}/>
+        <Route path='/community/noticeWrite' element={<CommuNoticeWrite/>}/>
+        <Route path="/community/notice/detail/:id" element={<CommuNoticeDetail/>}/>
+        <Route path='/community/qnaWrite' element={<CommuQnaWrite/>}/>
+        <Route path='/community/qna' element={<CommuQna/>}/>
+        <Route path='/community/qna/:page' element={<CommuQna />} />
+        <Route path="/community/qna/detail/:id" element={<CommuQnaDetail/>}/>
+        <Route path='/community/faq' element={<CommuFaq/>}/>
       </Routes>
       <Footer isFooterLoaded={isFooterLoaded}/>
     </div>
