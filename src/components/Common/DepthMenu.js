@@ -11,7 +11,7 @@ const DepthMenu = ({FilterName, Data, setTabMenu}) => {
 
     // setTabMenu = setState에 해당하는 값 
     useEffect(()=>{
-        const DepthMenu = document.querySelectorAll(".DepthComponent>.DepthMenu")
+        const DepthMenu = document.querySelectorAll(".DepthComponent>.DepthWrap>.DepthMenu")
         DepthMenu[0].classList.add('Activate')
         DepthMenu.forEach((DepthItem)=>{
             DepthItem.addEventListener('click', ()=>{
@@ -26,9 +26,11 @@ const DepthMenu = ({FilterName, Data, setTabMenu}) => {
     return ( 
         <div className="DepthComponent">
             <div className="DepthName">{FilterName? FilterName : "필터"}</div>
-            {Data.map((DataItem)=>
-                <div className={`DepthMenu`} key={DataItem.id} onClick={()=>ReturnIndex(DataItem.TabName)}>{DataItem.TabName}</div>
-            )}
+            <div className='DepthWrap'>
+                {Data.map((DataItem)=>
+                    <div className={`DepthMenu`} key={DataItem.id} onClick={()=>ReturnIndex(DataItem.TabName)}>{DataItem.TabName}</div>
+                )}
+            </div>
         </div>
      );
 }
