@@ -7,7 +7,6 @@ const CommuQna = () => {
   const { page } = useParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const postsPerPage = 5;
 
   useEffect(() => {
     const originalPosts = qnaPosts.postIndex;
@@ -34,18 +33,40 @@ const CommuQna = () => {
     setFilteredPosts(filtered);
   };
 
-  // Pagination logic
+
+  const postsPerPage = 10;
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const currentPage = page ? parseInt(page) : 1;
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const currentPosts = filteredPosts.slice(startIndex, endIndex);
 
-  // Generate page buttons
+  const pageGroupSize = 5;
+  const currentGroup = Math.ceil(currentPage / pageGroupSize);
+  const startPage = (currentGroup - 1) * pageGroupSize + 1;
+  const endPage = Math.min(currentGroup * pageGroupSize, totalPages);
+
+  const moveToPrevGroup = () => {
+    const prevGroupFirstPage = startPage - pageGroupSize;
+    const targetPage = Math.max(prevGroupFirstPage, 1);
+    window.location.href = `/community/qna/${targetPage}`;
+  };
+
+  const moveToNextGroup = () => {
+    const nextGroupFirstPage = startPage + pageGroupSize;
+    const targetPage = Math.min(nextGroupFirstPage, totalPages);
+    window.location.href = `/community/qna/${targetPage}`;
+  };
+
+  const moveToLastPage = () => {
+    const lastPage = totalPages;
+    window.location.href = `/community/qna/${lastPage}`;
+  };
+
   const pageButtons = [];
   for (let i = 1; i <= totalPages; i++) {
     pageButtons.push(
-      <Link to={`/community/qna/${i}`} key={i}>
+      <Link to={`/community/qna/${i}`} key={i} className={i === currentPage ? "active" : ""}>
         <div>{i}</div>
       </Link>
     );
@@ -89,11 +110,19 @@ const CommuQna = () => {
         <table className="CommuBoard">
           {currentPosts.map((post) => (
             <Link to={`/community/qna/detail/${post.id}`} key={post.id}>
-              <tr>
+              {/* <tr>
                 <td>{post.id}</td>
                 <td className="CommuTitleWrap">
                   <p>{post.title}</p>
                   {post.answer ? null : <div>답변을 등록해주세요</div>}
+                </td>
+                <td>{post.date}</td>
+              </tr> */}
+              <tr>
+                <td>{post.id}</td>
+                <td className="CommuTitleWrap">
+                  <p>{post.title}</p>
+                  
                 </td>
                 <td>{post.date}</td>
               </tr>
@@ -103,8 +132,37 @@ const CommuQna = () => {
 
         <div className="CommuBottomWrap">
           <div></div>
+
           <div className="CommuPageButtonWrap">
-            {pageButtons}
+          <div className="CommuBottomPrevWrap">
+            {currentGroup > 1 && (
+              <Link to={`/community/qna/1`} className="CommuFirstPageButton">
+                &lt;&lt;
+              </Link>
+            )}
+            {currentGroup > 1 && (
+              <div className="CommuPrevPageButton" onClick={moveToPrevGroup}>
+                &lt;
+              </div>
+            )}
+          </div>
+
+              {pageButtons.slice(startPage - 1, endPage).map((button, index) => (
+                <React.Fragment key={index}>{button}</React.Fragment>
+              ))}
+
+             <div className="CommuBottomNextWrap">
+            {currentGroup < Math.ceil(totalPages / pageGroupSize) && (
+              <div className="CommuNextPageButton" onClick={moveToNextGroup}>
+                &gt;
+              </div>
+            )}
+            {currentGroup * pageGroupSize < totalPages && (
+              <div className="CommuLastPageButton" onClick={moveToLastPage}>
+                &gt;&gt;
+              </div>
+            )}
+          </div>
           </div>
           <Link to='/community/qnaWrite'>
             <div className="CommuWrite">글쓰기</div>

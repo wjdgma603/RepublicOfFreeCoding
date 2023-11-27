@@ -1,5 +1,5 @@
 .CommuQnaTitle{
-    width:980px;
+    width:100%;
     background-color: #f5f5f5;
     padding:18px;
     font-weight: bold;
@@ -43,6 +43,7 @@
     border: none;
     padding:10px 20px;
     cursor: pointer;
+    margin-left: 250px;
 }
 .CommuQnaButtonWrap>a>.CommuQnaButton{
     color:white;
@@ -78,4 +79,10 @@
     height:250px;
     padding-left:10px;
     padding-top: 5px;
+}
+@media (max-width:1024px) {
+    .CommuQnaButtonWrap>.CommuQnaButton{
+        display: none;
+    }
+
 }
