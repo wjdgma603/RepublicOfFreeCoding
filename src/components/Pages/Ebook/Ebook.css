@@ -498,7 +498,7 @@ section.EbookViewer>.ViewerSlide>.ViewerSlideSection>.ViewerSlideWrap>.SlideItem
 }
 section.EbookViewer>.ViewerSlide>.ViewerSlideSection>.ViewerSlideWrap>.SlideItem>img{
     height: 100%;
-    margin: 0px 60px;
+    margin: 0px 200px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
 }
 section.EbookViewer>.ViewerSlide>.ViewerSlide_BtnWrap{
