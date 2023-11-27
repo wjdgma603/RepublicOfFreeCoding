@@ -7,7 +7,7 @@ import './Ebook.css'
 
 const EbookList = () => {
     const [ TabMenu, setTabMenu ] = useState("전체");
-    const [ sortList, setSortList] = useState(EbookItem);
+    const [ sortList, setSortList] = useState(EbookItem); // eslint-disable-line no-unused-vars
     const getSortList = ()=>{
         const sortcallBack = (item)=>{
             if(TabMenu === "HTML"){

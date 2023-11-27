@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 export const noticePost = {
   postIndex: [
     {
@@ -1493,7 +1493,7 @@ const CommuData = () => {
   const [noticePosts, setNoticePosts] = useState(storedNoticePosts);
 
   const storedQnaPosts = JSON.parse(localStorage.getItem('qnaPosts')) || qnaPost;
-  const [qnaPosts, setQnaPosts] = useState(storedQnaPosts);
+  const [qnaPosts, setQnaPosts] = useState(storedQnaPosts); // eslint-disable-line no-unused-vars
 
   useEffect(() => {
     localStorage.setItem('qnaPosts', JSON.stringify(qnaPosts));
