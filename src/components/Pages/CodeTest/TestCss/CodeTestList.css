@@ -43,9 +43,6 @@
 .CodeTestListArticleDiv1Span{
     font-size: 20px;
 }
-.CodeTestListArticleDiv1Span + span{
-    font-size: 11px;
-}
 .CodeTestListArticleDiv2{
     width: 77%;
 }
@@ -90,12 +87,24 @@
     border-left: 1px solid #E4E4E4;
     border-bottom: 1px solid #E4E4E4;
 }
-.CodeTestListPlay span{
+.CodeTestListPlayBtn{
     background-color:#00D67A;
     padding: 8px 10px;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
+}
+.codeTestListCorrect{
+    background-color: black;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+.codeTestListNoCorrect{
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
 }
 /*모달 css*/
 .listModal{
@@ -114,11 +123,25 @@
     background-color: #fff;
     position: absolute;
     top: 30%;
-    transform: translateY(-30%);
+    transform: translateY(-20%);
     left: 50%;
     transform: translateX(-50%);
-    width: 1000px;
+    width: 700px;
     height: 500px;
+    padding: 20px;
+}
+.listModalCloseWrap{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #00D67A;
+}
+.listModalClose{
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #00D67A;
+    margin-bottom: 10px;
 }
 .listModalTitle{
     font-size: 20px;
@@ -128,11 +151,141 @@
 }
 .listModalContent{
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 
 @media (max-width : 1280px){
     .CodeTestListArticle{
+        padding: 0 50px;
+    }
+    .CodeTestListArticle{
         width: 100%;
+    }
+}
+@media (max-width : 1024px){
+    .CodeTestListArticle{
+        padding: 0 30px;
+        display: block;
+    }
+    .CodeTestListArticleDiv1{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .CodeTestListArticleDiv1>div{
+        flex: 1;
+        margin: 10px;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(1){
+        display: none;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(5){
+        margin: 0;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(6){
+        display: none;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(7){
+        display: none;
+    }
+    .CodeTestListArticleDiv2{
+        width: 100%;
+    }
+}
+@media (max-width : 768px){
+    .CodeTestListSection>article{
+        padding-top: 215px;
+    }
+    .CodeTestListArticle{
+        padding: 0 10px;
+    }
+    .CodeTestListTitleBtn{
+        font-size: 16px;
+        padding: 24px 5px;
+    }
+    .CodeTestListArticleDiv2>h1{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .CodeTestListTitle>td{
+        padding: 20px 0;
+        font-size: 14px;
+    }
+    .CodeTestListTitle>td:first-child{
+        display: none;
+    }
+    .CodeTestListTitle>td:nth-child(2){
+        width: 32%;
+    }
+    .CodeTestListTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestListText>td:first-child{
+        display: none;
+    }
+    .CodeTestListText>td:nth-child(2)>p{
+        font-size: 14px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestListPlay>p{
+    font-size: 12px;
+    padding: 21.4px  10px 21.4px 10px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+@media (max-width : 460px){
+    .CodeTestListSection>article{
+        padding-top: 160px;
+    }
+    .CodeTestListTitleBtn{
+        font-size: 14px;
+        padding: 14px 5px;
+    }
+    .CodeTestListTitle>td{
+        padding: 20px 0;
+        font-size: 12px;
+    }
+    .CodeTestListTitle>td:nth-child(2){
+        width: 30%;
+    }
+    .CodeTestListTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestListText>td:first-child{
+        display: none;
+    }
+    .CodeTestListText>td:nth-child(2)>p{
+        font-size: 12px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestListPlay>p{
+    font-size: 12px;
+    padding: 20px  10px 20px 10px;
+    }
+    .CodeTestListPlayBtn{
+        padding: 7px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
     }
 }

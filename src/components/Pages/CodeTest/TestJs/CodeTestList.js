@@ -5,24 +5,49 @@ import CodeTestListJson from "../CodeTestList.json"
 
 const CodeTestList = () => {
     
+    // 모달 띄우기
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [listTestNum, setSelectedTest] = useState(null);
-
+    const [answeredQuestions, setAnsweredQuestions] = useState(
+        Array.from({ length: 10 }, () => ({ isAnswered: false, isCorrect: false }))
+      );
     const openModal = (testNumber) => {
         setSelectedTest(testNumber);
         setIsModalOpen(true);
     }
 
+    //정답 여부 확인
+    const checkAnswer = (selectedAnswer) => {
+        // json 에서 가져와서 문자열임 숫자로 바꿔준거임
+        const correctAnswer = Number(CodeTestListJson.correctList[`correct${listTestNum}`]);
+        //문제풀기 버튼 바꾸기
+        setAnsweredQuestions((prevAnswers) => {
+            const newAnswers = [...prevAnswers];
+            newAnswers[listTestNum - 1] = { isAnswered: true, isCorrect: selectedAnswer === correctAnswer };
+            return newAnswers;
+          });
+
+        if (selectedAnswer === correctAnswer) {
+            //정답일시 alert 뜨고 모달 닫기
+            alert("정답입니다!!!");
+            setIsModalOpen(false);
+        } else {
+          alert("틀렸습니다!");
+        }
+      };
+
+
+
     return ( 
         <section className="CodeTestListSection">
             <article className="CodeTestListArticle">
                 <div className="CodeTestListArticleDiv1">
-                    <div><span className="CodeTestListArticleDiv1Span">언어</span><span>초기화</span></div>
+                    <div><span className="CodeTestListArticleDiv1Span">언어</span></div>
                     <div><Link to="/test"><button className="CodeTestListTitleBtn">전체</button></Link></div>
                     <div><Link to="/codeTestHtml"><button className="CodeTestListTitleBtn">HTML</button></Link></div>
                     <div><Link to="/codeTestCss"><button className="CodeTestListTitleBtn">CSS</button></Link></div>
                     <div><Link to="/codeTestJs"><button className="CodeTestListTitleBtn">JAVASCRIPT</button></Link></div>
-                    <div><span className="CodeTestListArticleDiv1Span">전자북 찾아보기</span><span>초기화</span></div>
+                    <div><span className="CodeTestListArticleDiv1Span">전자북 찾아보기</span></div>
                     <div><Link to="/ebook"><button className="CodeTestListTitleBtn">전자북 페이지</button></Link></div>
                 </div>
                 <div className="CodeTestListArticleDiv2">
@@ -44,9 +69,17 @@ const CodeTestList = () => {
                                 <p>{CodeTestListJson.Text.test5}</p>
                             </td>
                             <td className="CodeTestListPlay">
-                                {Array.from({ length: 5 }, (_, index) => (
-                                <p key={index}><span onClick={() => openModal(index + 1)}>문제 풀기</span></p>
-                                ))}
+                            {Array.from({ length: 5 }, (_, index) => (
+                                <p key={index}>
+                                {answeredQuestions[index].isAnswered ? (
+                                    <span className={answeredQuestions[index].isCorrect ? "codeTestListCorrect" : "codeTestListNoCorrect"}>
+                                    {answeredQuestions[index].isCorrect ? "정답 완료" : "오답 완료"}
+                                    </span>
+                                ) : (
+                                    <span className="CodeTestListPlayBtn" onClick={() => openModal(index + 1)}>문제 풀기</span>
+                                )}
+                                </p>
+                            ))}
                             </td>
                         </tr>
                         <tr className="CodeTestListText">
@@ -60,8 +93,16 @@ const CodeTestList = () => {
                             </td>
                             <td className="CodeTestListPlay">
                             {Array.from({ length: 5 }, (_, index) => (
-                                <p key={index}><span onClick={() => openModal(index + 6)}>문제 풀기</span></p>
-                                ))}
+                                <p key={index}>
+                                {answeredQuestions[index + 5].isAnswered ? (
+                                    <span className={answeredQuestions[index + 5].isCorrect ? "codeTestListCorrect" : "codeTestListNoCorrect"}>
+                                    {answeredQuestions[index + 5].isCorrect ? "정답 완료" : "오답 완료"}
+                                    </span>
+                                ) : (
+                                    <span className="CodeTestListPlayBtn" onClick={() => openModal(index + 6)}>문제 풀기</span>
+                                )}
+                                </p>
+                            ))}
                             </td>
                         </tr>
                         {/* 모달, 문제 내용*/}
@@ -69,13 +110,16 @@ const CodeTestList = () => {
                             <div className="listModal">
                                 <div className="opacityModal"></div>
                                 <div className="listModalWrap">
+                                    <div className="listModalCloseWrap">
+                                        <button className="listModalClose" onClick={() => setIsModalOpen(false)}>X</button>
+                                    </div>
+
                                     <p className="listModalTitle">{CodeTestListJson.ListTestModal[`listTest${listTestNum}`]}</p>
-                                    <p className="listModalContent">{CodeTestListJson.ListTestModal[`listTest${listTestNum}_1`]}</p>
-                                    <p className="listModalContent">{CodeTestListJson.ListTestModal[`listTest${listTestNum}_2`]}</p>
-                                    <p className="listModalContent">{CodeTestListJson.ListTestModal[`listTest${listTestNum}_3`]}</p>
-                                    <p className="listModalContent">{CodeTestListJson.ListTestModal[`listTest${listTestNum}_4`]}</p>
-                                    <input></input>
-                                    <button onClick={() => setIsModalOpen(false)}>문제 닫기</button>
+                                    {Array.from({ length: 4 }, (_, index) => (
+                                    <p key={index} className="listModalContent" onClick={() => checkAnswer(index + 1)}>
+                                        {CodeTestListJson.ListTestModal[`listTest${listTestNum}_${index + 1}`]}
+                                    </p>
+                                    ))}
                                 </div>
                             </div>
                         )}

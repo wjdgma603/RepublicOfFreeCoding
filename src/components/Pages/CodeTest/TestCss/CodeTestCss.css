@@ -43,9 +43,6 @@
 .CodeTestCssArticleDiv1Span{
     font-size: 20px;
 }
-.CodeTestCssArticleDiv1Span + span{
-    font-size: 11px;
-}
 .CodeTestCssArticleDiv2{
     width: 77%;
 }
@@ -90,16 +87,157 @@
     border-left: 1px solid #E4E4E4;
     border-bottom: 1px solid #E4E4E4;
 }
-.CodeTestCssPlay span{
+.CodeTestCssPlayBtn{
     background-color:#00D67A;
     padding: 8px 10px;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
 }
+.codeTestCssCorrect{
+    background-color: black;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+.codeTestCssNoCorrect{
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
 
 @media (max-width : 1280px){
+    .CodeTestCsslArticle{
+        padding: 0 50px;
+    }
     .CodeTestCssArticle{
         width: 100%;
+    }
+}
+@media (max-width : 1024px){
+    .CodeTestCssArticle{
+        padding: 0 30px;
+        display: block;
+    }
+    .CodeTestCssArticleDiv1{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .CodeTestCssArticleDiv1>div{
+        flex: 1;
+        margin: 10px;
+    }
+    .CodeTestCssArticleDiv1>div:nth-child(1){
+        display: none;
+    }
+    .CodeTestCssArticleDiv1>div:nth-child(5){
+        margin: 0;
+    }
+    .CodeTestCssArticleDiv1>div:nth-child(6){
+        display: none;
+    }
+    .CodeTestCssArticleDiv1>div:nth-child(7){
+        display: none;
+    }
+    .CodeTestCssArticleDiv2{
+        width: 100%;
+    }
+}
+@media (max-width : 768px){
+    .CodeTestCssSection>article{
+        padding-top: 215px;
+    }
+    .CodeTestCssArticle{
+        padding: 0 10px;
+    }
+    .CodeTestCssTitleBtn{
+        font-size: 16px;
+        padding: 24px 5px;
+    }
+    .CodeTestCssArticleDiv2>h1{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .CodeTestCssTitle>td{
+        padding: 20px 0;
+        font-size: 14px;
+    }
+    .CodeTestCssTitle>td:first-child{
+        display: none;
+    }
+    .CodeTestCssTitle>td:nth-child(2){
+        width: 32%;
+    }
+    .CodeTestCssTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestCssText>td:first-child{
+        display: none;
+    }
+    .CodeTestCssText>td:nth-child(2)>p{
+        font-size: 14px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestCssPlay>p{
+    font-size: 12px;
+    padding: 21.4px  10px 21.4px 10px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+@media (max-width : 460px){
+    .CodeTestCsslSection>article{
+        padding-top: 160px;
+    }
+    .CodeTestCssTitleBtn{
+        font-size: 14px;
+        padding: 14px 5px;
+    }
+    .CodeTestCssTitle>td{
+        padding: 20px 0;
+        font-size: 12px;
+    }
+    .CodeTestCssTitle>td:nth-child(2){
+        width: 30%;
+    }
+    .CodeTestCssTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestCssText>td:first-child{
+        display: none;
+    }
+    .CodeTestCssText>td:nth-child(2)>p{
+        font-size: 12px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestCssPlay>p{
+    font-size: 12px;
+    padding: 20px  10px 20px 10px;
+    }
+    .CodeTestCssPlayBtn{
+        padding: 7px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 14px;
+    }
+    .listModalContent{
+        font-size: 12px;
+        cursor: pointer;
     }
 }

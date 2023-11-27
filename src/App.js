@@ -130,7 +130,7 @@ function App() {
         <Route path='/codeTestCss' element={<CodeTestCss/>}/>
         <Route path='/codeTestJs' element={<CodeTestJs/>}/>
       </Routes>
-      <Footer isFooterLoaded={isFooterLoaded}/>
+      {/* <Footer isFooterLoaded={isFooterLoaded}/> */}
     </div>
   );
 }
