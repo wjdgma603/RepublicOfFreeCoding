@@ -1,0 +1,242 @@
+.CodeTestJsSection>article{
+    padding-top: 240px;
+}
+.CodeTestJsArticle{
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    margin: 0 auto 150px;
+}
+.CodeTestJsArticleDiv1{
+    width: 15.7%;
+}
+.CodeTestJsArticleDiv1>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestJsArticleDiv1>div:nth-child(6){
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestJsArticleDiv1>div:nth-child(5)>a>button{
+    border: 1px solid #00D67A;
+    color: #00D67A;
+}
+.CodeTestJsTitleBtn{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #D5D5D5;
+    border-radius: 6px;
+    padding: 24px 18px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.CodeTestJsArticleDiv1>div:nth-child(5){
+    margin-bottom: 50px;
+}
+.CodeTestJsArticleDiv1Span{
+    font-size: 20px;
+}
+.CodeTestJsArticleDiv2{
+    width: 77%;
+}
+.CodeTestJsArticleDiv2>h1{
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+.CodeTestJsArticleDiv2Table>tr:first-child{
+    text-align: center;
+}
+.CodeTestJsTitle{
+    background-color: #F5F5F5;
+}
+.CodeTestJsTitle>td:first-child{
+    width: 9%;
+    padding: 20px 0;
+    font-weight: bold;
+}
+.CodeTestJsTitle>td:nth-child(2){
+    width: 32%;
+    font-weight: bold;
+}
+.CodeTestJsTitle>td:nth-child(3){
+    width: 9%;
+    font-weight: bold;
+}
+.CodeTestJsText>td:first-child{
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestJsText>td:nth-child(2)>p{
+    padding: 20px 0 20px 40px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestJsPlay{
+    text-align: center;
+}
+.CodeTestJsPlay>p{
+    padding: 20px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestJsPlayBtn{
+    background-color:#00D67A;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+.codeTestJsCorrect{
+    background-color: black;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+.codeTestJsNoCorrect{
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+@media (max-width : 1280px){
+    .CodeTestJsArticle{
+        padding: 0 50px;
+    }
+    .CodeTestJsArticle{
+        width: 100%;
+    }
+}
+@media (max-width : 1024px){
+    .CodeTestJsArticle{
+        padding: 0 30px;
+        display: block;
+    }
+    .CodeTestJsArticleDiv1{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .CodeTestJsArticleDiv1>div{
+        flex: 1;
+        margin: 10px;
+    }
+    .CodeTestJsArticleDiv1>div:nth-child(1){
+        display: none;
+    }
+    .CodeTestJsArticleDiv1>div:nth-child(5){
+        margin: 0;
+    }
+    .CodeTestJsArticleDiv1>div:nth-child(6){
+        display: none;
+    }
+    .CodeTestJsArticleDiv1>div:nth-child(7){
+        display: none;
+    }
+    .CodeTestJsArticleDiv2{
+        width: 100%;
+    }
+}
+@media (max-width : 768px){
+    .CodeTestJsSection>article{
+        padding-top: 215px;
+    }
+    .CodeTestJsArticle{
+        padding: 0 10px;
+    }
+    .CodeTestJsTitleBtn{
+        font-size: 16px;
+        padding: 24px 5px;
+    }
+    .CodeTestJsArticleDiv2>h1{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .CodeTestJsTitle>td{
+        padding: 20px 0;
+        font-size: 14px;
+    }
+    .CodeTestJsTitle>td:first-child{
+        display: none;
+    }
+    .CodeTestJsTitle>td:nth-child(2){
+        width: 32%;
+    }
+    .CodeTestJsTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestJsText>td:first-child{
+        display: none;
+    }
+    .CodeTestJsText>td:nth-child(2)>p{
+        font-size: 14px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestJsPlay>p{
+    font-size: 12px;
+    padding: 21.4px  10px 21.4px 10px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+@media (max-width : 460px){
+    .CodeTestListSection>article{
+        padding-top: 160px;
+    }
+    .CodeTestJsTitleBtn{
+        font-size: 14px;
+        padding: 14px 5px;
+    }
+    .CodeTestJsTitle>td{
+        padding: 20px 0;
+        font-size: 12px;
+    }
+    .CodeTestJsTitle>td:nth-child(2){
+        width: 30%;
+    }
+    .CodeTestJsTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestJsText>td:first-child{
+        display: none;
+    }
+    .CodeTestJsText>td:nth-child(2)>p{
+        font-size: 12px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestJsPlay>p{
+    font-size: 12px;
+    padding: 20px  10px 20px 10px;
+    }
+    .CodeTestJsPlayBtn{
+        padding: 7px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
+    }
+}

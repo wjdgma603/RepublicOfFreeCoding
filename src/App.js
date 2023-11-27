@@ -10,13 +10,13 @@ import EbookList from './components/Pages/Ebook/EbookList';
 import EbookDetail from './components/Pages/Ebook/SubComponents/EbookDetail';
 import EbookViewer from './components/Pages/Ebook/SubComponents/EbookViewer';
 import CommuList from './components/Pages/Community/CommuList';
-import CodeTestList from './components/Pages/CodeTest/CodeTestList';
+import CodeTestList from './components/Pages/CodeTest/TestJs/CodeTestList.js';
 import Footer from './components/Footer/Footer';
 
 //codeTest
-import CodeTestHtml from "./components/Pages/CodeTest/CodeTestHtml"
-import CodeTestCss from "./components/Pages/CodeTest/CodeTestCss"
-import CodeTestJs from "./components/Pages/CodeTest/CodeTestJs"
+import CodeTestHtml from "./components/Pages/CodeTest/TestJs/CodeTestHtml"
+import CodeTestCss from "./components/Pages/CodeTest/TestJs/CodeTestCss"
+import CodeTestJs from "./components/Pages/CodeTest/TestJs/CodeTestJs"
 import { useEffect, useState } from 'react'; 
 import NotFound from './components/Common/NotFound';
 

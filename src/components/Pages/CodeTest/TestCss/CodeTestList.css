@@ -1,0 +1,291 @@
+.CodeTestListSection>article{
+    padding-top: 240px;
+}
+.CodeTestListArticle{
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    margin: 0 auto 150px;
+}
+.CodeTestListArticleDiv1{
+    width: 15.7%;
+}
+.CodeTestListArticleDiv1>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestListArticleDiv1>div:nth-child(6){
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.CodeTestListArticleDiv1>div:nth-child(2)>a>button{
+    border: 1px solid #00D67A;
+    color: #00D67A;
+}
+.CodeTestListTitleBtn{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #D5D5D5;
+    border-radius: 6px;
+    padding: 24px 18px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.CodeTestListArticleDiv1>div:nth-child(5){
+    margin-bottom: 50px;
+}
+.CodeTestListArticleDiv1Span{
+    font-size: 20px;
+}
+.CodeTestListArticleDiv2{
+    width: 77%;
+}
+.CodeTestListArticleDiv2>h1{
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+.CodeTestListArticleDiv2Table>tr:first-child{
+    text-align: center;
+}
+.CodeTestListTitle{
+    background-color: #F5F5F5;
+}
+.CodeTestListTitle>td:first-child{
+    width: 9%;
+    padding: 20px 0;
+    font-weight: bold;
+}
+.CodeTestListTitle>td:nth-child(2){
+    width: 32%;
+    font-weight: bold;
+}
+.CodeTestListTitle>td:nth-child(3){
+    width: 9%;
+    font-weight: bold;
+}
+.CodeTestListText>td:first-child{
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestListText>td:nth-child(2)>p{
+    padding: 20px 0 20px 40px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestListPlay{
+    text-align: center;
+}
+.CodeTestListPlay>p{
+    padding: 20px;
+    border-left: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+}
+.CodeTestListPlayBtn{
+    background-color:#00D67A;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+.codeTestListCorrect{
+    background-color: black;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+.codeTestListNoCorrect{
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+/*모달 css*/
+.listModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100;
+}
+.opacityModal{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(225, 225, 225, 0.5);
+}
+.listModalWrap{
+    background-color: #fff;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-20%);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    padding: 20px;
+}
+.listModalCloseWrap{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #00D67A;
+}
+.listModalClose{
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #00D67A;
+    margin-bottom: 10px;
+}
+.listModalTitle{
+    font-size: 20px;
+    font-weight: bold;
+    color: #00D67A;
+    margin-bottom: 15px;
+}
+.listModalContent{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+@media (max-width : 1280px){
+    .CodeTestListArticle{
+        padding: 0 50px;
+    }
+    .CodeTestListArticle{
+        width: 100%;
+    }
+}
+@media (max-width : 1024px){
+    .CodeTestListArticle{
+        padding: 0 30px;
+        display: block;
+    }
+    .CodeTestListArticleDiv1{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .CodeTestListArticleDiv1>div{
+        flex: 1;
+        margin: 10px;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(1){
+        display: none;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(5){
+        margin: 0;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(6){
+        display: none;
+    }
+    .CodeTestListArticleDiv1>div:nth-child(7){
+        display: none;
+    }
+    .CodeTestListArticleDiv2{
+        width: 100%;
+    }
+}
+@media (max-width : 768px){
+    .CodeTestListSection>article{
+        padding-top: 215px;
+    }
+    .CodeTestListArticle{
+        padding: 0 10px;
+    }
+    .CodeTestListTitleBtn{
+        font-size: 16px;
+        padding: 24px 5px;
+    }
+    .CodeTestListArticleDiv2>h1{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .CodeTestListTitle>td{
+        padding: 20px 0;
+        font-size: 14px;
+    }
+    .CodeTestListTitle>td:first-child{
+        display: none;
+    }
+    .CodeTestListTitle>td:nth-child(2){
+        width: 32%;
+    }
+    .CodeTestListTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestListText>td:first-child{
+        display: none;
+    }
+    .CodeTestListText>td:nth-child(2)>p{
+        font-size: 14px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestListPlay>p{
+    font-size: 12px;
+    padding: 21.4px  10px 21.4px 10px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+@media (max-width : 460px){
+    .CodeTestListSection>article{
+        padding-top: 160px;
+    }
+    .CodeTestListTitleBtn{
+        font-size: 14px;
+        padding: 14px 5px;
+    }
+    .CodeTestListTitle>td{
+        padding: 20px 0;
+        font-size: 12px;
+    }
+    .CodeTestListTitle>td:nth-child(2){
+        width: 30%;
+    }
+    .CodeTestListTitle>td:nth-child(3){
+        width: 8%;
+    }
+    .CodeTestListText>td:first-child{
+        display: none;
+    }
+    .CodeTestListText>td:nth-child(2)>p{
+        font-size: 12px;
+        padding: 20px 0 20px 10px;
+        border-left: none;
+    }
+    .CodeTestListPlay>p{
+    font-size: 12px;
+    padding: 20px  10px 20px 10px;
+    }
+    .CodeTestListPlayBtn{
+        padding: 7px;
+    }
+    .listModalWrap{
+        width: 80%;
+    }
+    .listModalTitle{
+        font-size: 16px;
+    }
+    .listModalContent{
+        font-size: 14px;
+        cursor: pointer;
+    }
+}

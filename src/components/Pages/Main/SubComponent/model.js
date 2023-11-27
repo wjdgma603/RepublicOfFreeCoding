@@ -136,10 +136,10 @@ const Palace = () => {
         orbitControls.target.set(0, 70, 0);
         orbitControls.enabled = true;
         orbitControls.mouseButtons.RIGHT = null;
-        orbitControls.maxDistance = 80;
+        orbitControls.maxDistance =80;
         camera.position.set(-2, 70, 0);
         camera.lookAt(0, 70, 0);
-        orbitControls.rotateSpeed = -0.5;
+        
     }
     const imgPush = new TextureLoader()
     //로그인 링크
