@@ -48,10 +48,14 @@ const CodeTestHtml = () => {
                     <div><span className="CodeTestHtmlArticleDiv1Span">전자북 찾아보기</span></div>
                     <div><Link to="/ebook"><button className="CodeTestHtmlTitleBtn">전자북 페이지</button></Link></div>
                 </div>
-                <div className="CodeTestHtmlArticleDiv2">
-                    <h1>HTML</h1>
+                <table className="CodeTestHtmlArticleDiv2">
+                    <thead>
+                        <tr>
+                            <th colSpan="3">HTML</th>
+                        </tr>
+                    </thead>
                     {/*HTML, CSS, SCRIPT 바뀔 창들 */}
-                    <div className="CodeTestHtmlArticleDiv2Table">
+                    <tbody className="CodeTestHtmlArticleDiv2Table">
                         <tr className="CodeTestHtmlTitle">
                             <td>중단원</td>
                             <td>주제</td>
@@ -121,8 +125,8 @@ const CodeTestHtml = () => {
                                 </div>
                             </div>
                         )}
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </article>
         </section>
      );

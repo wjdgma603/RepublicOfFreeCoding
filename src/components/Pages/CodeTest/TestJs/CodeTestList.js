@@ -50,10 +50,14 @@ const CodeTestList = () => {
                     <div><span className="CodeTestListArticleDiv1Span">전자북 찾아보기</span></div>
                     <div><Link to="/ebook"><button className="CodeTestListTitleBtn">전자북 페이지</button></Link></div>
                 </div>
-                <div className="CodeTestListArticleDiv2">
-                    <h1>ALL</h1>
+                <table className="CodeTestListArticleDiv2">
+                    <thead>
+                        <tr>
+                            <th colSpan="3">ALL</th>
+                        </tr>
+                    </thead>
                     {/*HTML, CSS, SCRIPT 바뀔 창들 */}
-                    <div className="CodeTestListArticleDiv2Table">
+                    <tbody className="CodeTestListArticleDiv2Table">
                         <tr className="CodeTestListTitle">
                             <td>중단원</td>
                             <td>주제</td>
@@ -123,8 +127,8 @@ const CodeTestList = () => {
                                 </div>
                             </div>
                         )}
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </article>
         </section>
      );
