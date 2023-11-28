@@ -152,15 +152,19 @@
   
   .CommuWrite {
     padding: 10px 15px;
-    border: 1px solid black;
+    background-color: #00d67a;
+    color:#ffffff;
+    display: flex;
+  }
+  .CommuWriteIcon{
+    width:20px; 
+    height:20px;
+    background: url(./img/write_white.png) center;
+    background-size: cover;
+    margin:3px 5px 0 0;
   }
 
-  .CommuWrite:hover{
-    border:1px solid #00d67a;
-    background-color: #00d67a;
-    color:white;
-    transition: .5s;
-  }
+
 
   .CommuBottomPrevWrap{
     display: flex;

@@ -21,9 +21,7 @@ const CommuNoticeWrite = () => {
       date: new Date().toLocaleDateString(),
     };
 
-    // Add the new post
     addNoticePost(newPost);
-
     setTitle('');
     setContent('');
     alert('글이 성공적으로 작성되었습니다.');
@@ -67,7 +65,8 @@ const CommuNoticeWrite = () => {
           ></textarea>
         </div>
         <button className="CommuWriteButton" onClick={handlePostSubmit}>
-          글쓰기
+        <div className="CommuWriteButtonIcon"></div>
+          <div>글쓰기</div>
         </button>
       </div>
     </div>

@@ -21,9 +21,7 @@ const CommuQnaWrite = () => {
       date: new Date().toLocaleDateString(),
     };
 
-    // Add the new post
     addQnaPost(newPost);
-
     setTitle('');
     setContent('');
     alert('글이 성공적으로 작성되었습니다.');
@@ -61,11 +59,9 @@ const CommuQnaWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <button
-          className="CommuWriteButton"
-          onClick={handlePostSubmit}
-        >
-          글쓰기
+        <button className="CommuWriteButton" onClick={handlePostSubmit}>
+          <div className="CommuWriteButtonIcon"></div>
+          <div>글쓰기</div>
         </button>
       </div>
     </div>

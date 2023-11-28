@@ -7,7 +7,6 @@ const CommuQnaDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [qnaPosts, setQnaPosts] = useState(qnaPost);
-
   const selectedPostIndex = qnaPosts.postIndex.findIndex((post) => post.id === parseInt(id));
   const [isEditingQuestion, setIsEditingQuestion] = useState(false);
   const [isEditingAnswer, setIsEditingAnswer] = useState(false);
@@ -43,13 +42,9 @@ const CommuQnaDetail = () => {
           }
         : post
     );
-
     setQnaPosts({ ...qnaPosts, postIndex: updatedQnaPosts });
-
     setIsEditingQuestion(false);
     setIsEditingAnswer(false);
-
-    // updateQnaPost 함수를 수정이 완료된 후에 호출
     updateQnaPost(parseInt(id), editedQuestion, editedContent, editedAnswer);
   };
 
@@ -123,7 +118,8 @@ const CommuQnaDetail = () => {
             className="CommuQuestionDetailButton"
             onClick={isEditingQuestion ? handleEditCompleteQuestion : handleEditQuestion}
           >
-            {isEditingQuestion ? "저장" : "수정"}
+            <div className="CommuQuestionDetailButtonIcon"></div>
+            <div>{isEditingQuestion ? "저장" : "수정"}</div>
           </button>
         </div>
 
@@ -153,10 +149,16 @@ const CommuQnaDetail = () => {
           </button>
 
           <div>
-            <button onClick={isEditingAnswer ? handleEditCompleteQuestion : handleEditAnswer}>
-              {isEditingAnswer ? "저장" : "등록 및 수정"}
-            </button>
-            <button onClick={handleDeletePost}>게시글 삭제</button>
+            <div className="CommuQnaRightButtonWrap">
+              <button onClick={isEditingAnswer ? handleEditCompleteQuestion : handleEditAnswer}>
+                <div className="CommuQuestionDetailButtonIcon"></div>
+                <div>{isEditingAnswer ? "저장" : "등록 및 수정"}</div>
+              </button>
+              <button onClick={handleDeletePost}>
+                <div className="CommuQuestionDetailDeleteButtonIcon"></div>
+                <div>게시글 삭제</div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

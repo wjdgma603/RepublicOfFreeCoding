@@ -25,4 +25,11 @@
     margin-top: 40px;
     float:right;
     cursor: pointer;
+    display: flex;
+}
+.CommuWriteButtonIcon{
+    width:20px; height:20px;
+    background: url(../img/write_white.png) center;
+    background-size: cover;
+    margin-right: 5px;
 }

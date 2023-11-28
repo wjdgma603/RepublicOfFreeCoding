@@ -150,7 +150,10 @@ const CommuList = () => {
           </div>
 
           <Link to="/community/noticeWrite">
-            <div className="CommuWrite">글쓰기</div>
+            <div className="CommuWrite">
+              <div className="CommuWriteIcon"></div>
+              <div>글쓰기</div>
+            </div>
           </Link>
         </div>
       </div>

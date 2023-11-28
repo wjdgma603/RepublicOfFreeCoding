@@ -16,20 +16,32 @@
 .CommuQnaButtonWrap>div>button{
     margin-right: 15px;
 }
-.CommuQnaButtonWrap>div>button:first-child{
-    border:1px solid blue;
-    color:white;
-    background-color: blue;
-    padding:10px 20px;
-    cursor: pointer;
+.CommuQnaRightButtonWrap{
+    display: flex;
 }
-.CommuQnaButtonWrap>div>button:last-child{
-    border:1px solid red;
-    background-color: red;
-    color:white;
+.CommuQnaButtonWrap>div>div>button:first-child{
+    border:1px solid blue;
+    color:blue;
+    background-color: transparent;
     padding:10px 20px;
-
     cursor: pointer;
+    display: flex;
+}
+.CommuQnaButtonWrap>div>div>button:last-child{
+    border:1px solid red;
+    background-color: transparent;
+    color:red;
+    padding:10px 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+}
+.CommuQuestionDetailDeleteButtonIcon{
+    width:16px; 
+    height:16px;
+    background: url(../img/delete_red.png) center;
+    background-size: cover;
+    margin:2px 5px 0 0;
 }
 .CommuQnaButtonWrap>button{
     border:1px solid #00D67A;
@@ -57,10 +69,17 @@
     padding:10px 20px;
     display: flex;
     text-align: center;
-    background-color: #00D67A;
-    color:white;
-    border: none;
-    cursor: pointer;;
+    background-color: transparent;
+    color:blue;
+    border: 1px solid blue;
+    cursor: pointer;
+}
+.CommuQuestionDetailButtonIcon{
+    width:20px; 
+    height:20px;
+    background: url(../img/write_blue.png) center;
+    background-size: cover;
+    margin-right: 5px;
 }
 .CommudetailQuestionTitle{
     width:800px;

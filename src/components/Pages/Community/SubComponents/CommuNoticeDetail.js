@@ -40,19 +40,11 @@ const CommuNoticeDetail = () => {
   const handleDeleteClick = () => {
     const confirmation = window.confirm("정말로 게시글을 삭제하시겠습니까?");
     if (confirmation) {
-      // Move the deleted post to deletedNoticePosts
       const deletedPost = noticePosts.postIndex.find((post) => post.id === parseInt(id));
-
-      // Update noticePosts by removing the deleted post
       const updatedNoticePosts = noticePosts.postIndex.filter((post) => post.id !== parseInt(id));
       setNoticePosts({ ...noticePosts, postIndex: updatedNoticePosts });
-
-      // Update deletedNoticePosts and save to state
       setDeletedNoticePosts((prevDeletedPosts) => [...prevDeletedPosts, deletedPost]);
-
-      // Delete the post
       deleteNoticePost(parseInt(id));
-
       navigate('/community');
     }
   };
@@ -121,14 +113,25 @@ const CommuNoticeDetail = () => {
           <div className="CommuNoticeDetailButtonWrap">
             <div></div>
 
-            <button className="CommuNoticePageButton" onClick={goBack}>목록보기</button>
+            <button className="CommuNoticePageButton" onClick={goBack}>
+              <div className="CommuNoticePageButtonIcon"></div>
+              <div>목록보기</div>
+            </button>
 
-            <div>
+            <div className="CommuNoticeRightButtonWrap">
               <button className="CommuNoticeEditButton" onClick={handleEditClick}>
-                수정
+                <div className="CommuNoticeEditButtonIcon"></div>
+                <div>수정</div>
               </button>
-              <button className="CommuDetailDeleteButton" onClick={handleDeleteClick}>게시글 삭제</button>
+
+
+              <button className="CommuDetailDeleteButton" onClick={handleDeleteClick}>
+                <div className="CommuNoticePageButtonDeleteIcon"></div>
+                <div>게시글 삭제</div>
+              </button>
             </div>
+
+
           </div>
         )}
       </div>
