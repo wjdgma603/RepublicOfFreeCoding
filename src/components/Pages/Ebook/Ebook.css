@@ -8,7 +8,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 /* Ebook 리스트 CSS */
 .EbookSection>article.EbookList{
     margin-bottom: 150px;
@@ -415,6 +414,8 @@ section.EbookDetailPage>.GotoList>a{
     background-color: #FFF;
     border: 1px solid #00D67A;
 }
+section.EbookDetailPage>.GotoList>a>svg{margin-right: 10px;}
+
 /* ebook 디테일 페이지  =============================== */
 
 
@@ -555,6 +556,8 @@ section.EbookViewer>.ViewerSlide>.Progressbar>.Progress{
 
 
 /* ebook 반응형  =============================== */
+
+/* 1280px display */
 @media (max-width: 1280px) {
     /* Ebook List Page */
     .EbookSection{width: 100%; flex-direction: column; justify-content: initial;}
@@ -562,8 +565,56 @@ section.EbookViewer>.ViewerSlide>.Progressbar>.Progress{
     .EbookSection>article.EbookList>div.EbookItem{width: calc(100% - 100px); padding: 50px 0 40px 0px; margin: 0 50px;}
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.TopSection>div.EbookTitle{font-size: 20px;}
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.TopSection>div.EbookSubTitle{font-size: 16px;}
+
+    /* Ebook Detail Page */
+    section.EbookDetailPage{width: 100%; margin: 0; padding-top: 80px; position: relative;}
+    section.EbookDetailPage>.TitleWrap{position: absolute; top: 970px; left: 0%;}
+    section.EbookDetailPage>.TitleWrap>.Title{font-size: 27px; text-align: left; padding-left: 50px;}
+    section.EbookDetailPage>.TitleWrap>.SubTitle{font-size: 20px; text-align: left; padding-left: 50px;}
+    
+    section.EbookDetailPage>.MainItemWrap{margin-top: 0; margin-bottom: 80px; flex-direction: column; align-items: center; justify-content: initial;}
+    section.EbookDetailPage>.MainItemWrap>.Suggest{display: none;}
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap{box-shadow: none; margin: 0; width: 100%; height: 830px; flex: initial; position: relative; overflow: hidden;}
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap>.BackGround{width: 100%; height: 100%; background-position: center center; background-repeat: no-repeat; background-size: cover; filter: blur(10px);}
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap>img{height: 550px; box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: initial;}
+
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer{padding: 140px 50px 0 50px; 
+        border-width: 1px 0 0 0; border-style: solid; border-color: #D5D5D5 transparent transparent transparent; border-radius: 30px 30px 0 0;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.Author{font-size: 18px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.Publisher{margin-bottom: 20px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.AuthorExplain{margin-bottom: 40px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.GotoEbookPage>a{font-size: 14px; padding: 22px 0; width: 360px; float: right;}
+
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{display: flex; align-items: initial; justify-content: initial; column-gap: 140px;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest{padding-left: 50px;}
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{padding-right: 50px;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{margin-bottom: 80px;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText{margin-bottom: 0px; padding: 45px 0; flex: 1;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText>.Title,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText>.Title{font-size: 26px; margin-bottom: 25px;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText>.Content,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText>.Content{font-size: 14px; width: auto;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestImg{width: 150px; height: auto; background-color: #00D67A; border-radius: 0; display: flex; align-items: center;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg>img{width: 200px; transform: translateX(-100px);}
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestImg>img{width: 200px; transform: translateX(50px);}
+    
+    section.EbookDetailPage>.BookBasicInfo{margin-bottom: 80px;}
+    section.EbookDetailPage>.BookBasicInfo>.Title{font-size: 20px; margin: 0px 50px 15px 50px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo{padding: 25px 0; margin: 0 50px; row-gap: 20px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div{font-size: 14px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div>span{font-size: 14px; margin-left: 5px; width: 200px;}
+
+    section.EbookDetailPage>.GotoList{margin-bottom: 150px;}
+    section.EbookDetailPage>.GotoList>a{padding: 25px 0; width: 360px; font-size: 16px;}
 }
 
+
+
+/* 768px display */
 @media (max-width: 768px) {
     /* Ebook List Page */
     .EbookSection{padding-top: 215px; min-height: calc(100vh - (215px + 30px));}
@@ -571,8 +622,51 @@ section.EbookViewer>.ViewerSlide>.Progressbar>.Progress{
     .EbookSection>article.EbookList>div.EbookItem{width: calc(100% - 40px); margin: 0 20px;}
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.TopSection>div.EbookTitle{font-size: 18px;}
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.TopSection>div.EbookSubTitle{font-size: 14px;}
+
+    /* Ebook Detail Page */
+    section.EbookDetailPage>.TitleWrap{top: 790px; left: 0;}
+    section.EbookDetailPage>.TitleWrap>.Title{font-size: 24px; padding: 0 30px; word-break: keep-all;}
+    section.EbookDetailPage>.TitleWrap>.SubTitle{font-size: 16px; padding-left: 30px;}
+
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap{height: 680px;}
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap>img{height: 550px;}    
+
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer{padding: 130px 30px 0 30px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.Author{font-size: 16px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.Publisher{font-size: 14px; margin-bottom: 20px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.AuthorExplain{margin-bottom: 40px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer>.GotoEbookPage>a{font-size: 14px; width: 100%;}
+
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{display: flex; flex-direction: column; column-gap: initial; margin-bottom: 80px;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg{order: 1;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText{order: 2;}
+
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest{padding-left: 0px;}
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest{padding-right: 0px;}
+
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText{margin-bottom: 0px; padding: 100px 30px 45px 30px; flex: 1;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText>.Title,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText>.Title{font-size: 24px; margin-bottom: 25px; word-break: keep-all;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText>.Content,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText>.Content{font-size: 14px; width: auto;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestImg{width: 100%; height: 200px; background-color: #00D67A; border-radius: 0; display: flex; align-items: initial; justify-content: center;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestImg>img{width: 200px; transform: translateY(60px);}
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestImg>img{width: 200px; transform: translateY(60px);}
+    
+    section.EbookDetailPage>.BookBasicInfo{margin-bottom: 80px;}
+    section.EbookDetailPage>.BookBasicInfo>.Title{font-size: 20px; margin: 0px 30px 15px 30px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo{margin: 0 30px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div{font-size: 14px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div>span{font-size: 14px; margin-left: 5px; width: 200px;}
+
+    section.EbookDetailPage>.GotoList{margin-bottom: 125px;}
+    section.EbookDetailPage>.GotoList>a{padding: 25px 0; width: 360px; font-size: 16px;}
 }
 
+/* Mobile, ~600px Display */
 @media (max-width: 600px) {
     /* Ebook List Page */
     .EbookSection{padding-top: 160px; min-height: calc(100vh - (160px + 30px));}
@@ -588,4 +682,20 @@ section.EbookViewer>.ViewerSlide>.Progressbar>.Progress{
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.BottomSection>div.RightSection>a{width: 130px; height: 40px; font-size: 12px;}
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.BottomSection>div.LeftSection>div:first-of-type>span{margin-left: 5px;}
     .EbookSection>article.EbookList>div.EbookItem>div.ItemExplain>div.BottomSection>div.LeftSection>div:last-of-type>span{margin-left: 10px;}
+
+    /* Ebook List Page */
+    section.EbookDetailPage>.TitleWrap>.Title{font-size: 22px; padding: 0 10px;}
+    section.EbookDetailPage>.TitleWrap>.SubTitle{font-size: 16px; padding-left: 10px;}
+    section.EbookDetailPage>.MainItemWrap>.ExplainEbookViewer{padding: 130px 10px 0 10px;}
+    section.EbookDetailPage>.ExplainWrap>.BookSuggest>.BookSuggestText,
+    section.EbookDetailPage>.ExplainWrap>.PublisherSuggest>.PublisherSuggestText{margin-bottom: 0px; padding: 100px 10px 0px 10px; flex: 1;}
+
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap{height: 680px;}
+    section.EbookDetailPage>.MainItemWrap>.ImgWrap>img{width: 65%; height: auto;} 
+    
+    section.EbookDetailPage>.BookBasicInfo>.Title{font-size: 20px; margin: 0px 10px 15px 10px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo{margin: 0 10px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div{font-size: 14px;}
+    section.EbookDetailPage>.BookBasicInfo>.BasicInfo>div>span{font-size: 14px; margin-left: 5px; width: 200px;}
+    section.EbookDetailPage>.GotoList>a{margin: 0 10px; padding: 25px 0; width: 100%; font-size: 16px;} 
 }

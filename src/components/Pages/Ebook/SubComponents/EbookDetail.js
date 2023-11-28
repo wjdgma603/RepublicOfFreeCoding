@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const EbookDetail = () => {
     const location = useLocation();
     const Ebook = location.state.Ebook;
+
+    useEffect(()=>{
+        const BackGround = document.querySelector('.BackGround')
+        if(window.innerWidth <= 1280){
+            BackGround.style.backgroundImage = `url('${require(`../images/List/Book${Ebook.id}.jpg`)}')`
+        }
+    },[Ebook])
+    
     let suggestArray = ["집중돼요","도움돼요","쉬웠어요","최고에요","추천해요"]
     return ( 
         <section className="EbookDetailPage">
@@ -27,6 +36,7 @@ const EbookDetail = () => {
                     </div>
                 </div>
                 <div className="ImgWrap">
+                    <div className="BackGround"></div>
                     <img src={require(`../images/List/Book${Ebook.id}.jpg`)} alt={Ebook.BookName}/>
                 </div>
                 <div className="ExplainEbookViewer">

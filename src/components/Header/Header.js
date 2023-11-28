@@ -3,6 +3,7 @@ import './Header.css'
 import { useEffect, useState } from "react";
 
 const Header = ({isHeaderLoaded, headerDisable, KakaoLogout, isLogin, user}) => {
+    window.scrollTo(0,0)
     const [isNavMenuVisible, setIsNavMenuVisible] = useState(false);
     const handleMenuClick = () => {
       setIsNavMenuVisible(!isNavMenuVisible);
