@@ -57,7 +57,7 @@
   }
   
   .Commuhide {
-    color:red;
+    color:#E76E54;
     padding-right: 20px;
   }
   
@@ -151,7 +151,7 @@
   }
   
   .CommuWrite {
-    padding: 10px 15px;
+    padding: 10px 20px;
     background-color: #00d67a;
     color:#ffffff;
     display: flex;

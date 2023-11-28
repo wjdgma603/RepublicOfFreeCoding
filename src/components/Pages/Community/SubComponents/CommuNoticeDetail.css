@@ -34,8 +34,8 @@
 .CommuNoticeEditButton{
     padding:10px 20px;
     background-color: transparent;
-    border:1px solid blue;
-    color:blue;
+    border:1px solid #0073CF;
+    color:#0073CF;
     cursor: pointer;
     display: flex;
 }
@@ -60,23 +60,22 @@
 }
 .CommuQnaEditDetailButtonWrap>button:first-child{
     background:transparent;
-    border:1px solid blue;
-    color:blue;
+    border:1px solid #0073CF;
+    color:#0073CF;
 }
 .CommuQnaEditDetailButtonWrap>button:last-child{
     background-color:transparent;
-    border:1px solid red;
-    color:red;
+    border:1px solid #E76E54;
+    color:#E76E54;
 }
 .CommuDetailDeleteButton{
     padding:10px 20px;
-    border:1px solid red;
-    color:red;
+    border:1px solid #E76E54;
+    color:#E76E54;
     background-color: transparent;
     margin-left: 10px;
     cursor: pointer;
     display: flex;
-    font-weight: bold;
 }
 
 .CommuNoticePageButtonIcon{
@@ -91,5 +90,5 @@
     height:16px;
     background: url(../img/delete_red.png) center;
     background-size: cover;
-    margin:2px 5px 0 0;
+    margin:3px 5px 0 0;
 }

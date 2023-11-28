@@ -20,17 +20,17 @@
     display: flex;
 }
 .CommuQnaButtonWrap>div>div>button:first-child{
-    border:1px solid blue;
-    color:blue;
+    border:1px solid #0073CF;
+    color:#0073CF;
     background-color: transparent;
     padding:10px 20px;
     cursor: pointer;
     display: flex;
 }
 .CommuQnaButtonWrap>div>div>button:last-child{
-    border:1px solid red;
+    border:1px solid #E76E54;
     background-color: transparent;
-    color:red;
+    color:#E76E54;
     padding:10px 20px;
     margin-left: 20px;
     cursor: pointer;
@@ -70,8 +70,8 @@
     display: flex;
     text-align: center;
     background-color: transparent;
-    color:blue;
-    border: 1px solid blue;
+    color:#0073CF;
+    border: 1px solid #0073CF;
     cursor: pointer;
 }
 .CommuQuestionDetailButtonIcon{
