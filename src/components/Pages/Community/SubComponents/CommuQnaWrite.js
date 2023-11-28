@@ -1,37 +1,34 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './CommuQnaWrite.css';
-import { addQnaPost, qnaPost } from './CommuData';
+import CommuData from './CommuData';
 
 const CommuQnaWrite = () => {
+  const { addQnaPost } = CommuData();
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePostSubmit = () => {
-    if (!title || !content || isSubmitting) {
+    if (!title || !content) {
       alert('제목과 내용을 입력해주세요.');
       return;
     }
 
-    setIsSubmitting(true);
-
     const newPost = {
-      id: qnaPost.postIndex.length + 1,
       title,
       content,
       date: new Date().toLocaleDateString(),
     };
 
+    // Add the new post
     addQnaPost(newPost);
 
     setTitle('');
     setContent('');
-    setIsSubmitting(false);
-
     alert('글이 성공적으로 작성되었습니다.');
+    navigate('/community/qna');
   };
-
 
   return (
     <div className="CommuSection">
@@ -49,8 +46,6 @@ const CommuQnaWrite = () => {
 
       <div className="CommuRight">
         <h1>문의사항 글 작성</h1>
-        <p>문의 주의사항</p>
-        <p>문의 주실 내용에 대한 답변이 이미 있을 수도 있으니 검색기능을 활용해주세요.</p>
         <input
           className="CommuWriteTitle"
           type="text"
@@ -66,15 +61,12 @@ const CommuQnaWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <Link to='/community/qna'>
         <button
           className="CommuWriteButton"
           onClick={handlePostSubmit}
-          disabled={isSubmitting}
         >
           글쓰기
         </button>
-        </Link>
       </div>
     </div>
   );
