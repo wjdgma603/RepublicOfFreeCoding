@@ -33,7 +33,7 @@
     border: 1px solid #00D67A;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
     .DepthComponent{
         margin: 0px 50px 50px 50px;
     }
@@ -43,26 +43,11 @@
         flex-direction: row;
         column-gap: 15px;
         row-gap: initial;
-        margin-top: 20px;
     }
     .DepthComponent>div.DepthWrap>div.DepthMenu{
-        width: 200px;
-        height: 70px;
-        border-radius: 6px;
-        border: 1px solid #D5D5D5;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 25px;
-
         font-size: 18px;
     }
-    .DepthComponent>div.DepthWrap>div.DepthMenu.Activate{
-        color: #00D67A;
-        border: 1px solid #00D67A;
-    }
 }
-
 
 
 @media (max-width: 768px) {
@@ -70,27 +55,23 @@
         margin: 0px 20px 50px 20px;
     }
     .DepthComponent>div.DepthWrap{
-        display: flex;
-        width: 100%;
-        flex-direction: row;
-        column-gap: 15px;
-        row-gap: initial;
         margin-top: 20px;
     }
     .DepthComponent>div.DepthWrap>div.DepthMenu{
-        width: 200px;
-        height: 70px;
-        border-radius: 6px;
-        border: 1px solid #D5D5D5;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 25px;
-
+        justify-content: center;
+        padding-left: 0px;
         font-size: 18px;
     }
-    .DepthComponent>div.DepthWrap>div.DepthMenu.Activate{
-        color: #00D67A;
-        border: 1px solid #00D67A;
+}
+
+
+@media (max-width: 600px) {
+    .DepthComponent{
+        margin: 0px 10px 50px 10px;
+    }
+    .DepthComponent>div.DepthWrap>div.DepthMenu{
+        width: 100px;
+        height: 50px;
+        font-size: 14px;
     }
 }
