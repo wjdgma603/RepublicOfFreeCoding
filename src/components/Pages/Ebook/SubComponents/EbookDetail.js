@@ -7,9 +7,7 @@ const EbookDetail = () => {
 
     useEffect(()=>{
         const BackGround = document.querySelector('.BackGround')
-        if(window.innerWidth <= 1280){
-            BackGround.style.backgroundImage = `url('${require(`../images/List/Book${Ebook.id}.jpg`)}')`
-        }
+        BackGround.style.backgroundImage = `url('${require(`../images/List/Book${Ebook.id}.jpg`)}')`
     },[Ebook])
     
     let suggestArray = ["집중돼요","도움돼요","쉬웠어요","최고에요","추천해요"]
