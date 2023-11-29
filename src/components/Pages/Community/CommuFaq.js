@@ -13,8 +13,7 @@ const CommuFaq = () => {
     <div className="CommuSection">
       <div>
         <div>
-          <div>커뮤니티</div>
-          <div>초기화</div>
+          <div className="NavTitle">커뮤니티</div>
         </div>
         <ul className="CommuNav">
           <li>
@@ -23,7 +22,7 @@ const CommuFaq = () => {
           <li>
             <Link to="/community/qna">문의사항</Link>
           </li>
-          <li>
+          <li className="Activate">
             <Link to="/community/faq">FAQ</Link>
           </li>
         </ul>

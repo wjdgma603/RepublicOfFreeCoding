@@ -68,11 +68,10 @@ const CommuList = () => {
     <section className="CommuSection">
       <div>
         <div>
-          <div>커뮤니티</div>
-          <div>초기화</div>
+          <div className="NavTitle">커뮤니티</div>
         </div>
         <ul className="CommuNav">
-          <li><Link to='/community'>공지사항</Link></li>
+          <li className="Activate"><Link to='/community'>공지사항</Link></li>
           <li><Link to='/community/qna'>문의사항</Link></li>
           <li><Link to='/community/faq'>FAQ</Link></li>
         </ul>
