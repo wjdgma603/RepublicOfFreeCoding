@@ -6,23 +6,32 @@ const EbookViewer = () => {
     const Ebook = location.state.Ebook;
 
     const Data = Ebook.EbookViewer;
-    const DesktopEnv = 2;
     const Start = 0;
-    const [readSpeed, setReadSpeed] = useState(1)
-    const End = Data.Slide.length
+    const End = Data.Slide.length;
     const SlideRef = useRef();
-    const [slideState, setSlideState] = useState(0)
+    const [readSpeed, setReadSpeed] = useState(1);
+    const [slideState, setSlideState] = useState(0);
+    const [environment, setEnvironment] = useState({slideView : 2});
     function changeReadSpeed(index) {
         setReadSpeed(index);
     }
     function RightArrow() {
-        if(slideState >= End - DesktopEnv - 1){setSlideState(End - DesktopEnv)}
+        if(slideState >= End - environment.slideView - 1){setSlideState(End - environment.slideView)}
         else{setSlideState(slideState+readSpeed);}
     }
     function LeftArrow() {
         if(slideState <= Start){setSlideState(0)}
         else{setSlideState(slideState-readSpeed);}
     }
+
+    useEffect(()=>{
+        if(window.innerWidth <= 1024){
+            setEnvironment({slideView : 1})
+        }else{
+            setEnvironment({slideView : 2})
+        }
+    },[slideState])
+    
     useEffect(()=>{
         const Button = document.querySelectorAll('.ButtonWrap>div');
         Button.forEach((button)=>{
@@ -31,12 +40,14 @@ const EbookViewer = () => {
                 button.classList.toggle('Activate')
             })
         })
+        let SlideItem = document.querySelectorAll('.SlideItem')
         let Progressbar = document.querySelector('.Progressbar');
         let Progress = document.querySelector('.Progress');
-        Progress.style.width = `${(Progressbar.clientWidth / (End - DesktopEnv)) * slideState}px`
-        const SlideWidth = 1280 / DesktopEnv;
+        Progress.style.width = `${(Progressbar.clientWidth / (End - environment.slideView)) * slideState}px`
+        const SlideWidth = Progressbar.clientWidth / environment.slideView;
+        SlideItem.forEach((Slide)=>{Slide.style.width = `${SlideWidth}px`})
         SlideRef.current.style.transform = `translateX(-${slideState * SlideWidth}px)`
-    }, [slideState, End])
+    }, [slideState, End, environment])  
     return ( 
         <section className="EbookViewer">
             <article className="TitleWrap">
