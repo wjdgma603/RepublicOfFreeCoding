@@ -50,7 +50,8 @@
 .CodeTestHtmlArticleDiv2{
     width: 77%;
 }
-.CodeTestHtmlArticleDiv2>h1{
+.CodeTestHtmlArticleDiv2>thead{
+    display: block;
     font-size: 36px;
     margin-bottom: 40px;
 }
@@ -156,11 +157,14 @@
     .CodeTestHtmlArticle{
         padding: 0 10px;
     }
+    .CodeTestHtmlArticleDiv1>div{
+        margin: 5px;
+    }
     .CodeTestHtmlTitleBtn{
         font-size: 16px;
         padding: 24px 5px;
     }
-    .CodeTestHtmlArticleDiv2>h1{
+    .CodeTestHtmlArticleDiv2>thead{
         font-size: 26px;
         margin-bottom: 30px;
     }
@@ -203,6 +207,9 @@
 @media (max-width : 460px){
     .CodeTestHtmlSection>article{
         padding-top: 160px;
+    }
+    .CodeTestHtmlArticleDiv1>div{
+        margin: 3px;
     }
     .CodeTestHtmlTitleBtn{
         font-size: 14px;

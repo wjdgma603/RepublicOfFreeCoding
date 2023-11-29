@@ -50,7 +50,8 @@
 .CodeTestJsArticleDiv2{
     width: 77%;
 }
-.CodeTestJsArticleDiv2>h1{
+.CodeTestJsArticleDiv2>thead{
+    display: block;
     font-size: 36px;
     margin-bottom: 40px;
 }
@@ -156,11 +157,14 @@
     .CodeTestJsArticle{
         padding: 0 10px;
     }
+    .CodeTestJsArticleDiv1>div{
+        margin: 5px;
+    }
     .CodeTestJsTitleBtn{
         font-size: 16px;
         padding: 24px 5px;
     }
-    .CodeTestJsArticleDiv2>h1{
+    .CodeTestJsArticleDiv2>thead{
         font-size: 26px;
         margin-bottom: 30px;
     }
@@ -201,8 +205,11 @@
     }
 }
 @media (max-width : 460px){
-    .CodeTestListSection>article{
+    .CodeTestJsSection>article{
         padding-top: 160px;
+    }
+    .CodeTestJsArticleDiv1>div{
+        margin: 3px;
     }
     .CodeTestJsTitleBtn{
         font-size: 14px;

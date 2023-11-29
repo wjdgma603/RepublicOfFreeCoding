@@ -47,10 +47,14 @@ const CodeTestCss = () => {
                     <div><span className="CodeTestCssArticleDiv1Span">전자북 찾아보기</span></div>
                     <div><Link to="/ebook"><button className="CodeTestCssTitleBtn">전자북 페이지</button></Link></div>
                 </div>
-                <div className="CodeTestCssArticleDiv2">
-                    <h1>CSS</h1>
+                <table className="CodeTestCssArticleDiv2">
+                <thead>
+                        <tr>
+                            <th colSpan="3">CSS</th>
+                        </tr>
+                    </thead>
                     {/*HTML, CSS, SCRIPT 바뀔 창들 */}
-                    <div className="CodeTestCssArticleDiv2Table">
+                    <tbody className="CodeTestCssArticleDiv2Table">
                         <tr className="CodeTestCssTitle">
                             <td>중단원</td>
                             <td>주제</td>
@@ -119,8 +123,8 @@ const CodeTestCss = () => {
                                 </div>
                             </div>
                         )}
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </article>
         </section>
      );
