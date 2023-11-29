@@ -70,6 +70,7 @@
     background-color: #000000;
     border-radius: 4px;
     transition: 0.4s;
+    z-index: 3;
 } 
 
 .HeaderMenu span:nth-of-type(1) {

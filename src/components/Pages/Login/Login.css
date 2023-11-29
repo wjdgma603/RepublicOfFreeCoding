@@ -110,3 +110,9 @@
     width: 50px;
     fill: #371C1D;
 }
+
+@media (max-width : 480px){
+    .LoginSection>article.Login{
+        width: calc(100% - 20px);
+    }
+}
