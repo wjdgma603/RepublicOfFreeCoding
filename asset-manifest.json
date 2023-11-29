@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/RepublicOfFreeCoding/static/css/main.de942f6e.css",
+    "main.css": "/RepublicOfFreeCoding/static/css/main.a52d09c5.css",
     "main.js": "/RepublicOfFreeCoding/static/js/main.bb830d28.js",
     "static/js/962.52e117b0.chunk.js": "/RepublicOfFreeCoding/static/js/962.52e117b0.chunk.js",
     "static/js/52.bbc7030a.chunk.js": "/RepublicOfFreeCoding/static/js/52.bbc7030a.chunk.js",
@@ -68,7 +68,7 @@
     "static/media/write_white.png": "/RepublicOfFreeCoding/static/media/write_white.93f79efc0558c9b90169.png",
     "static/media/20.jpg": "/RepublicOfFreeCoding/static/media/20.01fd78258b41602902fb.jpg",
     "index.html": "/RepublicOfFreeCoding/index.html",
-    "main.de942f6e.css.map": "/RepublicOfFreeCoding/static/css/main.de942f6e.css.map",
+    "main.a52d09c5.css.map": "/RepublicOfFreeCoding/static/css/main.a52d09c5.css.map",
     "main.bb830d28.js.map": "/RepublicOfFreeCoding/static/js/main.bb830d28.js.map",
     "962.52e117b0.chunk.js.map": "/RepublicOfFreeCoding/static/js/962.52e117b0.chunk.js.map",
     "52.bbc7030a.chunk.js.map": "/RepublicOfFreeCoding/static/js/52.bbc7030a.chunk.js.map",
@@ -76,7 +76,7 @@
     "208.f267cd66.chunk.js.map": "/RepublicOfFreeCoding/static/js/208.f267cd66.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.de942f6e.css",
+    "static/css/main.a52d09c5.css",
     "static/js/main.bb830d28.js"
   ]
 }
