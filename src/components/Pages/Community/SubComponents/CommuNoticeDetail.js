@@ -7,7 +7,7 @@ const CommuNoticeDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [noticePosts, setNoticePosts] = useState(noticePost);
-  const [deletedNoticePosts, setDeletedNoticePosts] = useState([]);
+  const [deletedNoticePosts, setDeletedNoticePosts] = useState([]); //eslint-disable-line no-unused-vars
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedContent, setEditedContent] = useState('');
