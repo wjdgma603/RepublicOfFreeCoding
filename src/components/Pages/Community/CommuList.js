@@ -6,7 +6,7 @@ import "./CommuList.css";
 const CommuList = () => {
   const { noticePosts } = CommuData();
   const { page } = useParams();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); //eslint-disable-line no-unused-vars
   const [filteredPosts, setFilteredPosts] = useState(noticePosts.postIndex);
 
   useEffect(() => {

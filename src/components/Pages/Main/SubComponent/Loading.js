@@ -12,6 +12,7 @@ const Loading = ({HeaderDisable}) => {
     var Mseconds = ('0' + today.getMilliseconds()).slice(-2);
     var timeString = hours+':'+minutes+':'+seconds+'.'+Mseconds;
     // 시분초 밀리초
+
     return ( 
         <div id='loading'>
             <p>Current date is Tue&nbsp;&nbsp;{dateString}</p>

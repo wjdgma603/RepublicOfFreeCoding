@@ -5,7 +5,7 @@ import CommuData from './SubComponents/CommuData';
 const CommuQna = () => {
   const { qnaPosts } = CommuData();
   const { page } = useParams();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''); //eslint-disable-line no-unused-vars
   const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const Main = ({HeaderLoaded, FooterLoaded, HeaderDisable}) => {
     FooterLoaded();
     // 헤더 변형, 푸터 비활성
     return (
-      <div className="Main">
+      <div className="Main">  
         <Suspense fallback={<Loading HeaderDisable={HeaderDisable}/>}>
           <LazyThreeJSBack/>
           <LazyThreeJSModel/>
