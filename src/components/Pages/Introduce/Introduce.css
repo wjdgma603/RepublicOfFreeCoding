@@ -7,7 +7,7 @@
 .IntroImg{
     width: 100%;
     height: 552px;
-    background-image: url(../../../img/introImg.png);
+    background-image: url(./images/introImg.png);
     background-size: cover;
     z-index: -1;
     justify-content: center;
@@ -108,15 +108,15 @@
 }
 
 .IntroSecondSection>div>div>.IntroImgHtml{
-    background-image: url(../../../img/intro_html.png);
+    background-image: url(./images/intro_html.png);
 }
 
 .IntroSecondSection>div>div>.IntroImgCss{
-    background-image: url(../../../img/intro_css.png);
+    background-image: url(./images/intro_css.png);
 }
 
 .IntroSecondSection>div>div>.IntroImgJs{
-    background-image: url(../../../img/intro_js.png);
+    background-image: url(./images/intro_js.png);
 }
 
 .IntroSecondSection>div>div>.IntroClass{
@@ -359,7 +359,5 @@
         100% {
             transform: translateX(-627%);
         }
-    }
-    
+    }   
 }
-

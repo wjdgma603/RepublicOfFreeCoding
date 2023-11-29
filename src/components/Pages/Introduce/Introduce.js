@@ -1,24 +1,15 @@
 // import React, { useEffect, useState } from 'react';
 import './Introduce.css';
 
-import image1 from '../../../img/IntroBook1.png';
-import image2 from '../../../img/IntroBook2.png';
-import image3 from '../../../img/IntroBook3.png';
-import image4 from '../../../img/IntroBook4.png';
-import image5 from '../../../img/IntroBook5.png';
-import image6 from '../../../img/IntroBook6.png';
+import image1 from './images/IntroBook1.png';
+import image2 from './images/IntroBook2.png';
+import image3 from './images/IntroBook3.png';
+import image4 from './images/IntroBook4.png';
+import image5 from './images/IntroBook5.png';
+import image6 from './images/IntroBook6.png';
 
 const CombinedComponent = () => {
   const sliderImages = [image1, image2, image3, image4, image5, image6];
-  // const [activeIndex, setActiveIndex] = useState(0);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setActiveIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
-  //   }, 5000); // Adjust the duration as needed
-
-  //   return () => clearInterval(interval);
-  // }, [activeIndex, sliderImages.length]);
 
   return (
     <section className="Introduce">
