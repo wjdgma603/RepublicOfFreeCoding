@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/RepublicOfFreeCoding/static/css/main.9ef92dff.css",
-    "main.js": "/RepublicOfFreeCoding/static/js/main.18b93cd7.js",
+    "main.css": "/RepublicOfFreeCoding/static/css/main.de942f6e.css",
+    "main.js": "/RepublicOfFreeCoding/static/js/main.bb830d28.js",
     "static/js/962.52e117b0.chunk.js": "/RepublicOfFreeCoding/static/js/962.52e117b0.chunk.js",
     "static/js/52.bbc7030a.chunk.js": "/RepublicOfFreeCoding/static/js/52.bbc7030a.chunk.js",
     "static/js/760.fd836a70.chunk.js": "/RepublicOfFreeCoding/static/js/760.fd836a70.chunk.js",
@@ -63,17 +63,20 @@
     "static/media/Book2.jpg": "/RepublicOfFreeCoding/static/media/Book2.1eeb3ccf48ab5e18829e.jpg",
     "static/media/css.jpg": "/RepublicOfFreeCoding/static/media/css.1eeb3ccf48ab5e18829e.jpg",
     "static/media/Book4.jpg": "/RepublicOfFreeCoding/static/media/Book4.8102c596022c511b8074.jpg",
+    "static/media/write_blue.png": "/RepublicOfFreeCoding/static/media/write_blue.fe55af27925e98f9ad13.png",
+    "static/media/delete_red.png": "/RepublicOfFreeCoding/static/media/delete_red.d8256a07550f8480c0b9.png",
+    "static/media/write_white.png": "/RepublicOfFreeCoding/static/media/write_white.93f79efc0558c9b90169.png",
     "static/media/20.jpg": "/RepublicOfFreeCoding/static/media/20.01fd78258b41602902fb.jpg",
     "index.html": "/RepublicOfFreeCoding/index.html",
-    "main.9ef92dff.css.map": "/RepublicOfFreeCoding/static/css/main.9ef92dff.css.map",
-    "main.18b93cd7.js.map": "/RepublicOfFreeCoding/static/js/main.18b93cd7.js.map",
+    "main.de942f6e.css.map": "/RepublicOfFreeCoding/static/css/main.de942f6e.css.map",
+    "main.bb830d28.js.map": "/RepublicOfFreeCoding/static/js/main.bb830d28.js.map",
     "962.52e117b0.chunk.js.map": "/RepublicOfFreeCoding/static/js/962.52e117b0.chunk.js.map",
     "52.bbc7030a.chunk.js.map": "/RepublicOfFreeCoding/static/js/52.bbc7030a.chunk.js.map",
     "760.fd836a70.chunk.js.map": "/RepublicOfFreeCoding/static/js/760.fd836a70.chunk.js.map",
     "208.f267cd66.chunk.js.map": "/RepublicOfFreeCoding/static/js/208.f267cd66.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ef92dff.css",
-    "static/js/main.18b93cd7.js"
+    "static/css/main.de942f6e.css",
+    "static/js/main.bb830d28.js"
   ]
 }
