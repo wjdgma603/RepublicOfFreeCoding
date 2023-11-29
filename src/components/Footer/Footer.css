@@ -55,8 +55,34 @@ footer>section.FooterComponent>article.FooterLogoWrap>svg#FooterLogo{
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 550px) {
     footer>section.FooterComponent{
         padding: 60px 10px;
     }
+    footer>section.FooterComponent>article.FooterLogoWrap>svg#FooterLogo{
+        width: 110px;
+        margin-bottom: 10px;
+    }
+    footer>section.FooterComponent>article.FooterTextWrap>div.FooterAddress {
+        margin-bottom: 10px;
+    }
+    footer>section.FooterComponent>article.FooterTextWrap>ul.FooterNotice {
+        display: flex;
+        column-gap: 20px;
+        margin-bottom: 50px;
+    }
+    footer>section.FooterComponent>article.FooterTextWrap>div.FooterCopyright,
+    footer>section.FooterComponent>article.FooterTextWrap>div.FooterCopyright>span.UpperCase,
+    footer>section.FooterComponent>article.FooterTextWrap>ul.FooterNotice>li,
+    footer>section.FooterComponent>article.FooterTextWrap>div.FooterAddress
+    {
+        font-size: 13px;
+    }
+    footer>section.FooterComponent{
+        justify-content: initial;
+        flex-direction: column;
+
+    }
+    footer>section.FooterComponent>article.FooterTextWrap{order: 2;}
+    footer>section.FooterComponent>article.FooterLogoWrap{order: 1;}
 }
