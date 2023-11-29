@@ -614,35 +614,6 @@ export const noticePost = {
 };
 
 
-export const updateNoticePost = (id, updatedTitle, updatedContent) => {
-  noticePost.postIndex = noticePost.postIndex.map((post) =>
-    post.id === id
-      ? {
-          ...post,
-          title: updatedTitle,
-          content: updatedContent,
-        }
-      : post
-  );
-
-  localStorage.setItem('noticePosts', JSON.stringify(noticePost));
-};
-
-export const addNoticePost = (newPost) => {
-  const updatedPosts = [
-    { id: noticePost.postIndex.length + 1, ...newPost },
-    ...noticePost.postIndex
-  ];
-  noticePost.postIndex = updatedPosts;
-
-  localStorage.setItem('noticePosts', JSON.stringify({ postIndex: updatedPosts }));
-};
-
-
-
-/******************************************* */
-
-
 
 export const qnaPost = {
   postIndex: [
@@ -1458,6 +1429,34 @@ export const qnaPost = {
   ],
 };
 
+export const updateNoticePost = (id, updatedTitle, updatedContent) => {
+  noticePost.postIndex = noticePost.postIndex.map((post) =>
+    post.id === id
+      ? {
+          ...post,
+          title: updatedTitle,
+          content: updatedContent,
+        }
+      : post
+  );
+};
+
+export const addNoticePost = (newPost) => {
+  const maxId = Math.max(...noticePost.postIndex.map((post) => post.id), 0);
+  const updatedPosts = [
+    { id: maxId + 1, ...newPost },
+    ...noticePost.postIndex,
+  ];
+  noticePost.postIndex = updatedPosts;
+};
+
+export const deleteNoticePost = (id) => {
+  noticePost.postIndex = noticePost.postIndex.filter((post) => post.id !== id);
+};
+
+
+
+
 
 export const updateQnaPost = (id, updatedQuestion, updatedContent, updatedAnswer) => {
   qnaPost.postIndex = qnaPost.postIndex.map((post) =>
@@ -1470,41 +1469,48 @@ export const updateQnaPost = (id, updatedQuestion, updatedContent, updatedAnswer
         }
       : post
   );
+};
 
-  localStorage.setItem('qnaPosts', JSON.stringify(qnaPost));
+export const deleteQnaPost = (id) => {
+  qnaPost.postIndex = qnaPost.postIndex.filter((post) => post.id !== id);
 };
 
 
 export const addQnaPost = (newPost) => {
+  const maxId = Math.max(...qnaPost.postIndex.map((post) => post.id), 0);
   const updatedPosts = [
-    { id: qnaPost.postIndex.length + 1, ...newPost },
-    ...qnaPost.postIndex
+    { id: maxId + 1, ...newPost },
+    ...qnaPost.postIndex,
   ];
   qnaPost.postIndex = updatedPosts;
-
-  localStorage.setItem('qnaPosts', JSON.stringify({ postIndex: updatedPosts }));
 };
 
 
 
 
-const CommuData = () => {
-  const storedNoticePosts = JSON.parse(localStorage.getItem('noticePosts')) || noticePost;
-  const [noticePosts, setNoticePosts] = useState(storedNoticePosts);
 
-  const storedQnaPosts = JSON.parse(localStorage.getItem('qnaPosts')) || qnaPost;
-  const [qnaPosts, setQnaPosts] = useState(storedQnaPosts); // eslint-disable-line no-unused-vars
+// export const deleteQnaPost = (id) => {
+//   qnaPost.postIndex = qnaPost.postIndex.filter((post) => post.id !== id);
+// };
+const CommuData = () => {
+  const storedNoticePosts = noticePost;
+  const [noticePosts, setNoticePosts] = useState(storedNoticePosts);
+  const storedQnaPosts = qnaPost;
+  const [qnaPosts] = useState(storedQnaPosts);  // setQnaPosts 제거
+  const storedDeletedNoticePosts = [];
+  const [deletedNoticePosts] = useState(storedDeletedNoticePosts);  // setDeletedNoticePosts 제거
 
   useEffect(() => {
-    localStorage.setItem('qnaPosts', JSON.stringify(qnaPosts));
     setNoticePosts((prevNoticePosts) => ({ ...prevNoticePosts }));
-  }, [qnaPosts]);
+  }, [qnaPosts, deletedNoticePosts]);
 
   return {
     noticePosts,
     qnaPosts,
     addNoticePost,
+    deleteNoticePost,
     addQnaPost,
+    deletedNoticePosts,
   };
 };
 

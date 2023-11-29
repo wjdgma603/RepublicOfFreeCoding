@@ -49,14 +49,6 @@
     border: 1px solid #cccccc;
     padding-left: 10px;
   }
-/*   
-  .CommuRightHeaderSearchButton {
-    padding: 0 20px;
-    height: 40px;
-    border: 1px solid #cccccc;
-    margin-left: 10px;
-    cursor: pointer;
-  } */
   
   .CommuBoard {
     width: 100%;
@@ -64,12 +56,9 @@
     border-collapse: collapse;
   }
   
-  .CommuTitleWrap {
-   
-  }
-
   .Commuhide {
-    color:red;
+    color:#E76E54;
+    padding-right: 20px;
   }
   
   .CommuBoardHeader {
@@ -87,43 +76,45 @@
   }
   
   .CommuBoardNumber {
-    width: 21%;
+    width: 15%;
   }
   
   .CommuBoardTitle {
-    width: 68%;
+    width: 74%;
   }
   
   .CommuBoardDate {
     width: 11%;
   }
   
-  .CommuBoard > a > tr {
-    height: 62px;
+  
+  .CommuBoard>tbody>tr{
+
     border-bottom: 1px solid #e4e4e4;
-    vertical-align: middle;
   }
-  
-  /* .CommuBoard > a > tr > td {
-    vertical-align: middle;
-  } */
-  
-  .CommuBoard > a > tr > td:nth-child(1) {
-    width: 22%;
+  .CommuBoard>tbody>tr>td:nth-child(1){
+    width:15%;
     text-align: center;
   }
-  
-  .CommuBoard > a > tr > td:nth-child(2) {
-    width: 100%;
+  .CommuBoard>tbody>tr>td:nth-child(2){
+    width:74%;
   }
-  
-  .CommuBoard > a > tr > td:nth-child(3) {
-    width: 120px;
+  .CommuBoard>tbody>tr>td:nth-child(2)>a{
+    width:100%;
+    display: inline-block;
+    padding:20px 0;
+  }
+  .CommuBoard>tbody>tr>td:nth-child(3){
     text-align: center;
-    margin-left: 100px;
-    padding-right: 15px;
+    width:11%;
   }
-  
+
+  .CommuBoard>tbody>tr>td:nth-child(2)>div>a{
+    width:100%;
+    display: inline-block;
+    padding:20px 0;
+  }
+
   .CommuBottomWrap {
     display: flex;
     justify-content: space-between;
@@ -132,7 +123,6 @@
   .CommuPageButton{
     display: flex;
     padding:10px 14px;
-    /* border:1px solid black; */
     margin:0 5px;
     cursor: pointer;
     margin:100px;
@@ -151,28 +141,30 @@
   .CommuPageButtonWrap > a > div:hover{
     background-color:#00d67a;
     color:white;
-    /* border:1px solid red; */
     transition: .5s;
   }
   
   .CommuPageButtonWrap > a.active > div {
     background-color:#00d67a;
-    /* border:1px solid red; */
     color: white;
     border:none;
   }
   
   .CommuWrite {
-    padding: 10px 15px;
-    border: 1px solid black;
+    padding: 10px 20px;
+    background-color: #00d67a;
+    color:#ffffff;
+    display: flex;
+  }
+  .CommuWriteIcon{
+    width:20px; 
+    height:20px;
+    background: url(./img/write_white.png) center;
+    background-size: cover;
+    margin:3px 5px 0 0;
   }
 
-  .CommuWrite:hover{
-    border:1px solid #00d67a;
-    background-color: #00d67a;
-    color:white;
-    transition: .5s;
-  }
+
 
   .CommuBottomPrevWrap{
     display: flex;
@@ -226,6 +218,9 @@
     .CommuBoard > a > tr > td:nth-child(3) {
       width: 10%;
       padding:10px;
+    }
+    .Commuhide{
+      display: none;
     }
   }
   @media (max-width:768px){

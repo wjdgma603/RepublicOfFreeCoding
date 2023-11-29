@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { addNoticePost, noticePost } from './CommuData';
 import './CommuNoticeWrite.css';
+import CommuData from './CommuData';
 
 const CommuNoticeWrite = () => {
+  const { addNoticePost } = CommuData();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -15,7 +16,6 @@ const CommuNoticeWrite = () => {
     }
 
     const newPost = {
-      id: noticePost.postIndex.length + 1,
       title,
       content,
       date: new Date().toLocaleDateString(),
@@ -25,11 +25,8 @@ const CommuNoticeWrite = () => {
     setTitle('');
     setContent('');
     alert('글이 성공적으로 작성되었습니다.');
-
-    // 새로 작성된 글의 ID를 가져와 URL로 이동
-    navigate(`/community/notice/${newPost.id}`);
+    navigate('/community');
   };
-
   return (
     <div className="CommuSection">
       <div>
@@ -67,11 +64,10 @@ const CommuNoticeWrite = () => {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <Link to='/community'>
-          <button className="CommuWriteButton" onClick={handlePostSubmit}>
-            글쓰기
-          </button>
-        </Link>
+        <button className="CommuWriteButton" onClick={handlePostSubmit}>
+        <div className="CommuWriteButtonIcon"></div>
+          <div>글쓰기</div>
+        </button>
       </div>
     </div>
   );

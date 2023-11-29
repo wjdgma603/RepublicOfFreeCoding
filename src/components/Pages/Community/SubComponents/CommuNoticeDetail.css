@@ -28,16 +28,27 @@
 .CommuNoticeButton>a{
     color:white;
 }
+.CommuNoticeRightButtonWrap{
+    display: flex;
+}
 .CommuNoticeEditButton{
     padding:10px 20px;
-    background-color: #00d67a;
-    border:none;
-    color:white;
+    background-color: transparent;
+    border:1px solid #0073CF;
+    color:#0073CF;
     cursor: pointer;
+    display: flex;
+}
+.CommuNoticeEditButtonIcon{
+    width:20px; 
+    height:20px;
+    background: url(../img/write_blue.png) center;
+    background-size: cover;
+    margin-right: 5px;
 }
 .CommuQnaEditDetailButtonWrap{
     display: flex;
-    margin-left: 83%;
+    margin-left: 85%;
     margin-top: 10px;
 }
 .CommuQnaEditDetailButton{
@@ -48,20 +59,36 @@
     cursor: pointer;
 }
 .CommuQnaEditDetailButtonWrap>button:first-child{
-    background-color: #00d67a;
-    border:none;
-    color:white;
+    background:transparent;
+    border:1px solid #0073CF;
+    color:#0073CF;
 }
 .CommuQnaEditDetailButtonWrap>button:last-child{
-    background-color: black;
-    border:none;
-    color:white;
+    background-color:transparent;
+    border:1px solid #E76E54;
+    color:#E76E54;
 }
 .CommuDetailDeleteButton{
     padding:10px 20px;
-    border: none;
-    background-color: red;
-    color:white;
+    border:1px solid #E76E54;
+    color:#E76E54;
+    background-color: transparent;
     margin-left: 10px;
     cursor: pointer;
+    display: flex;
+}
+
+.CommuNoticePageButtonIcon{
+    width:20px; 
+    height:20px;
+    background: url(../img/write_white.png) center;
+    background-size: cover;
+    margin-right:5px;
+}
+.CommuNoticePageButtonDeleteIcon{
+    width:16px; 
+    height:16px;
+    background: url(../img/delete_red.png) center;
+    background-size: cover;
+    margin:3px 5px 0 0;
 }
